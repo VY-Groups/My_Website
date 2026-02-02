@@ -166,6 +166,43 @@
   transform: translateY(-3px);
 }
 
+/* Light mode overrides */
+.app.light .contact {
+  background: linear-gradient(135deg, #f0f3ff 0%, #f8f9ff 50%, #e6ebff 100%);
+}
+
+.app.light .contact-info h3 {
+  -webkit-text-fill-color: #0f172a;
+  color: #0f172a;
+  background: none;
+}
+
+.app.light .contact-info > p {
+  color: #475569;
+}
+
+.app.light .contact-method {
+  color: #0f172a;
+  background: #ffffff;
+  border: 1px solid rgba(0, 113, 227, 0.2);
+}
+
+.app.light .contact-method:hover {
+  color: #0b4aa2;
+}
+
+.app.light .form-group input,
+.app.light .form-group textarea {
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid rgba(0, 113, 227, 0.25);
+}
+
+.app.light .form-group input::placeholder,
+.app.light .form-group textarea::placeholder {
+  color: #64748b;
+}
+
 @media (max-width: 768px) {
   .contact {
     padding: 60px 20px;
