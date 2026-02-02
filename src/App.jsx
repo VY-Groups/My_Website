@@ -5,6 +5,7 @@ import Hero from './components/Hero'
 import Experience from './components/Experience'
 import Skills from './components/Skills'
 import Projects from './components/Projects'
+import Collaboration from './components/Collaboration'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import { SpeedInsights } from "@vercel/speed-insights/react"
@@ -39,6 +40,7 @@ export default function App() {
         <Experience />
         <Skills />
         <Projects />
+        <Collaboration />
         <Contact />
       </main>
       <Footer />

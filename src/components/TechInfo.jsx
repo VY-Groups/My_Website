@@ -187,6 +187,31 @@ const techDetails = {
     description: 'Backup refers to the process of creating copies of data to recover it in case of data loss, corruption, or system failures.',
     uses: ['Data protection', 'Disaster recovery', 'Compliance', 'Business continuity'],
     keyFeatures: ['Incremental backups', 'Encryption', 'Retention policies', 'Recovery testing']
+  },
+  'CI/CD': {
+    description: 'CI/CD (Continuous Integration/Continuous Deployment) is a set of practices and tools that automate the process of integrating code changes, testing, and deploying applications to production.',
+    uses: ['Automated testing', 'Code integration', 'Deployment automation', 'Release management'],
+    keyFeatures: ['Automated pipelines', 'Build automation', 'Deployment automation', 'Quick feedback loops']
+  },
+  'CloudWatch': {
+    description: 'Amazon CloudWatch is a monitoring and observability service that provides real-time visibility into AWS resources and applications through metrics, logs, and alarms.',
+    uses: ['Infrastructure monitoring', 'Application performance monitoring', 'Log aggregation', 'Alert management'],
+    keyFeatures: ['Real-time metrics', 'Custom dashboards', 'Automated alarms', 'Log analysis', 'Event tracking']
+  },
+  'IAM': {
+    description: 'AWS Identity and Access Management (IAM) is a service that enables secure control over who has access to AWS resources and what actions they can perform.',
+    uses: ['User and group management', 'Access control', 'Permission management', 'Security policies'],
+    keyFeatures: ['Multi-factor authentication', 'Role-based access', 'Policy management', 'Audit logging', 'Temporary credentials']
+  },
+  'Infrastructure': {
+    description: 'Infrastructure encompasses the physical and virtual resources that support IT systems, including servers, networks, storage, and cloud platforms.',
+    uses: ['System architecture design', 'Resource provisioning', 'Capacity planning', 'System integration'],
+    keyFeatures: ['Scalability', 'High availability', 'Disaster recovery', 'Performance optimization', 'Security']
+  },
+  'Automation': {
+    description: 'Automation refers to using tools and scripts to perform repetitive tasks automatically, reducing manual effort and improving consistency across operations.',
+    uses: ['Task automation', 'Workflow automation', 'Infrastructure automation', 'Testing automation'],
+    keyFeatures: ['Reduces manual effort', 'Improves consistency', 'Faster execution', 'Error reduction', 'Cost savings']
   }
 }
 
