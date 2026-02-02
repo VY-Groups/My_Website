@@ -208,6 +208,66 @@
   cursor: not-allowed;
 }
 
+/* Light mode overrides */
+.app.light .collaboration {
+  background: linear-gradient(135deg, rgba(240, 243, 255, 0.9), rgba(230, 235, 255, 0.9));
+  color: #0f172a;
+}
+
+.app.light .collaboration .section-title {
+  color: #0f172a;
+}
+
+.app.light .collaboration .section-subtitle {
+  color: #2b2b2b;
+}
+
+.app.light .info-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 113, 227, 0.2);
+}
+
+.app.light .info-card h3 {
+  color: #0f172a;
+}
+
+.app.light .info-card p {
+  color: #475569;
+}
+
+.app.light .collaboration-form {
+  background: #ffffff;
+  border: 1px solid rgba(0, 113, 227, 0.2);
+}
+
+.app.light .form-group label {
+  color: #0f172a;
+}
+
+.app.light .form-group input,
+.app.light .form-group select,
+.app.light .form-group textarea {
+  background: #f3f6ff;
+  color: #0f172a;
+  border: 1px solid rgba(0, 113, 227, 0.25);
+}
+
+.app.light .form-group select option {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.app.light .form-group input::placeholder,
+.app.light .form-group textarea::placeholder {
+  color: #64748b;
+}
+
+.app.light .service-checkbox {
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid rgba(0, 113, 227, 0.2);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .collaboration {
