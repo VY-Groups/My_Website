@@ -66,10 +66,6 @@ export default function Contact() {
                 <FiMail size={20} />
                 <span>ydubey020@gmail.com</span>
               </a>
-              <a href="tel:+919935891845" className="contact-method">
-                <FiPhone size={20} />
-                <span>+91 9935891845</span>
-              </a>
               <div className="contact-method">
                 <FiMapPin size={20} />
                 <span>India</span>
