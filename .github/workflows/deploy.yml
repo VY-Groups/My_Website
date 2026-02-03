@@ -31,10 +31,16 @@ jobs:
       # Step 4: Run tests
       - name: Run tests
         run: npm test
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
 
       # Step 5: Build project
       - name: Build project
         run: npm run build
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
 
       # Step 6: Deploy to Vercel (only on main branch push)
       - name: Deploy to Vercel
