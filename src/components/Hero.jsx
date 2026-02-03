@@ -34,13 +34,19 @@ export default function Hero() {
             </div>
             
             <div className="hero-ctas">
-              <a href="#projects" className="btn btn-primary">
+              <button 
+                onClick={() => window.open(`${window.location.origin}#projects`, '_blank')}
+                className="btn btn-primary"
+              >
                 View My Work
                 <FiArrowRight size={18} />
-              </a>
-              <a href="#contact" className="btn btn-secondary">
+              </button>
+              <button 
+                onClick={() => window.open(`${window.location.origin}#contact`, '_blank')}
+                className="btn btn-secondary"
+              >
                 Get in Touch
-              </a>
+              </button>
             </div>
 
             <div className="hero-social">
