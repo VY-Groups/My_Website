@@ -19,6 +19,29 @@
   margin-right: auto;
 }
 
+.collaboration-notice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 720px;
+  margin: -28px auto 48px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(0, 113, 227, 0.15), rgba(0, 212, 255, 0.08));
+  border: 1px solid rgba(0, 113, 227, 0.35);
+  color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 30px rgba(0, 113, 227, 0.12);
+}
+
+.notice-icon {
+  font-size: 20px;
+}
+
+.notice-text {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
 .collaboration-content {
   display: grid;
   grid-template-columns: 1fr 2fr;

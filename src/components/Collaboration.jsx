@@ -141,6 +141,12 @@ export default function Collaboration() {
       <div className="container">
         <h2 className="section-title">Let's Collaborate</h2>
         <p className="section-subtitle">Have a project, issue to solve, or want to collaborate? I'm here to help!</p>
+        <div className="collaboration-notice" role="status" aria-live="polite">
+          <span className="notice-icon">📢</span>
+          <div className="notice-text">
+            <strong>Updates coming soon:</strong> We’ll be adding new features and expanding services for all kinds of development.
+          </div>
+        </div>
 
         <div className="collaboration-content">
           <div className="collab-info">
