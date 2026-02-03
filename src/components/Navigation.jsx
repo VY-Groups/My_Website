@@ -15,8 +15,17 @@ export default function Navigation({ isDark, setIsDark, activeSection }) {
   }
 
   const handleNavClick = (target) => {
-    // Open in new tab
-    window.open(`${window.location.origin}#${target}`, '_blank')
+    // Close menu if open
+    setIsOpen(false)
+    
+    // Update hash and scroll to section
+    window.location.hash = target
+    setTimeout(() => {
+      const element = document.getElementById(target)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    }, 100)
   }
 
   const navItems = [

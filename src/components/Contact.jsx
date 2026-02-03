@@ -68,7 +68,7 @@ export default function Contact() {
               </a>
               <div className="contact-method">
                 <FiMapPin size={20} />
-                <span>India</span>
+                <span>New Delhi, India</span>
               </div>
             </div>
           </div>

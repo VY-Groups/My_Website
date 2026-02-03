@@ -4,7 +4,7 @@ import './Hero.css'
 
 export default function Hero() {
   return (
-    <section className="hero" id="about">
+    <section className="hero" id="hero">
       <div className="container">
         <div className="hero-content">
           <div className="hero-text">
@@ -35,14 +35,20 @@ export default function Hero() {
             
             <div className="hero-ctas">
               <button 
-                onClick={() => window.open(`${window.location.origin}#projects`, '_blank')}
+                onClick={() => {
+                  window.location.hash = 'projects'
+                  setTimeout(() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }), 100)
+                }}
                 className="btn btn-primary"
               >
                 View My Work
                 <FiArrowRight size={18} />
               </button>
               <button 
-                onClick={() => window.open(`${window.location.origin}#contact`, '_blank')}
+                onClick={() => {
+                  window.location.hash = 'contact'
+                  setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100)
+                }}
                 className="btn btn-secondary"
               >
                 Get in Touch
@@ -56,9 +62,17 @@ export default function Hero() {
               <a href="https://www.linkedin.com/in/yash-kumar-dubey-4b4926253" aria-label="LinkedIn" className="social-link" target="_blank" rel="noopener noreferrer">
                 <FiLinkedin size={20} />
               </a>
-              <a href="mailto:ydubey020@gmail.com" aria-label="Email" className="social-link">
+              <button 
+                onClick={() => {
+                  window.location.hash = 'contact';
+                  setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100);
+                }}
+                aria-label="Email" 
+                className="social-link"
+                style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+              >
                 <FiMail size={20} />
-              </a>
+              </button>
             </div>
           </div>
 

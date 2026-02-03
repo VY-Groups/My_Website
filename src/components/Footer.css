@@ -6,16 +6,36 @@
 
 .footer-content {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 20px;
 }
 
-.footer-content p {
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.footer-location {
   font-size: 14px;
   color: var(--text-tertiary);
   margin: 0;
+}
+
+.footer-copyright {
+  font-size: 14px;
+  color: var(--text-tertiary);
+  margin: 0;
+  text-align: right;
 }
 
 .footer-links {

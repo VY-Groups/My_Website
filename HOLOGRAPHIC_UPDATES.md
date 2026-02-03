@@ -12,7 +12,7 @@
 ### 2. **Contact Details Updated** 📞
    - Email: **ydubey020@gmail.com**
    - Phone: **+91 9935891845**
-   - Location: India
+   - Location: New Delhi, India
    - Contact form now opens email client with prefilled subject and message
 
 ### 3. **Interactive Technology Information** 🎯
