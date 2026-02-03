@@ -21,6 +21,7 @@ function injectSpeedInsights() {
 
 export default function App() {
   const [isDark, setIsDark] = useState(true)
+  const [activeSection, setActiveSection] = useState('hero')
 
   useEffect(() => {
     const saved = localStorage.getItem('theme')
@@ -34,18 +35,40 @@ export default function App() {
     localStorage.setItem('theme', isDark ? 'dark' : 'light')
   }, [isDark])
 
+  // Set active section based on URL hash
+  useEffect(() => {
+    const hash = window.location.hash.slice(1) || 'hero'
+    setActiveSection(hash)
+  }, [])
+
+  const renderSection = () => {
+    switch(activeSection) {
+      case 'hero':
+        return <Hero />
+      case 'experience':
+        return <Experience />
+      case 'skills':
+        return <Skills />
+      case 'projects':
+        return <Projects />
+      case 'resources':
+        return <StudentResources />
+      case 'success-stories':
+        return <SuccessStories />
+      case 'collaboration':
+        return <Collaboration />
+      case 'contact':
+        return <Contact />
+      default:
+        return <Hero />
+    }
+  }
+
   return (
     <div className={`app ${isDark ? 'dark' : 'light'}`}>
-      <Navigation isDark={isDark} setIsDark={setIsDark} />
-      <main>
-        <Hero />
-        <Experience />
-        <Skills />
-        <Projects />
-        <StudentResources />
-        <SuccessStories />
-        <Collaboration />
-        <Contact />
+      <Navigation isDark={isDark} setIsDark={setIsDark} activeSection={activeSection} />
+      <main className="single-section-view">
+        {renderSection()}
       </main>
       <Footer />
     </div>

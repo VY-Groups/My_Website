@@ -62,7 +62,7 @@ export default function Contact() {
             <p>I'm always interested in hearing about new projects and opportunities. Feel free to reach out!</p>
             
             <div className="contact-methods">
-              <a href="mailto:ydubey020@gmail.com" className="contact-method">
+              <a href="mailto:ydubey020@gmail.com" className="contact-method" target="_blank" rel="noopener noreferrer">
                 <FiMail size={20} />
                 <span>ydubey020@gmail.com</span>
               </a>

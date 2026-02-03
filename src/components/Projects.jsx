@@ -62,10 +62,10 @@ export default function Projects() {
                   ))}
                 </div>
                 <div className="project-links">
-                  <a href={project.github} className="project-link" title="GitHub">
+                  <a href={project.github} className="project-link" title="GitHub" target="_blank" rel="noopener noreferrer">
                     <FiGithub size={18} />
                   </a>
-                  <a href={project.link} className="project-link" title="View Project">
+                  <a href={project.link} className="project-link" title="View Project" target="_blank" rel="noopener noreferrer">
                     <FiExternalLink size={18} />
                   </a>
                 </div>
