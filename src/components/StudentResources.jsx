@@ -79,8 +79,8 @@ export default function StudentResources() {
         <div className="resources-notification">
           <FiAlertCircle className="notification-icon" />
           <div className="notification-content">
-            <h4>Coming Soon</h4>
-            <p>Student resources will be available from <strong>February 15, 2026</strong>. Please check back later!</p>
+            <h4>Upcoming Feature</h4>
+            <p>Student resources will be added as a future feature. Stay tuned!</p>
           </div>
         </div>
 
@@ -102,8 +102,8 @@ export default function StudentResources() {
         <div className="materials-grid-empty">
           <div className="empty-state">
             <FiFolder size={48} />
-            <h3>Resources Coming Soon</h3>
-            <p>New learning materials will be uploaded soon</p>
+            <h3>Feature Coming Later</h3>
+            <p>Student resources will be added in a future update</p>
           </div>
         </div>
 
@@ -111,8 +111,8 @@ export default function StudentResources() {
         <div className="resources-info">
           <FiFolder size={24} />
           <div>
-            <h4>Waiting for Materials?</h4>
-            <p>Resources will be available from February 15, 2026. Subscribe to get notified when they're ready!</p>
+            <h4>Future Feature</h4>
+            <p>Student resources will be added as a future enhancement to the platform.</p>
           </div>
         </div>
       </div>
