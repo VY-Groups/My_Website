@@ -7,6 +7,13 @@ export default function Navigation({ isDark, setIsDark }) {
 
   const toggleMenu = () => setIsOpen(!isOpen)
 
+  const handleNameClick = () => {
+    const link = document.createElement('a')
+    link.href = '/Yash_Kumar_Dubey_Resume.pdf'
+    link.download = true
+    link.click()
+  }
+
   return (
     <nav className="navbar">
       <div className="nav-container">
@@ -14,7 +21,7 @@ export default function Navigation({ isDark, setIsDark }) {
           <a href="#" className="logo">
             <img src="/pic.jpeg" alt="YD" className="logo-image" />
           </a>
-          <span className="brand-text">Yash Kumar Dubey</span>
+          <span className="brand-text" onClick={handleNameClick} style={{ cursor: 'pointer' }} title="Download Resume">Yash Kumar Dubey</span>
         </div>
 
         <div className={`nav-menu ${isOpen ? 'active' : ''}`}>
