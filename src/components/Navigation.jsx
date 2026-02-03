@@ -44,7 +44,15 @@ export default function Navigation({ isDark, setIsDark, activeSection }) {
       <div className="nav-container">
         <div className="nav-brand">
           <a href="#" className="logo" onClick={(e) => { e.preventDefault(); handleNavClick('hero'); }}>
-            <img src="/pic.jpeg" alt="YD" className="logo-image" />
+            <img
+              src="/pic.jpeg"
+              alt="YD"
+              className="logo-image"
+              width="40"
+              height="40"
+              loading="lazy"
+              decoding="async"
+            />
           </a>
           <span className="brand-text" onClick={handleNameClick} style={{ cursor: 'pointer' }} title="Download Resume">Yash Kumar Dubey</span>
         </div>

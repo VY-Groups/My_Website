@@ -1,15 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense, lazy } from 'react'
 import './App.css'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
-import Experience from './components/Experience'
-import Skills from './components/Skills'
-import Projects from './components/Projects'
-import StudentResources from './components/StudentResources'
-import SuccessStories from './components/SuccessStories'
-import Collaboration from './components/Collaboration'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+const Experience = lazy(() => import('./components/Experience'))
+const Skills = lazy(() => import('./components/Skills'))
+const Projects = lazy(() => import('./components/Projects'))
+const StudentResources = lazy(() => import('./components/StudentResources'))
+const SuccessStories = lazy(() => import('./components/SuccessStories'))
+const Collaboration = lazy(() => import('./components/Collaboration'))
+const Contact = lazy(() => import('./components/Contact'))
+const Footer = lazy(() => import('./components/Footer'))
+
+const SectionFallback = ({ label }) => (
+  <div className="section-loading" role="status" aria-live="polite">
+    Loading {label}…
+  </div>
+)
 
 export default function App() {
   const [isDark, setIsDark] = useState(true)
@@ -91,15 +97,45 @@ export default function App() {
       <Navigation isDark={isDark} setIsDark={setIsDark} activeSection={activeSection} />
       <main className="full-scroll-view">
         <section id="hero"><Hero /></section>
-        <section id="experience"><Experience /></section>
-        <section id="skills"><Skills /></section>
-        <section id="projects"><Projects /></section>
-        <section id="resources"><StudentResources /></section>
-        <section id="success-stories"><SuccessStories /></section>
-        <section id="collaboration"><Collaboration /></section>
-        <section id="contact"><Contact /></section>
+        <section id="experience">
+          <Suspense fallback={<SectionFallback label="experience" />}>
+            <Experience />
+          </Suspense>
+        </section>
+        <section id="skills">
+          <Suspense fallback={<SectionFallback label="skills" />}>
+            <Skills />
+          </Suspense>
+        </section>
+        <section id="projects">
+          <Suspense fallback={<SectionFallback label="projects" />}>
+            <Projects />
+          </Suspense>
+        </section>
+        <section id="resources">
+          <Suspense fallback={<SectionFallback label="resources" />}>
+            <StudentResources />
+          </Suspense>
+        </section>
+        <section id="success-stories">
+          <Suspense fallback={<SectionFallback label="success stories" />}>
+            <SuccessStories />
+          </Suspense>
+        </section>
+        <section id="collaboration">
+          <Suspense fallback={<SectionFallback label="collaboration" />}>
+            <Collaboration />
+          </Suspense>
+        </section>
+        <section id="contact">
+          <Suspense fallback={<SectionFallback label="contact" />}>
+            <Contact />
+          </Suspense>
+        </section>
       </main>
-      <Footer />
+      <Suspense fallback={<SectionFallback label="footer" />}>
+        <Footer />
+      </Suspense>
     </div>
 
   )

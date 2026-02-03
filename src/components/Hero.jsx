@@ -77,7 +77,16 @@ export default function Hero() {
           </div>
 
           <div className="hero-image">
-            <img src="/pic.jpeg" alt="Yash Kumar Dubey" className="profile-image" />
+            <img
+              src="/pic.jpeg"
+              alt="Yash Kumar Dubey"
+              className="profile-image"
+              width="400"
+              height="400"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+            />
           </div>
         </div>
       </div>

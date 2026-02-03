@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import App from './App'
 
@@ -45,37 +45,37 @@ describe('Portfolio Website - Complete Test Suite', () => {
 
   // Test 4: Contact Section
   describe('Contact Section', () => {
-    it('should display email address', () => {
+    it('should display email address', async () => {
       render(<App />)
-      expect(screen.getByText(/ydubey020@gmail.com/i)).toBeInTheDocument()
+      expect(await screen.findByText(/ydubey020@gmail.com/i)).toBeInTheDocument()
     })
 
-    it('should display location', () => {
+    it('should display location', async () => {
       render(<App />)
-      const locations = screen.getAllByText(/New Delhi, India/i)
+      const locations = await screen.findAllByText(/New Delhi, India/i)
       expect(locations.length).toBeGreaterThan(0)
     })
 
-    it('should have mailto link for email', () => {
+    it('should have mailto link for email', async () => {
       render(<App />)
-      const emailLink = screen.getByRole('link', { name: /ydubey020@gmail.com/i })
+      const emailLink = await screen.findByRole('link', { name: /ydubey020@gmail.com/i })
       expect(emailLink).toHaveAttribute('href', 'mailto:ydubey020@gmail.com')
     })
 
-    it('should render contact form', () => {
+    it('should render contact form', async () => {
       render(<App />)
-      expect(screen.getByPlaceholderText(/Your Name/i)).toBeInTheDocument()
-      expect(screen.getByPlaceholderText(/Your Email/i)).toBeInTheDocument()
-      expect(screen.getByPlaceholderText(/Your Message/i)).toBeInTheDocument()
+      expect(await screen.findByPlaceholderText(/Your Name/i)).toBeInTheDocument()
+      expect(await screen.findByPlaceholderText(/Your Email/i)).toBeInTheDocument()
+      expect(await screen.findByPlaceholderText(/Your Message/i)).toBeInTheDocument()
     })
 
     it('should allow typing in contact form fields', async () => {
       const user = userEvent.setup()
       render(<App />)
       
-      const nameInput = screen.getByPlaceholderText(/Your Name/i)
-      const emailInput = screen.getByPlaceholderText(/Your Email/i)
-      const messageInput = screen.getByPlaceholderText(/Your Message/i)
+      const nameInput = await screen.findByPlaceholderText(/Your Name/i)
+      const emailInput = await screen.findByPlaceholderText(/Your Email/i)
+      const messageInput = await screen.findByPlaceholderText(/Your Message/i)
 
       await user.type(nameInput, 'John Doe')
       await user.type(emailInput, 'john@example.com')
@@ -117,9 +117,9 @@ describe('Portfolio Website - Complete Test Suite', () => {
 
   // Test 8: Footer Section
   describe('Footer', () => {
-    it('should render footer', () => {
+    it('should render footer', async () => {
       render(<App />)
-      const footer = document.querySelector('footer')
+      const footer = await screen.findByRole('contentinfo')
       expect(footer).toBeTruthy()
     })
   })
@@ -153,10 +153,13 @@ describe('Portfolio Website - Complete Test Suite', () => {
 
   // Test 12: Tech Info Section
   describe('Tech Info Section', () => {
-    it('should render tech info', () => {
+    it('should render tech info', async () => {
       render(<App />)
-      const techElements = screen.queryAllByText(/tech/i)
-      expect(techElements.length).toBeGreaterThan(0)
+      const skillsHeading = await screen.findByRole('heading', { name: /Skills & Expertise/i })
+      const skillsSection = skillsHeading.closest('section')
+      const skillButtons = within(skillsSection).getAllByRole('button', { name: 'AWS' })
+      await userEvent.click(skillButtons[0])
+      expect(await screen.findByText(/What is AWS\?/i)).toBeInTheDocument()
     })
   })
 
@@ -190,14 +193,10 @@ describe('Portfolio Website - Complete Test Suite', () => {
 
   // Test 15: Form Validation
   describe('Form Validation', () => {
-    it('should have submit button in contact form', () => {
+    it('should have submit button in contact form', async () => {
       render(<App />)
-      const submitButtons = screen.getAllByRole('button')
-      const hasSubmit = submitButtons.some(button => 
-        button.textContent.toLowerCase().includes('send') || 
-        button.textContent.toLowerCase().includes('submit')
-      )
-      expect(hasSubmit).toBeTruthy()
+      const submitButton = await screen.findByRole('button', { name: /send message/i })
+      expect(submitButton).toBeTruthy()
     })
   })
 
