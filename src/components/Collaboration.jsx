@@ -214,6 +214,7 @@ export default function Collaboration() {
           requestType: 'collaboration',
           briefDetail: '',
           services: [],
+          preferredTech: [],
           budget: ''
         })
         setTimeout(() => setSubmitted(false), 3000)
