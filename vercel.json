@@ -18,9 +18,6 @@
       "source": "/:path*",
       "destination": "/index.html"
     }
-  ],
-  "env": {
-    "GMAIL_USER": "@GMAIL_USER",
-    "GMAIL_APP_PASSWORD": "@GMAIL_APP_PASSWORD"
+
   }
 }
