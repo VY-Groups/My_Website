@@ -52,4 +52,4 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-    vercel-args: '--prod --env GMAIL_USER=${{ secrets.GMAIL_USER }} --env GMAIL_APP_PASSWORD=${{ secrets.GMAIL_APP_PASSWORD }}'
+          vercel-args: '--prod --env GMAIL_USER=${{ secrets.GMAIL_USER }} --env GMAIL_APP_PASSWORD=${{ secrets.GMAIL_APP_PASSWORD }}'
