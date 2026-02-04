@@ -19,7 +19,7 @@ A modern, professional portfolio website built with React and Vite, featuring an
 - **React Icons** - Icon library
 - **CSS3** - Styling with CSS variables for theming
 
-## Project Structure
+### Project Structure
 
 ```
 src/
