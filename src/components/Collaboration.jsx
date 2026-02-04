@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { FiSend, FiCheckCircle } from 'react-icons/fi'
+import { FiSend, FiCheckCircle, FiCpu, FiServer, FiCode, FiSmartphone, FiBookOpen } from 'react-icons/fi'
+import { SiPython } from 'react-icons/si'
 import './Collaboration.css'
 
 export default function Collaboration() {
@@ -10,24 +11,100 @@ export default function Collaboration() {
     requestType: 'collaboration',
     briefDetail: '',
     services: [],
+    preferredTech: [],
     budget: ''
   })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  const serviceOptions = [
-    { id: 'cloud-architecture', label: 'Cloud Architecture & AWS' },
-    { id: 'kubernetes', label: 'Kubernetes & Container Orchestration' },
-    { id: 'cicd', label: 'CI/CD Pipeline Design & Implementation' },
-    { id: 'devops', label: 'DevOps Engineering & Automation' },
-    { id: 'infrastructure', label: 'Infrastructure as Code (Terraform, Ansible)' },
-    { id: 'monitoring', label: 'Monitoring & Observability Setup' },
-    { id: 'security', label: 'DevSecOps & Security Implementation' },
-    { id: 'migration', label: 'Cloud Migration & Optimization' },
-    { id: 'performance', label: 'Performance Tuning & Optimization' },
-    { id: 'backup', label: 'Backup & Disaster Recovery' },
-    { id: 'consultation', label: 'Technical Consultation' },
-    { id: 'training', label: 'Team Training & Knowledge Transfer' }
+  const serviceCategories = {
+    devops: {
+      title: 'DevOps & Automation',
+      icon: <FiCpu />,
+      services: [
+        { id: 'cicd', label: 'CI/CD Pipeline Design & Implementation' },
+        { id: 'devops', label: 'DevOps Engineering & Automation' },
+        { id: 'monitoring', label: 'Monitoring & Observability Setup' },
+        { id: 'security', label: 'DevSecOps & Security Implementation' },
+        { id: 'docker', label: 'Docker' },
+        { id: 'kubernetes', label: 'Kubernetes' }
+      ]
+    },
+    infrastructure: {
+      title: 'Infrastructure & Configuration',
+      icon: <FiServer />,
+      services: [
+        { id: 'aws', label: 'AWS' },
+        { id: 'azure', label: 'Azure' },
+        { id: 'gcp', label: 'Google Cloud' },
+        { id: 'terraform', label: 'Terraform' },
+        { id: 'ansible', label: 'Ansible' },
+        { id: 'cloud-architecture', label: 'Cloud Architecture & Design' },
+        { id: 'linux-config', label: 'Linux Server Configuration' },
+        { id: 'database-config', label: 'Database Setup & Optimization' },
+        { id: 'migration', label: 'Cloud Migration & Optimization' },
+        { id: 'backup', label: 'Backup & Disaster Recovery' }
+      ]
+    },
+    webDevelopment: {
+      title: 'Web Application Development',
+      icon: <FiCode />,
+      services: [
+        { id: 'web-fullstack', label: 'Full-Stack Web Development' },
+        { id: 'web-frontend', label: 'Frontend Development (React, Vue, Angular)' },
+        { id: 'web-backend', label: 'Backend Development (Node.js, Django, Flask)' },
+        { id: 'web-api', label: 'API Design & Development' },
+        { id: 'web-performance', label: 'Web Performance Optimization' }
+      ]
+    },
+    pythonDevelopment: {
+      title: 'Python Development',
+      icon: <SiPython />,
+      services: [
+        { id: 'python-automation', label: 'Python Automation & Scripting' },
+        { id: 'python-data', label: 'Data Analysis & Machine Learning' },
+        { id: 'python-web', label: 'Python Web Frameworks (Django, Flask, FastAPI)' },
+        { id: 'python-devops', label: 'Python DevOps Tools' }
+      ]
+    },
+    mobileDevelopment: {
+      title: 'Mobile Development',
+      icon: <FiSmartphone />,
+      services: [
+        { id: 'mobile-react-native', label: 'React Native Development' },
+        { id: 'mobile-flutter', label: 'Flutter Development' },
+        { id: 'mobile-native', label: 'Native iOS/Android Development' }
+      ]
+    },
+    consulting: {
+      title: 'Consulting & Training',
+      icon: <FiBookOpen />,
+      services: [
+        { id: 'performance', label: 'Performance Tuning & Optimization' },
+        { id: 'consultation', label: 'Technical Consultation' },
+        { id: 'training', label: 'Team Training & Knowledge Transfer' },
+        { id: 'architecture-review', label: 'Architecture Review & Best Practices' }
+      ]
+    }
+  }
+
+  const techStackOptions = [
+    { id: 'javascript', label: 'JavaScript/TypeScript' },
+    { id: 'python', label: 'Python' },
+    { id: 'java', label: 'Java' },
+    { id: 'go', label: 'Go' },
+    { id: 'rust', label: 'Rust' },
+    { id: 'php', label: 'PHP' },
+    { id: 'ruby', label: 'Ruby' },
+    { id: 'csharp', label: 'C#/.NET' },
+    { id: 'react', label: 'React' },
+    { id: 'vue', label: 'Vue.js' },
+    { id: 'angular', label: 'Angular' },
+    { id: 'node', label: 'Node.js' },
+    { id: 'django', label: 'Django' },
+    { id: 'flask', label: 'Flask' },
+    { id: 'fastapi', label: 'FastAPI' },
+    { id: 'spring', label: 'Spring Boot' }
   ]
 
   const handleChange = (e) => {
@@ -47,10 +124,27 @@ export default function Collaboration() {
     }))
   }
 
+  const handleTechChange = (techId) => {
+    setFormData(prev => ({
+      ...prev,
+      preferredTech: prev.preferredTech.includes(techId)
+        ? prev.preferredTech.filter(id => id !== techId)
+        : [...prev.preferredTech, techId]
+    }))
+  }
+
+  const getAllServices = () => {
+    return Object.values(serviceCategories).flatMap(category => category.services)
+  }
+
   const buildMailtoLink = () => {
     const subject = `Collaboration Request - ${formData.companyName || 'Company'} (${formData.requestType})`
+    const allServices = getAllServices()
     const servicesText = formData.services.length
-      ? formData.services.map(id => serviceOptions.find(s => s.id === id)?.label || id).join(', ')
+      ? formData.services.map(id => allServices.find(s => s.id === id)?.label || id).join(', ')
+      : 'N/A'
+    const techText = formData.preferredTech.length
+      ? formData.preferredTech.map(id => techStackOptions.find(t => t.id === id)?.label || id).join(', ')
       : 'N/A'
 
     const body = [
@@ -59,6 +153,7 @@ export default function Collaboration() {
       `Email: ${formData.email}`,
       `Request Type: ${formData.requestType}`,
       `Services Interested In: ${servicesText}`,
+      `Preferred Technologies: ${techText}`,
       `Budget Range: ${formData.budget || 'N/A'}`,
       '',
       'Brief Details:',
@@ -87,6 +182,7 @@ export default function Collaboration() {
         requestType: formData.requestType,
         briefDetail: formData.briefDetail,
         services: formData.services,
+        preferredTech: formData.preferredTech,
         budget: formData.budget
       }
 
@@ -248,16 +344,52 @@ export default function Collaboration() {
 
             <div className="form-row">
               <div className="form-group full">
-                <label>What services are you interested in?</label>
+                <label>
+                  What services are you interested in?
+                  {formData.services.length > 0 && (
+                    <span className="selection-count"> ({formData.services.length} selected)</span>
+                  )}
+                </label>
+                {Object.entries(serviceCategories).map(([key, category]) => (
+                  <div key={key} className="service-category">
+                    <h4 className="category-title">
+                      <span className="category-icon">{category.icon}</span>
+                      {category.title}
+                    </h4>
+                    <div className="services-grid">
+                      {category.services.map(service => (
+                        <label key={service.id} className="service-checkbox">
+                          <input
+                            type="checkbox"
+                            checked={formData.services.includes(service.id)}
+                            onChange={() => handleServiceChange(service.id)}
+                          />
+                          <span>{service.label}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="form-row">
+              <div className="form-group full">
+                <label>
+                  Preferred Technologies/Languages (Optional)
+                  {formData.preferredTech.length > 0 && (
+                    <span className="selection-count"> ({formData.preferredTech.length} selected)</span>
+                  )}
+                </label>
                 <div className="services-grid">
-                  {serviceOptions.map(service => (
-                    <label key={service.id} className="service-checkbox">
+                  {techStackOptions.map(tech => (
+                    <label key={tech.id} className="service-checkbox">
                       <input
                         type="checkbox"
-                        checked={formData.services.includes(service.id)}
-                        onChange={() => handleServiceChange(service.id)}
+                        checked={formData.preferredTech.includes(tech.id)}
+                        onChange={() => handleTechChange(tech.id)}
                       />
-                      <span>{service.label}</span>
+                      <span>{tech.label}</span>
                     </label>
                   ))}
                 </div>
