@@ -16,6 +16,8 @@ export default function Collaboration() {
   })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [expandedCategories, setExpandedCategories] = useState([])
+  const [expandedTechCategories, setExpandedTechCategories] = useState([])
 
   const serviceCategories = {
     devops: {
@@ -88,24 +90,52 @@ export default function Collaboration() {
     }
   }
 
-  const techStackOptions = [
-    { id: 'javascript', label: 'JavaScript/TypeScript' },
-    { id: 'python', label: 'Python' },
-    { id: 'java', label: 'Java' },
-    { id: 'go', label: 'Go' },
-    { id: 'rust', label: 'Rust' },
-    { id: 'php', label: 'PHP' },
-    { id: 'ruby', label: 'Ruby' },
-    { id: 'csharp', label: 'C#/.NET' },
-    { id: 'react', label: 'React' },
-    { id: 'vue', label: 'Vue.js' },
-    { id: 'angular', label: 'Angular' },
-    { id: 'node', label: 'Node.js' },
-    { id: 'django', label: 'Django' },
-    { id: 'flask', label: 'Flask' },
-    { id: 'fastapi', label: 'FastAPI' },
-    { id: 'spring', label: 'Spring Boot' }
-  ]
+  const techStackCategories = {
+    languages: {
+      title: 'Programming Languages',
+      items: [
+        { id: 'javascript', label: 'JavaScript/TypeScript' },
+        { id: 'python', label: 'Python' },
+        { id: 'java', label: 'Java' },
+        { id: 'go', label: 'Go' },
+        { id: 'rust', label: 'Rust' },
+        { id: 'php', label: 'PHP' },
+        { id: 'ruby', label: 'Ruby' },
+        { id: 'csharp', label: 'C#/.NET' }
+      ]
+    },
+    frontend: {
+      title: 'Frontend Frameworks',
+      items: [
+        { id: 'react', label: 'React' },
+        { id: 'vue', label: 'Vue.js' },
+        { id: 'angular', label: 'Angular' },
+        { id: 'svelte', label: 'Svelte' },
+        { id: 'next', label: 'Next.js' }
+      ]
+    },
+    backend: {
+      title: 'Backend Frameworks',
+      items: [
+        { id: 'node', label: 'Node.js/Express' },
+        { id: 'django', label: 'Django' },
+        { id: 'flask', label: 'Flask' },
+        { id: 'fastapi', label: 'FastAPI' },
+        { id: 'spring', label: 'Spring Boot' },
+        { id: 'dotnet', label: '.NET Core' }
+      ]
+    },
+    databases: {
+      title: 'Databases',
+      items: [
+        { id: 'postgresql', label: 'PostgreSQL' },
+        { id: 'mysql', label: 'MySQL' },
+        { id: 'mongodb', label: 'MongoDB' },
+        { id: 'redis', label: 'Redis' },
+        { id: 'elasticsearch', label: 'Elasticsearch' }
+      ]
+    }
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -113,6 +143,22 @@ export default function Collaboration() {
       ...prev,
       [name]: value
     }))
+  }
+
+  const toggleCategory = (categoryKey) => {
+    setExpandedCategories(prev => 
+      prev.includes(categoryKey)
+        ? prev.filter(key => key !== categoryKey)
+        : [...prev, categoryKey]
+    )
+  }
+
+  const toggleTechCategory = (categoryKey) => {
+    setExpandedTechCategories(prev => 
+      prev.includes(categoryKey)
+        ? prev.filter(key => key !== categoryKey)
+        : [...prev, categoryKey]
+    )
   }
 
   const handleServiceChange = (serviceId) => {
@@ -137,14 +183,26 @@ export default function Collaboration() {
     return Object.values(serviceCategories).flatMap(category => category.services)
   }
 
+  const getSelectedServicesCount = (categoryKey) => {
+    const categoryServices = serviceCategories[categoryKey].services.map(s => s.id)
+    return formData.services.filter(id => categoryServices.includes(id)).length
+  }
+
+  const getSelectedTechCount = (categoryKey) => {
+    const categoryTech = techStackCategories[categoryKey].items.map(t => t.id)
+    return formData.preferredTech.filter(id => categoryTech.includes(id)).length
+  }
+
   const buildMailtoLink = () => {
     const subject = `Collaboration Request - ${formData.companyName || 'Company'} (${formData.requestType})`
     const allServices = getAllServices()
+    const allTech = Object.values(techStackCategories).flatMap(category => category.items)
+    
     const servicesText = formData.services.length
       ? formData.services.map(id => allServices.find(s => s.id === id)?.label || id).join(', ')
       : 'N/A'
     const techText = formData.preferredTech.length
-      ? formData.preferredTech.map(id => techStackOptions.find(t => t.id === id)?.label || id).join(', ')
+      ? formData.preferredTech.map(id => allTech.find(t => t.id === id)?.label || id).join(', ')
       : 'N/A'
 
     const body = [
@@ -353,26 +411,44 @@ export default function Collaboration() {
                     <span className="selection-count"> ({formData.services.length} selected)</span>
                   )}
                 </label>
-                {Object.entries(serviceCategories).map(([key, category]) => (
-                  <div key={key} className="service-category">
-                    <h4 className="category-title">
-                      <span className="category-icon">{category.icon}</span>
-                      {category.title}
-                    </h4>
-                    <div className="services-grid">
-                      {category.services.map(service => (
-                        <label key={service.id} className="service-checkbox">
-                          <input
-                            type="checkbox"
-                            checked={formData.services.includes(service.id)}
-                            onChange={() => handleServiceChange(service.id)}
-                          />
-                          <span>{service.label}</span>
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-                ))}
+                <div className="accordion-categories">
+                  {Object.entries(serviceCategories).map(([key, category]) => {
+                    const isExpanded = expandedCategories.includes(key)
+                    const selectedCount = getSelectedServicesCount(key)
+                    
+                    return (
+                      <div key={key} className={`category-accordion ${isExpanded ? 'expanded' : ''}`}>
+                        <button
+                          type="button"
+                          className="category-header"
+                          onClick={() => toggleCategory(key)}
+                        >
+                          <span className="category-icon">{category.icon}</span>
+                          <span className="category-title">{category.title}</span>
+                          {selectedCount > 0 && (
+                            <span className="category-badge">{selectedCount}</span>
+                          )}
+                          <span className="expand-icon">{isExpanded ? '−' : '+'}</span>
+                        </button>
+                        
+                        {isExpanded && (
+                          <div className="category-services">
+                            {category.services.map(service => (
+                              <label key={service.id} className="service-checkbox">
+                                <input
+                                  type="checkbox"
+                                  checked={formData.services.includes(service.id)}
+                                  onChange={() => handleServiceChange(service.id)}
+                                />
+                                <span>{service.label}</span>
+                              </label>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
             </div>
 
@@ -384,17 +460,42 @@ export default function Collaboration() {
                     <span className="selection-count"> ({formData.preferredTech.length} selected)</span>
                   )}
                 </label>
-                <div className="services-grid">
-                  {techStackOptions.map(tech => (
-                    <label key={tech.id} className="service-checkbox">
-                      <input
-                        type="checkbox"
-                        checked={formData.preferredTech.includes(tech.id)}
-                        onChange={() => handleTechChange(tech.id)}
-                      />
-                      <span>{tech.label}</span>
-                    </label>
-                  ))}
+                <div className="accordion-categories">
+                  {Object.entries(techStackCategories).map(([key, category]) => {
+                    const isExpanded = expandedTechCategories.includes(key)
+                    const selectedCount = getSelectedTechCount(key)
+                    
+                    return (
+                      <div key={key} className={`category-accordion ${isExpanded ? 'expanded' : ''}`}>
+                        <button
+                          type="button"
+                          className="category-header"
+                          onClick={() => toggleTechCategory(key)}
+                        >
+                          <span className="category-title">{category.title}</span>
+                          {selectedCount > 0 && (
+                            <span className="category-badge">{selectedCount}</span>
+                          )}
+                          <span className="expand-icon">{isExpanded ? '−' : '+'}</span>
+                        </button>
+                        
+                        {isExpanded && (
+                          <div className="category-services">
+                            {category.items.map(tech => (
+                              <label key={tech.id} className="service-checkbox">
+                                <input
+                                  type="checkbox"
+                                  checked={formData.preferredTech.includes(tech.id)}
+                                  onChange={() => handleTechChange(tech.id)}
+                                />
+                                <span>{tech.label}</span>
+                              </label>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
                 </div>
               </div>
             </div>
