@@ -1,29 +1,5 @@
 import nodemailer from 'nodemailer';
 
-// Create transporter with Gmail credentials
-const createTransporter = () => {
-  const user = process.env.GMAIL_USER;
-  const pass = process.env.GMAIL_APP_PASSWORD;
-
-  console.log('Checking Gmail credentials...');
-  console.log('GMAIL_USER exists:', !!user);
-  console.log('GMAIL_APP_PASSWORD exists:', !!pass);
-
-  if (!user || !pass) {
-    console.error('Gmail credentials not configured');
-    console.error('Available env vars:', Object.keys(process.env).filter(key => key.includes('GMAIL')));
-    return null;
-  }
-
-  return nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user,
-      pass
-    }
-  });
-};
-
 export default async function handler(req, res) {
   // CORS headers
   res.setHeader('Access-Control-Allow-Credentials', 'true');
@@ -41,14 +17,32 @@ export default async function handler(req, res) {
   }
 
   try {
-    const transporter = createTransporter();
-    if (!transporter) {
-      console.error('Transporter creation failed - credentials missing');
+    // Debug logging
+    console.log('=== Email API Called ===');
+    console.log('Method:', req.method);
+    console.log('Environment check:');
+    console.log('- GMAIL_USER exists:', !!process.env.GMAIL_USER);
+    console.log('- GMAIL_APP_PASSWORD exists:', !!process.env.GMAIL_APP_PASSWORD);
+    
+    const user = process.env.GMAIL_USER;
+    const pass = process.env.GMAIL_APP_PASSWORD;
+
+    if (!user || !pass) {
+      console.error('Missing credentials!');
       return res.status(500).json({ 
         error: 'Email service not configured',
-        details: 'Gmail credentials are missing from environment variables'
+        details: `Missing credentials - user: ${!!user}, pass: ${!!pass}`
       });
     }
+
+    // Create transporter directly without factory
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user,
+        pass
+      }
+    });
 
     const body = req.body;
     const { name, email, message, type, companyName, requestType, briefDetail, services, preferredTech, budget } = body;
