@@ -5,7 +5,8 @@
   "functions": {
     "api/**/*.js": {
       "runtime": "nodejs20.x",
-      "memory": 1024
+      "memory": 1024,
+      "maxDuration": 30
     }
   },
   "rewrites": [
@@ -17,5 +18,9 @@
       "source": "/:path*",
       "destination": "/index.html"
     }
-  ]
+  ],
+  "env": {
+    "GMAIL_USER": "@GMAIL_USER",
+    "GMAIL_APP_PASSWORD": "@GMAIL_APP_PASSWORD"
+  }
 }
