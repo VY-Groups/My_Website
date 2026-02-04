@@ -1,155 +1,113 @@
 import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
-  // CORS headers
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-  res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,POST');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
+  // Handle preflight
   if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
+    return res.status(200).end();
   }
 
+  // Only accept POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
-    // Debug logging
-    console.log('=== Email API Called ===');
-    console.log('Method:', req.method);
-    console.log('Environment check:');
-    console.log('- GMAIL_USER exists:', !!process.env.GMAIL_USER);
-    console.log('- GMAIL_APP_PASSWORD exists:', !!process.env.GMAIL_APP_PASSWORD);
+    console.log('API called with body:', Object.keys(req.body || {}));
     
-    const user = process.env.GMAIL_USER;
-    const pass = process.env.GMAIL_APP_PASSWORD;
+    // Get credentials
+    const gmailUser = process.env.GMAIL_USER;
+    const gmailPass = process.env.GMAIL_APP_PASSWORD;
+    
+    console.log('Checking credentials:', {
+      hasUser: !!gmailUser,
+      hasPass: !!gmailPass
+    });
 
-    if (!user || !pass) {
-      console.error('Missing credentials!');
-      return res.status(500).json({ 
+    if (!gmailUser || !gmailPass) {
+      console.error('Missing Gmail credentials');
+      return res.status(500).json({
         error: 'Email service not configured',
-        details: `Missing credentials - user: ${!!user}, pass: ${!!pass}`
+        hasUser: !!gmailUser,
+        hasPass: !!gmailPass
       });
     }
 
-    // Create transporter directly without factory
+    // Create transport
+    console.log('Creating nodemailer transport...');
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user,
-        pass
+        user: gmailUser,
+        pass: gmailPass
       }
     });
 
-    const body = req.body;
+    const body = req.body || {};
     const { name, email, message, type, companyName, requestType, briefDetail, services, preferredTech, budget } = body;
 
-    // Validate based on request type
+    // Validate input
     if (type === 'collaboration') {
-      if (!companyName || companyName.trim() === '' ||
-          !name || name.trim() === '' ||
-          !email || email.trim() === '' ||
-          !briefDetail || briefDetail.trim() === '' ||
-          !requestType || requestType.trim() === '' ||
-          !services || !Array.isArray(services) || services.length === 0) {
-        return res.status(400).json({ error: 'All fields are required' });
+      if (!companyName?.trim() || !name?.trim() || !email?.trim() || !briefDetail?.trim() || !requestType?.trim() || !services?.length) {
+        return res.status(400).json({ error: 'Missing required fields for collaboration' });
       }
     } else {
-      // Standard contact form
-      if (!name || name.trim() === '' ||
-          !email || email.trim() === '' ||
-          !message || message.trim() === '') {
-        return res.status(400).json({ error: 'All fields are required' });
+      if (!name?.trim() || !email?.trim() || !message?.trim()) {
+        return res.status(400).json({ error: 'Missing required fields' });
       }
     }
 
     let mailContent;
-
     if (type === 'collaboration') {
-      // Collaboration request email
-      const servicesList = Array.isArray(services) ? services.join('</li><li>') : '';
-      const techList = Array.isArray(preferredTech) ? preferredTech.join(', ') : 'Not specified';
-      
       mailContent = {
-        from: process.env.GMAIL_USER,
-        to: process.env.GMAIL_USER,
+        from: gmailUser,
+        to: gmailUser,
         replyTo: email,
-        subject: `New Collaboration Request from ${name} (${companyName})`,
+        subject: `Collaboration: ${companyName} - ${requestType}`,
         html: `
-          <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
-            <h2 style="color: #0071e3;">New Collaboration Request</h2>
-            <hr style="border: none; border-top: 1px solid #eee;">
-            
-            <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0;">
-              <p><strong>Request Type:</strong> ${requestType}</p>
-              <p><strong>Company Name:</strong> ${companyName}</p>
-              <p><strong>Name:</strong> ${name}</p>
-              <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-              ${budget ? `<p><strong>Budget Range:</strong> ${budget}</p>` : ''}
-            </div>
-
-            <p><strong>Services Interested In:</strong></p>
-            <ul style="background: #f9f9f9; padding: 15px 30px; border-radius: 5px;">
-              <li>${servicesList}</li>
-            </ul>
-
-            <p><strong>Preferred Technologies:</strong> ${techList}</p>
-
-            <p><strong>Brief Details:</strong></p>
-            <div style="background: #f9f9f9; padding: 15px; border-left: 3px solid #0071e3; border-radius: 3px;">
-              <p>${briefDetail.replace(/\n/g, '<br>')}</p>
-            </div>
-
-            <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-            <p style="color: #666; font-size: 12px;">
-              This is a collaboration request from your portfolio website.
-              <br>
-              <a href="https://my-website-one-zeta-56.vercel.app" style="color: #0071e3; text-decoration: none;">View Portfolio</a>
-            </p>
-          </div>
+          <h2>New Collaboration Request</h2>
+          <p><strong>Company:</strong> ${companyName}</p>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Type:</strong> ${requestType}</p>
+          ${budget ? `<p><strong>Budget:</strong> ${budget}</p>` : ''}
+          <p><strong>Services:</strong> ${(services || []).join(', ')}</p>
+          <p><strong>Technologies:</strong> ${(preferredTech || []).join(', ')}</p>
+          <p><strong>Details:</strong><br>${briefDetail?.replace(/\n/g, '<br>')}</p>
         `
       };
     } else {
-      // Standard contact form email
       mailContent = {
-        from: process.env.GMAIL_USER,
-        to: process.env.GMAIL_USER,
+        from: gmailUser,
+        to: gmailUser,
         replyTo: email,
-        subject: `New message from ${name}`,
+        subject: `Message from ${name}`,
         html: `
-          <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
-            <h2 style="color: #0071e3;">New Contact Form Submission</h2>
-            <hr style="border: none; border-top: 1px solid #eee;">
-            
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-            
-            <p><strong>Message:</strong></p>
-            <div style="background: #f9f9f9; padding: 15px; border-left: 3px solid #0071e3; border-radius: 3px;">
-              <p>${message.replace(/\n/g, '<br>')}</p>
-            </div>
-
-            <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-            <p style="color: #666; font-size: 12px;">
-              This message came from your portfolio website.
-              <br>
-              <a href="https://my-website-one-zeta-56.vercel.app" style="color: #0071e3; text-decoration: none;">View Portfolio</a>
-            </p>
-          </div>
+          <h2>New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Message:</strong><br>${message?.replace(/\n/g, '<br>')}</p>
         `
       };
     }
 
+    console.log('Sending email...');
     await transporter.sendMail(mailContent);
+    console.log('Email sent successfully');
 
-    res.status(200).json({ success: true, message: 'Email sent successfully!' });
+    return res.status(200).json({ success: true, message: 'Email sent successfully!' });
   } catch (error) {
-    console.error('Email error:', error);
-    res.status(500).json({ 
+    console.error('ERROR:', error.message);
+    console.error('Stack:', error.stack);
+    
+    return res.status(500).json({
       error: 'Failed to send email',
-      details: error.message,
-      code: error.code 
+      message: error.message,
+      type: error.name
     });
+  }
+}
