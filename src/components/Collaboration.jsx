@@ -218,15 +218,17 @@ export default function Collaboration() {
         })
         setTimeout(() => setSubmitted(false), 3000)
       } else {
-        throw new Error(responseData.error || 'Failed to send')
+        const errorMsg = responseData?.error || responseData?.details || 'Failed to send collaboration request';
+        throw new Error(errorMsg);
       }
     } catch (error) {
       const message = error.name === 'AbortError'
         ? 'Request timed out. Opening your email client instead.'
-        : 'Unable to send from server. Opening your email client instead.'
-      console.error('Error sending collaboration request:', error)
-      window.location.href = buildMailtoLink()
-      alert(message)
+        : `Error: ${error.message}. Opening your email client instead.`;
+      console.error('Error sending collaboration request:', error);
+      console.error('API response:', error);
+      alert(message);
+      window.location.href = buildMailtoLink();
     } finally {
       setLoading(false)
     }

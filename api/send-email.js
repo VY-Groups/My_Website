@@ -5,8 +5,13 @@ const createTransporter = () => {
   const user = process.env.GMAIL_USER;
   const pass = process.env.GMAIL_APP_PASSWORD;
 
+  console.log('Checking Gmail credentials...');
+  console.log('GMAIL_USER exists:', !!user);
+  console.log('GMAIL_APP_PASSWORD exists:', !!pass);
+
   if (!user || !pass) {
     console.error('Gmail credentials not configured');
+    console.error('Available env vars:', Object.keys(process.env).filter(key => key.includes('GMAIL')));
     return null;
   }
 
@@ -38,7 +43,11 @@ export default async function handler(req, res) {
   try {
     const transporter = createTransporter();
     if (!transporter) {
-      return res.status(500).json({ error: 'Email service not configured' });
+      console.error('Transporter creation failed - credentials missing');
+      return res.status(500).json({ 
+        error: 'Email service not configured',
+        details: 'Gmail credentials are missing from environment variables'
+      });
     }
 
     const body = req.body;
