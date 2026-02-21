@@ -4,58 +4,94 @@
 const studentMaterials = [
   {
     id: 1,
-    title: 'Introduction to DevOps',
-    category: 'DevOps',
-    description: 'Comprehensive guide covering DevOps principles, tools, and best practices.',
-    fileSize: '2.5 MB',
+    title: 'Linux Essentials',
+    category: 'Linux',
+    description: 'Complete guide to Linux fundamentals and essential commands for beginners.',
+    fileSize: 'PDF',
     fileType: 'PDF',
-    downloadLink: '/downloads/resources/introduction-to-devops.pdf'
+    downloadLink: '/downloads/resources/linux-essentials.pdf'
   },
   {
     id: 2,
-    title: 'Kubernetes Deep Dive',
-    category: 'Kubernetes',
-    description: 'Advanced Kubernetes concepts including networking, storage, and security.',
-    fileSize: '3.1 MB',
+    title: 'Linux For DevOps - Complete Notes',
+    category: 'Linux',
+    description: 'Comprehensive Linux guide specifically tailored for DevOps engineers.',
+    fileSize: 'PDF',
     fileType: 'PDF',
-    downloadLink: '/downloads/resources/kubernetes-deep-dive.pdf'
+    downloadLink: '/downloads/resources/linux-for-devops-complete-notes.pdf'
   },
   {
     id: 3,
-    title: 'CI/CD Pipeline Best Practices',
-    category: 'DevOps',
-    description: 'Learn how to design and implement efficient CI/CD pipelines.',
-    fileSize: '1.8 MB',
+    title: 'Networking For DevOps',
+    category: 'Networking',
+    description: 'Essential networking concepts and protocols for DevOps professionals.',
+    fileSize: 'PDF',
     fileType: 'PDF',
-    downloadLink: '/downloads/resources/cicd-best-practices.pdf'
+    downloadLink: '/downloads/resources/networking-for-devops.pdf'
   },
   {
     id: 4,
-    title: 'Cloud Architecture Patterns',
-    category: 'Cloud',
-    description: 'Design patterns for scalable and resilient cloud applications.',
-    fileSize: '2.2 MB',
+    title: 'Practice Guide to Azure DevOps',
+    category: 'Azure',
+    description: 'Hands-on guide to Azure DevOps tools, pipelines, and best practices.',
+    fileSize: 'PDF',
     fileType: 'PDF',
-    downloadLink: '/downloads/resources/cloud-architecture-patterns.pdf'
+    downloadLink: '/downloads/resources/practice-guide-to-azure-devops.pdf'
   },
   {
     id: 5,
-    title: 'Python for DevOps Engineers',
-    category: 'Programming',
-    description: 'Essential Python skills for DevOps automation and scripting.',
-    fileSize: '1.9 MB',
+    title: 'Ansible Complete Guide',
+    category: 'Ansible',
+    description: 'Master automation with Ansible - from basics to advanced configurations.',
+    fileSize: 'PDF',
     fileType: 'PDF',
-    downloadLink: '/downloads/resources/python-for-devops.pdf'
+    downloadLink: '/downloads/resources/ansible-complete-guide.pdf'
   },
   {
     id: 6,
-    title: 'Docker & Containerization',
-    category: 'DevOps',
-    description: 'Complete guide to Docker, containerization, and container orchestration.',
-    fileSize: '2.4 MB',
+    title: 'Docker Hand Written Notes',
+    category: 'Docker',
+    description: 'Comprehensive Docker notes covering containers, images, and orchestration.',
+    fileSize: 'PDF',
     fileType: 'PDF',
-    downloadLink: '/downloads/resources/docker-containerization.pdf'
+    downloadLink: '/downloads/resources/docker-hand-written-notes.pdf'
+  },
+  {
+    id: 7,
+    title: 'DevOps Study Material 1',
+    category: 'DevOps',
+    description: 'Additional study material covering various DevOps concepts and practices.',
+    fileSize: 'PDF',
+    fileType: 'PDF',
+    downloadLink: '/downloads/resources/devops-study-material-1.pdf'
+  },
+  {
+    id: 8,
+    title: 'DevOps Study Material 2',
+    category: 'DevOps',
+    description: 'Advanced DevOps practices, tools, and implementation strategies.',
+    fileSize: 'PDF',
+    fileType: 'PDF',
+    downloadLink: '/downloads/resources/devops-study-material-2.pdf'
+  },
+  {
+    id: 9,
+    title: 'DevOps Study Material 3',
+    category: 'DevOps',
+    description: 'Extended learning material for DevOps methodologies and frameworks.',
+    fileSize: 'PDF',
+    fileType: 'PDF',
+    downloadLink: '/downloads/resources/devops-study-material-3.pdf'
+  },
+  {
+    id: 10,
+    title: 'Additional Resource Material',
+    category: 'General',
+    description: 'Supplementary study material for DevOps and related technologies.',
+    fileSize: 'PDF',
+    fileType: 'PDF',
+    downloadLink: '/downloads/resources/additional-resource-material.pdf'
   }
 ];
 
-module.exports = { studentMaterials };
+export { studentMaterials };
