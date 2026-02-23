@@ -91,6 +91,15 @@ const studentMaterials = [
     fileSize: 'PDF',
     fileType: 'PDF',
     downloadLink: '/downloads/resources/additional-resource-material.pdf'
+  },
+  {
+    id: 11,
+    title: 'Data Structures & Algorithms',
+    category: 'DSA',
+    description: 'Comprehensive guide to data structures and algorithms with practical examples and implementations.',
+    fileSize: 'PDF',
+    fileType: 'PDF',
+    downloadLink: '/downloads/resources/devops-study-material-4.pdf'
   }
 ];
 

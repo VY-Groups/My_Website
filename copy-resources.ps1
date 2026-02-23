@@ -20,6 +20,7 @@ $fileMap = @{
     "1770570631772.pdf" = "devops-study-material-1.pdf"
     "1769324669022.pdf" = "devops-study-material-2.pdf"
     "1771327130203.pdf" = "devops-study-material-3.pdf"
+    "1771765808425.pdf" = "devops-study-material-4.pdf"
     "_.pdf" = "additional-resource-material.pdf"
 }
 

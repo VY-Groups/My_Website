@@ -8,7 +8,7 @@ export default function StudentResources() {
 
   const materials = studentMaterials
 
-  const categories = ['all', 'DevOps', 'Linux', 'Docker', 'Azure', 'Ansible', 'Networking', 'General']
+  const categories = ['all', 'DevOps', 'Linux', 'Docker', 'Azure', 'Ansible', 'Networking', 'DSA', 'General']
 
   const filteredMaterials = selectedCategory === 'all' 
     ? materials 
