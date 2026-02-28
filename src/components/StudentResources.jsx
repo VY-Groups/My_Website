@@ -80,7 +80,7 @@ export default function StudentResources() {
           <FiAlertCircle className="notification-icon" />
           <div className="notification-content">
             <h4>Disclaimer</h4>
-            <p>These notes are not prepared by me. I have collected them from LinkedIn and other educational resources. However, I have thoroughly reviewed each document for validity and authenticity to ensure quality learning materials for students.</p>
+            <p>These notes are not prepared by me. I have collected them from LinkedIn and other educational resources. However, I have thoroughly reviewed each document for validity and authenticity to ensure quality learning materials for students. <strong className="highlight">I would also like to thank the original authors and platforms for sharing these valuable resources.</strong></p>
           </div>
         </div>
       </div>

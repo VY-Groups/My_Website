@@ -63,6 +63,13 @@
   font-weight: 600;
 }
 
+/* Highlighted thank-you text */
+.notification-content strong.highlight {
+  background: rgba(255, 246, 143, 0.3);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
 /* Category Filter */
 .category-filter {
   display: flex;
