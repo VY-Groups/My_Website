@@ -16,7 +16,8 @@ Place these PDF files in this folder with the specified names:
 8. **devops-study-material-2.pdf** - Additional DevOps study material (from 1769324669022.pdf)
 9. **devops-study-material-3.pdf** - Additional DevOps study material (from 1771327130203.pdf)
 10. **devops-study-material-4.pdf** - Data Structures & Algorithms notes (from 1771765808425.pdf)
-11. **additional-resource-material.pdf** - Additional resource material (from _.pdf)
+11. **devops-study-material-5.pdf** - Additional DevOps study material
+12. **additional-resource-material.pdf** - Additional resource material (from _.pdf)
 
 ## File Mapping
 
@@ -31,6 +32,7 @@ Copy and rename your files as follows:
 - `1769324669022.pdf` → `devops-study-material-2.pdf`
 - `1771327130203.pdf` → `devops-study-material-3.pdf`
 - `1771765808425.pdf` → `devops-study-material-4.pdf` (Note: This file contains DSA notes)
+- (any file) → `devops-study-material-5.pdf`
 - `_.pdf` → `additional-resource-material.pdf`
 
 ## How to Add Files

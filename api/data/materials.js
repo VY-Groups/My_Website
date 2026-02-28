@@ -100,6 +100,15 @@ const studentMaterials = [
     fileSize: 'PDF',
     fileType: 'PDF',
     downloadLink: '/downloads/resources/devops-study-material-4.pdf'
+  },
+  {
+    id: 12,
+    title: 'DevOps Study Material 5',
+    category: 'DevOps',
+    description: 'Additional DevOps study material covering advanced topics.',
+    fileSize: 'PDF',
+    fileType: 'PDF',
+    downloadLink: '/downloads/resources/devops-study-material-5.pdf'
   }
 ];
 
