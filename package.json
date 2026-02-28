@@ -10,13 +10,10 @@
     "build": "vite build",
     "preview": "vite preview",
     "server": "node server.js",
-    // run a dependency audit before executing the test suite; fails the command if
-    // any vulnerabilities are found at or above the specified level
     "audit": "npm audit --audit-level=high",
     "test": "npm run audit && vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
-    // ensure audit is run in build workflows as well
     "test:build": "npm test && npm run build"
   },
   "dependencies": {
