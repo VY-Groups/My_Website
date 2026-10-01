@@ -240,3 +240,12 @@
     font-size: 20px;
   }
 }
+
+/* Mobile: prevent iOS Safari zoom-on-focus (inputs need >=16px) */
+@media (max-width: 768px) {
+  .form-group input,
+  .form-group textarea {
+    font-size: 16px;
+  }
+}
+

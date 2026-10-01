@@ -315,3 +315,9 @@
     font-size: 1.7rem;
   }
 }
+@media (max-width: 768px) {
+  .blog-search input {
+    font-size: 16px;
+  }
+}
+

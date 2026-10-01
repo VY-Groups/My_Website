@@ -237,10 +237,11 @@ export default function SuccessStories() {
         <div className="empty-stories-message" role="status" aria-live="polite">
           <div className="message-content">
             <span className="coming-soon-badge">Coming Soon</span>
-            <h3>HRMS PatchOps Tool will be available soon</h3>
+            <h3>PatchOps will be available soon</h3>
             <p>
-              More VY-Groups tools — PAM, DAM and beyond — are on the way. Success stories
-              will be shared here. Stay tuned!
+              PatchMaster's next evolution — a unified patch operations tool. Plus more
+              VY-Groups tools (PAM, DAM) on the way. Success stories will be shared here.
+              Stay tuned!
             </p>
           </div>
         </div>

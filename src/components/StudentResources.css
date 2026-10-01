@@ -479,3 +479,10 @@
     gap: 12px;
   }
 }
+
+@media (max-width: 768px) {
+  .search-input {
+    font-size: 16px;
+  }
+}
+

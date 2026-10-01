@@ -29,10 +29,10 @@ export default function Projects() {
       link: 'https://yashkumardubey.dev/'
     },
     {
-      title: 'HRMS PatchOps Tool',
-      description: 'Combined HRMS patching & operations tool — currently in development at VY-Groups. Brings PatchMaster-style patch orchestration into the HRMS workflow. Launching soon.',
+      title: 'PatchOps Tool',
+      description: 'The next evolution of PatchMaster — a unified patch operations platform, currently in development at VY-Groups. Launching soon.',
       tech: ['DevOps', 'Automation', 'Python', 'Patch Management'],
-      github: 'https://github.com/VY-Groups',
+      github: 'https://github.com/VY-Groups/patchmaster',
       link: 'https://github.com/VY-Groups'
     }
   ]

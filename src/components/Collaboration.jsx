@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FiSend, FiCheckCircle, FiCpu, FiServer, FiCode, FiSmartphone, FiBookOpen } from 'react-icons/fi'
+import { FiSend, FiCheckCircle, FiCpu, FiServer, FiCode, FiSmartphone, FiBookOpen, FiBriefcase, FiTool, FiUsers, FiMail, FiLinkedin } from 'react-icons/fi'
 import { SiPython } from 'react-icons/si'
 import './Collaboration.css'
 
@@ -296,37 +296,76 @@ export default function Collaboration() {
   return (
     <section className="collaboration" id="collaboration">
       <div className="container">
+        <span className="collab-badge">Open for Opportunities</span>
         <h2 className="section-title">Let's Collaborate</h2>
         <p className="section-subtitle">Have a project, issue to solve, or want to collaborate? I'm here to help!</p>
+
         <div className="collaboration-notice" role="status" aria-live="polite">
-          <span className="notice-icon">📢</span>
+          <span className="notice-dot" aria-hidden="true"></span>
           <div className="notice-text">
-            <strong>Updates coming soon:</strong> We’ll be adding new features and expanding services for all kinds of development.
+            <strong>Available for new projects</strong> — expanded services coming soon,
+            powered by{' '}
+            <a href="https://www.vygroups.co.in/" target="_blank" rel="noopener noreferrer">
+              VY-Groups
+            </a>
           </div>
         </div>
 
         <div className="collaboration-content">
           <div className="collab-info">
             <div className="info-card">
-              <div className="info-icon">🚀</div>
+              <div className="info-icon" aria-hidden="true"><FiBriefcase size={24} /></div>
               <h3>New Projects</h3>
               <p>Looking to build or scale your infrastructure? I can help you design and implement scalable solutions.</p>
             </div>
 
             <div className="info-card">
-              <div className="info-icon">🔧</div>
+              <div className="info-icon" aria-hidden="true"><FiTool size={24} /></div>
               <h3>Issue Resolution</h3>
               <p>Facing DevOps or infrastructure challenges? Share the details and I'll help you find the right solution.</p>
             </div>
 
             <div className="info-card">
-              <div className="info-icon">🤝</div>
+              <div className="info-icon" aria-hidden="true"><FiUsers size={24} /></div>
               <h3>Partnership</h3>
               <p>Interested in long-term collaboration? Let's discuss how we can work together to achieve your goals.</p>
+            </div>
+
+            <div className="collab-stats" aria-label="Key highlights">
+              <div className="collab-stat">
+                <strong>3+</strong>
+                <span>Years Experience</span>
+              </div>
+              <div className="collab-stat">
+                <strong>99.99%</strong>
+                <span>Uptime Delivered</span>
+              </div>
+              <div className="collab-stat">
+                <strong>10+</strong>
+                <span>Projects Shipped</span>
+              </div>
+            </div>
+
+            <div className="collab-quick">
+              <a className="collab-quick-link" href="mailto:ydubey020@gmail.com">
+                <FiMail size={16} aria-hidden="true" /> Email me
+              </a>
+              <a
+                className="collab-quick-link"
+                href="https://www.linkedin.com/in/yash-kumar-dubey-4b4926253"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FiLinkedin size={16} aria-hidden="true" /> LinkedIn
+              </a>
             </div>
           </div>
 
           <form className="collaboration-form" onSubmit={handleSubmit}>
+            <div className="form-top">
+              <h3>Tell me about your project</h3>
+              <p>All fields required unless marked optional</p>
+            </div>
             <div className="form-row">
               <div className="form-group full">
                 <label htmlFor="requestType">What brings you here?</label>
