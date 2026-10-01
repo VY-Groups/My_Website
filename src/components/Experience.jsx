@@ -8,6 +8,20 @@ export default function Experience() {
 
   const experiences = [
     {
+      title: 'Founder & Owner',
+      company: 'VY-Groups',
+      location: 'Remote',
+      period: '2024 – Present',
+      description: 'Founded and leading VY-Groups, a technology company building scalable software, cloud, automation and AI-driven solutions for business and IT operations.',
+      highlights: ['Software Architecture', 'DevOps', 'Cloud', 'Product Design', 'HRMS', 'Patch Management'],
+      achievements: [
+        'Architected HRMS Professional Edition — enterprise HR & ticketing platform tested with 150+ concurrent users at 99.8% uptime',
+        'Built PatchMaster Enterprise — patch management & telemetry platform orchestrating Linux, UNIX and Windows server fleets',
+        'Established engineering practices: CI/CD, Docker/Kubernetes deployments, security hardening and release management',
+        'Growing the product roadmap with PAM, DAM and additional tools in development'
+      ]
+    },
+    {
       title: 'DevOps Engineer',
       company: 'Speed Sign Technologies Pvt. Ltd.',
       location: 'Noida',

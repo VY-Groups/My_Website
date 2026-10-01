@@ -1,5 +1,5 @@
 import React from 'react'
-import { FiArrowRight, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
+import { FiArrowRight, FiGithub, FiLinkedin, FiMail, FiGlobe } from 'react-icons/fi'
 import './Hero.css'
 import ParticleBackground from './ParticleBackground'
 import ScrollReveal from './ScrollReveal'
@@ -75,6 +75,9 @@ export default function Hero() {
                 </a>
                 <a href="https://www.linkedin.com/in/yash-kumar-dubey-4b4926253" aria-label="LinkedIn" className="social-link" target="_blank" rel="noopener noreferrer">
                   <FiLinkedin size={20} />
+                </a>
+                <a href="https://github.com/VY-Groups" aria-label="VY-Groups GitHub organization" className="social-link" target="_blank" rel="noopener noreferrer">
+                  <FiGlobe size={20} />
                 </a>
                 <button 
                   onClick={() => {

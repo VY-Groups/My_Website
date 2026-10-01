@@ -8,32 +8,32 @@ export default function Projects() {
 
   const projects = [
     {
-      title: 'Kubernetes Multi-Cluster Management',
-      description: 'Designed and deployed a multi-region Kubernetes infrastructure with automated failover and load balancing.',
-      tech: ['Kubernetes', 'Terraform', 'AWS', 'Helm'],
-      github: '#',
-      link: '#'
+      title: 'PatchMaster Enterprise',
+      description: 'High-availability patch management & infrastructure telemetry platform — real-time WebSocket fleet monitoring, canary & ring rollouts, CVE compliance and air-gapped deployment support.',
+      tech: ['FastAPI', 'React', 'PostgreSQL', 'WebSocket', 'Prometheus'],
+      github: 'https://github.com/VY-Groups/patchmaster',
+      link: 'https://github.com/VY-Groups/patchmaster'
     },
     {
-      title: 'CI/CD Pipeline Automation',
-      description: 'Implemented end-to-end CI/CD pipelines reducing deployment time from hours to minutes.',
-      tech: ['Jenkins', 'Docker', 'GitLab', 'AWS CodePipeline'],
-      github: '#',
-      link: '#'
+      title: 'HRMS Professional Edition',
+      description: 'Enterprise-grade HR management system for Indian organizations — payroll (PF/ESI/TDS), geo-location attendance, IT ticketing with SLA, and 20+ PDF document templates. Tested with 150+ concurrent users.',
+      tech: ['Node.js', 'Express', 'PostgreSQL', 'Docker', 'Kubernetes'],
+      github: 'https://github.com/VY-Groups/HRMS-VYGROUP',
+      link: 'https://github.com/VY-Groups/HRMS-VYGROUP'
     },
     {
-      title: 'Infrastructure as Code Platform',
-      description: 'Built a complete IaC solution using Terraform and Ansible for managing 500+ servers.',
-      tech: ['Terraform', 'Ansible', 'Python', 'AWS'],
-      github: '#',
-      link: '#'
+      title: 'Portfolio & Student Platform',
+      description: 'Full-stack portfolio with SEO, analytics, MDX blog, PWA, accessibility audit and a CMS-backed student resources platform — served by Express with a secure form backend.',
+      tech: ['React', 'Vite', 'Node.js', 'PWA', 'Vercel'],
+      github: 'https://github.com/yashkumardubey/My_Website',
+      link: 'https://yashkumardubey.dev/'
     },
     {
-      title: 'Monitoring & Observability Stack',
-      description: 'Set up enterprise-grade monitoring with Prometheus, Grafana, and ELK Stack.',
-      tech: ['Prometheus', 'Grafana', 'ELK', 'Kubernetes'],
-      github: '#',
-      link: '#'
+      title: 'HRMS PatchOps Tool',
+      description: 'Combined HRMS patching & operations tool — currently in development at VY-Groups. Brings PatchMaster-style patch orchestration into the HRMS workflow. Launching soon.',
+      tech: ['DevOps', 'Automation', 'Python', 'Patch Management'],
+      github: 'https://github.com/VY-Groups',
+      link: 'https://github.com/VY-Groups'
     }
   ]
 

@@ -82,9 +82,15 @@ function updateStructuredData(section) {
     image: DEFAULT_IMAGE,
     sameAs: [
       'https://github.com/yashkumardubey',
+      'https://github.com/VY-Groups',
       'https://www.linkedin.com/in/yash-kumar-dubey-4b4926253',
     ],
     jobTitle: 'DevOps Engineer & Cloud Architect',
+    founder: {
+      '@type': 'Organization',
+      name: 'VY-Groups',
+      url: 'https://vygroups.co.in/',
+    },
     worksFor: {
       '@type': 'Organization',
       name: 'Freelance / Consulting',
