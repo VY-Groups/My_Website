@@ -3,8 +3,10 @@ import { FiArrowRight, FiGithub, FiLinkedin, FiMail, FiGlobe } from 'react-icons
 import './Hero.css'
 import ParticleBackground from './ParticleBackground'
 import ScrollReveal from './ScrollReveal'
+import { getExperience } from '../utils/experience'
 
 export default function Hero() {
+  const experience = getExperience()
   return (
     <section className="hero" id="hero">
       <ParticleBackground />
@@ -23,14 +25,14 @@ export default function Hero() {
             </ScrollReveal>
             <ScrollReveal direction="up" delay={200}>
               <p className="hero-description">
-                I specialize in designing and implementing scalable cloud infrastructure, automating CI/CD pipelines, and optimizing Linux environments. With 3 years of expertise in AWS, Kubernetes, and modern DevOps practices, I help organizations streamline their deployment processes and achieve 99.99% system uptime.
+                I specialize in designing and implementing scalable cloud infrastructure, automating CI/CD pipelines, and optimizing Linux environments. With {experience.label} years of expertise in AWS, Kubernetes, and modern DevOps practices, I help organizations streamline their deployment processes and achieve 99.99% system uptime.
               </p>
             </ScrollReveal>
 
             <ScrollReveal direction="up" delay={300}>
               <div className="hero-stats">
                 <div className="stat-item">
-                  <span className="stat-number">3</span>
+                  <span className="stat-number">{experience.label}</span>
                   <span className="stat-label">Years Experience</span>
                 </div>
                 <div className="stat-item">

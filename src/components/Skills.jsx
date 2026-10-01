@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import TechInfo from './TechInfo'
+import { getExperience } from '../utils/experience'
 import './Skills.css'
 
 export default function Skills() {
   const [selectedTech, setSelectedTech] = useState(null)
+  const experience = getExperience()
 
   const skillCategories = [
     {
@@ -62,7 +64,7 @@ export default function Skills() {
             <h3>Professional Summary</h3>
             <div className="summary-grid">
               <div className="summary-card">
-                <div className="summary-number">3</div>
+                <div className="summary-number">{experience.label}</div>
                 <p>Years of Experience</p>
               </div>
               <div className="summary-card">

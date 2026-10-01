@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { FiSend, FiCheckCircle, FiCpu, FiServer, FiCode, FiSmartphone, FiBookOpen, FiBriefcase, FiTool, FiUsers, FiMail, FiLinkedin } from 'react-icons/fi'
 import { SiPython } from 'react-icons/si'
+import { getExperience } from '../utils/experience'
 import './Collaboration.css'
 
 export default function Collaboration() {
+  const experience = getExperience()
   const [formData, setFormData] = useState({
     companyName: '',
     name: '',
@@ -333,7 +335,7 @@ export default function Collaboration() {
 
             <div className="collab-stats" aria-label="Key highlights">
               <div className="collab-stat">
-                <strong>3+</strong>
+                <strong>{experience.label}</strong>
                 <span>Years Experience</span>
               </div>
               <div className="collab-stat">
