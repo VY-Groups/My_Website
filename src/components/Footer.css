@@ -64,3 +64,24 @@
     width: 100%;
   }
 }
+
+
+/* Live local clock */
+.footer-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 6px 0 0;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.footer-time svg {
+  opacity: 0.75;
+}
+
+.app.light .footer-time {
+  color: #64748b;
+}
+

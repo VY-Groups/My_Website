@@ -8,6 +8,7 @@ import Hero from './components/Hero'
 import ThemeCustomizer from './components/ThemeCustomizer'
 import ScrollProgress from './components/ScrollProgress'
 import InstallPrompt from './components/InstallPrompt'
+import BackToTop from './components/BackToTop'
 const Experience = lazy(() => import('./components/Experience'))
 const Skills = lazy(() => import('./components/Skills'))
 const Projects = lazy(() => import('./components/Projects'))
@@ -147,6 +148,7 @@ function AppInner() {
         <Footer />
       </Suspense>
       <ThemeCustomizer />
+      <BackToTop />
       <InstallPrompt />
     </div>
   )

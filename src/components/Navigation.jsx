@@ -73,6 +73,10 @@ export default function Navigation({ isDark, setIsDark, activeSection }) {
         </div>
 
         <div className="nav-controls">
+          <span className="nav-status" title="Available for new projects">
+            <span className="nav-status-dot" aria-hidden="true"></span>
+            <span>Open for opportunities</span>
+          </span>
           <button 
             className="theme-toggle"
             onClick={() => setIsDark(!isDark)}

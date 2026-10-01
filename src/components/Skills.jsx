@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import TechInfo from './TechInfo'
+import CountUp from './CountUp'
 import { getExperience } from '../utils/experience'
 import './Skills.css'
 
@@ -64,15 +65,15 @@ export default function Skills() {
             <h3>Professional Summary</h3>
             <div className="summary-grid">
               <div className="summary-card">
-                <div className="summary-number">{experience.label}</div>
+                <div className="summary-number"><CountUp value={experience.label} /></div>
                 <p>Years of Experience</p>
               </div>
               <div className="summary-card">
-                <div className="summary-number">10</div>
+                <div className="summary-number"><CountUp value="10" /></div>
                 <p>Successful Projects</p>
               </div>
               <div className="summary-card">
-                <div className="summary-number">99.99%</div>
+                <div className="summary-number"><CountUp value="99.99%" /></div>
                 <p>System Uptime</p>
               </div>
             </div>

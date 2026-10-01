@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FiSend, FiCheckCircle, FiCpu, FiServer, FiCode, FiSmartphone, FiBookOpen, FiBriefcase, FiTool, FiUsers, FiMail, FiLinkedin } from 'react-icons/fi'
 import { SiPython } from 'react-icons/si'
+import CountUp from './CountUp'
 import { getExperience } from '../utils/experience'
 import './Collaboration.css'
 
@@ -335,15 +336,15 @@ export default function Collaboration() {
 
             <div className="collab-stats" aria-label="Key highlights">
               <div className="collab-stat">
-                <strong>{experience.label}</strong>
+                <strong><CountUp value={experience.label} /></strong>
                 <span>Years Experience</span>
               </div>
               <div className="collab-stat">
-                <strong>99.99%</strong>
+                <strong><CountUp value="99.99%" /></strong>
                 <span>Uptime Delivered</span>
               </div>
               <div className="collab-stat">
-                <strong>10+</strong>
+                <strong><CountUp value="10+" /></strong>
                 <span>Projects Shipped</span>
               </div>
             </div>

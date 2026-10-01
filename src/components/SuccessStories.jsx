@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { FiChevronLeft, FiChevronRight, FiStar, FiGithub, FiExternalLink, FiUsers, FiServer, FiMapPin } from 'react-icons/fi'
+import CountUp from './CountUp'
 import './SuccessStories.css'
 
 // VY-Groups company + product showcase (founded & led by Yash Kumar Dubey)
@@ -160,7 +161,7 @@ export default function SuccessStories() {
               <div className="product-stats">
                 {product.stats.map((stat) => (
                   <div className="product-stat" key={stat.label}>
-                    <span className="product-stat-value">{stat.value}</span>
+                    <span className="product-stat-value"><CountUp value={stat.value} /></span>
                     <span className="product-stat-label">{stat.label}</span>
                   </div>
                 ))}

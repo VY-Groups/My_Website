@@ -3,6 +3,7 @@ import { FiArrowRight, FiGithub, FiLinkedin, FiMail, FiGlobe } from 'react-icons
 import './Hero.css'
 import ParticleBackground from './ParticleBackground'
 import ScrollReveal from './ScrollReveal'
+import CountUp from './CountUp'
 import { getExperience } from '../utils/experience'
 
 export default function Hero() {
@@ -32,15 +33,15 @@ export default function Hero() {
             <ScrollReveal direction="up" delay={300}>
               <div className="hero-stats">
                 <div className="stat-item">
-                  <span className="stat-number">{experience.label}</span>
+                  <span className="stat-number"><CountUp value={experience.label} /></span>
                   <span className="stat-label">Years Experience</span>
                 </div>
                 <div className="stat-item">
-                  <span className="stat-number">10</span>
+                  <span className="stat-number"><CountUp value="10" /></span>
                   <span className="stat-label">Projects</span>
                 </div>
                 <div className="stat-item">
-                  <span className="stat-number">99.99%</span>
+                  <span className="stat-number"><CountUp value="99.99%" /></span>
                   <span className="stat-label">Uptime</span>
                 </div>
               </div>
