@@ -44,6 +44,7 @@
     "@vitejs/plugin-react": "^4.2.1",
     "axe-core": "^4.13.0",
     "jsdom": "^28.0.0",
+    "sharp": "^0.35.5",
     "vite": "^7.3.1",
     "vitest": "^4.0.18",
     "vitest-axe": "^0.1.0"
