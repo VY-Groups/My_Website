@@ -1,0 +1,54 @@
+{
+  "name": "Yash Kumar Dubey - DevOps Engineer & Cloud Architect",
+  "short_name": "Yash Kumar Dubey",
+  "description": "Portfolio of Yash Kumar Dubey - DevOps Engineer & Cloud Architect specializing in AWS, Kubernetes, and CI/CD pipelines.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0a0e27",
+  "theme_color": "#0071e3",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["portfolio", "technology", "business"],
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "url": "/#contact",
+      "description": "Get in touch"
+    },
+    {
+      "name": "Projects",
+      "short_name": "Projects",
+      "url": "/#projects",
+      "description": "View featured projects"
+    },
+    {
+      "name": "Blog",
+      "short_name": "Blog",
+      "url": "/#blog",
+      "description": "Read DevOps articles"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi'
 import './Contact.css'
+import HCaptcha from './HCaptcha'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -10,6 +11,18 @@ export default function Contact() {
   })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [captchaToken, setCaptchaToken] = useState(null)
+
+  // Listen for prefill events (e.g., from Student Resources "Request a Resource")
+  useEffect(() => {
+    const handlePrefill = (e) => {
+      if (e.detail) {
+        setFormData(prev => ({ ...prev, message: e.detail }))
+      }
+    }
+    window.addEventListener('prefill-contact-message', handlePrefill)
+    return () => window.removeEventListener('prefill-contact-message', handlePrefill)
+  }, [])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -32,20 +45,23 @@ export default function Contact() {
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          message: formData.message
+          message: formData.message,
+          captchaToken: captchaToken || undefined
         })
       })
 
       if (response.ok) {
         setSubmitted(true)
         setFormData({ name: '', email: '', message: '' })
+        setCaptchaToken(null)
         setTimeout(() => setSubmitted(false), 3000)
       } else {
-        throw new Error('Failed to send')
+        const data = await response.json().catch(() => ({}))
+        throw new Error(data.error || 'Failed to send')
       }
     } catch (error) {
       console.error('Error sending email:', error)
-      alert('Error sending message. Please try again.')
+      alert(error.message || 'Error sending message. Please try again.')
     } finally {
       setLoading(false)
     }
@@ -73,29 +89,37 @@ export default function Contact() {
             </div>
           </div>
 
-          <form className="contact-form" onSubmit={handleSubmit}>
+          <form className="contact-form" onSubmit={handleSubmit} aria-label="Contact form">
             <div className="form-group">
+              <label htmlFor="contact-name" className="sr-only">Your Name</label>
               <input
+                id="contact-name"
                 type="text"
                 name="name"
                 placeholder="Your Name"
                 value={formData.name}
                 onChange={handleChange}
+                autoComplete="name"
                 required
               />
             </div>
             <div className="form-group">
+              <label htmlFor="contact-email" className="sr-only">Your Email</label>
               <input
+                id="contact-email"
                 type="email"
                 name="email"
                 placeholder="Your Email"
                 value={formData.email}
                 onChange={handleChange}
+                autoComplete="email"
                 required
               />
             </div>
             <div className="form-group">
+              <label htmlFor="contact-message" className="sr-only">Your Message</label>
               <textarea
+                id="contact-message"
                 name="message"
                 placeholder="Your Message"
                 rows="5"
@@ -104,9 +128,11 @@ export default function Contact() {
                 required
               ></textarea>
             </div>
+            <HCaptcha onChange={setCaptchaToken} />
             <button type="submit" className="btn btn-primary" disabled={loading}>
               {loading ? 'Sending...' : submitted ? '✓ Message Sent!' : 'Send Message'}
             </button>
+            {submitted && <p role="status" className="sr-only">Message sent successfully</p>}
           </form>
         </div>
       </div>

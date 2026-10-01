@@ -33,6 +33,7 @@ export default function Navigation({ isDark, setIsDark, activeSection }) {
     { id: 'experience', label: 'Experience' },
     { id: 'skills', label: 'Skills' },
     { id: 'projects', label: 'Projects' },
+    { id: 'blog', label: 'Blog' },
     { id: 'resources', label: 'Resources' },
     { id: 'success-stories', label: 'Success Stories' },
     { id: 'collaboration', label: 'Collaborate' },
@@ -40,13 +41,13 @@ export default function Navigation({ isDark, setIsDark, activeSection }) {
   ]
 
   return (
-    <nav className="navbar">
+    <nav className="navbar" aria-label="Main navigation">
       <div className="nav-container">
         <div className="nav-brand">
-          <a href="#" className="logo" onClick={(e) => { e.preventDefault(); handleNavClick('hero'); }}>
+          <a href="#" className="logo" aria-label="Go to top - Yash Kumar Dubey" onClick={(e) => { e.preventDefault(); handleNavClick('hero'); }}>
             <img
               src="/pic.jpeg"
-              alt="YD"
+              alt="Yash Kumar Dubey profile photo"
               className="logo-image"
               width="40"
               height="40"
@@ -57,12 +58,14 @@ export default function Navigation({ isDark, setIsDark, activeSection }) {
           <span className="brand-text" onClick={handleNameClick} style={{ cursor: 'pointer' }} title="Download Resume">Yash Kumar Dubey</span>
         </div>
 
-        <div className={`nav-menu ${isOpen ? 'active' : ''}`}>
+        <div className={`nav-menu ${isOpen ? 'active' : ''}`} id="nav-menu">
           {navItems.map(item => (
             <button 
               key={item.id}
               className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
               onClick={() => handleNavClick(item.id)}
+              aria-current={activeSection === item.id ? 'page' : undefined}
+              aria-label={`Go to ${item.label} section`}
             >
               {item.label}
             </button>
@@ -73,11 +76,18 @@ export default function Navigation({ isDark, setIsDark, activeSection }) {
           <button 
             className="theme-toggle"
             onClick={() => setIsDark(!isDark)}
-            aria-label="Toggle theme"
+            aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+            aria-pressed={isDark}
           >
             {isDark ? <FiSun size={20} /> : <FiMoon size={20} />}
           </button>
-          <button className="menu-toggle" onClick={toggleMenu}>
+          <button
+            className="menu-toggle"
+            onClick={toggleMenu}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isOpen}
+            aria-controls="nav-menu"
+          >
             {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
           </button>
         </div>

@@ -1,0 +1,101 @@
+export const meta = {
+  slug: 'linux-security-hardening',
+  title: 'Linux Server Security Hardening Checklist',
+  date: '2026-07-10',
+  category: 'Linux',
+  tags: ['Linux', 'Security', 'DevOps'],
+  excerpt: 'The 12-step checklist I run on every new Linux server: SSH, firewall, updates, users, and auditing.',
+  readingTime: 4,
+}
+
+# {meta.title}
+
+Every public-facing server needs a baseline before it touches production traffic. This is the checklist I apply to every fresh Ubuntu/Debian instance.
+
+## 1. SSH Hardening
+
+```bash
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+sudo vim /etc/ssh/sshd_config
+```
+
+```text
+PermitRootLogin no
+PasswordAuthentication no
+Port 2222
+MaxAuthTries 3
+AllowUsers deploy
+```
+
+> ⚠️ Add your SSH key **before** disabling password auth, or you'll lock yourself out.
+
+## 2. Firewall with UFW
+
+```bash
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow 2222/tcp
+sudo ufw allow 443/tcp
+sudo ufw enable
+sudo ufw status verbose
+```
+
+## 3. Automatic Security Updates
+
+```bash
+sudo apt install unattended-upgrades -y
+sudo dpkg-reconfigure -plow unattended-upgrades
+```
+
+## 4. User & Permission Hygiene
+
+```bash
+# Create admin user with sudo
+sudo adduser deploy
+sudo usermod -aG sudo deploy
+
+# Remove unused service accounts where safe
+sudo deluser --remove-home www-data  # example only
+```
+
+## 5. Fail2Ban Against Brute Force
+
+```bash
+sudo apt install fail2ban -y
+sudo systemctl enable --now fail2ban
+sudo fail2ban-client status sshd
+```
+
+## 6. Kernel & Network Parameters
+
+```bash
+sudo vim /etc/sysctl.conf
+```
+
+```text
+net.ipv4.tcp_syncookies = 1
+net.ipv4.conf.all.rp_filter = 1
+net.ipv4.icmp_echo_ignore_broadcasts = 1
+kernel.kptr_restrict = 2
+```
+
+Apply with `sudo sysctl -p`.
+
+## The Full Checklist
+
+- [ ] SSH keys only, password auth disabled
+- [ ] Non-root user with sudo
+- [ ] UFW/iptables allowlist
+- [ ] Automatic security updates
+- [ ] Fail2Ban running
+- [ ] Sysctl hardening applied
+- [ ] Auditd enabled
+- [ ] Log rotation configured
+- [ ] CVE scanning (e.g., `apt list --upgradable`)
+- [ ] TLS certificates with auto-renewal
+- [ ] Backup job verified with a restore test
+- [ ] Time sync (chrony/ntp)
+
+## Takeaway
+
+> Security is **layered**, not a single tool. Each layer here fails independently — SSH hardening, firewall, updates, and auditing catch different attack paths.

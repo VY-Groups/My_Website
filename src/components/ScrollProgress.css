@@ -1,0 +1,36 @@
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 300;
+  background: transparent;
+  pointer-events: none;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+  background-size: 200% 100%;
+  animation: progressGradient 3s linear infinite;
+  transition: width 0.1s linear;
+  border-radius: 0 3px 3px 0;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+@keyframes progressGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress-bar {
+    animation: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,76 @@
+export const meta = {
+  slug: 'kubernetes-fundamentals',
+  title: 'Kubernetes Fundamentals Every DevOps Engineer Should Know',
+  date: '2026-09-15',
+  category: 'Kubernetes',
+  tags: ['Kubernetes', 'DevOps', 'Containers'],
+  excerpt: 'A practical walkthrough of Pods, Deployments, Services, and the control plane — the concepts you actually use day-to-day.',
+  readingTime: 6,
+}
+
+# {meta.title}
+
+Kubernetes orchestrates containers at scale, but most tutorials drown you in YAML before explaining **why** each resource exists. Here's the mental model I use.
+
+## The Control Plane
+
+The control plane makes scheduling decisions:
+
+- **kube-apiserver** — the front door; everything talks to it
+- **etcd** — the source of truth (cluster state)
+- **kube-scheduler** — picks which node runs your pod
+- **kube-controller-manager** — reconciles actual vs. desired state
+
+## Core Resources
+
+### Pod
+
+A Pod is the smallest deployable unit — one or more containers sharing a network namespace:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+    - name: nginx
+      image: nginx:1.27
+      ports:
+        - containerPort: 80
+```
+
+### Deployment
+
+Deployments add rollout strategy and self-healing on top of Pods:
+
+```bash
+kubectl create deployment web --image=nginx --replicas=3
+kubectl scale deployment web --replicas=5
+kubectl rollout status deployment/web
+```
+
+### Service
+
+Services give stable networking to ephemeral pods:
+
+| Type | Exposure |
+|------|----------|
+| ClusterIP | Internal only (default) |
+| NodePort | Fixed port on every node |
+| LoadBalancer | Cloud provider LB |
+
+## Quick Diagnostic Commands
+
+```bash
+kubectl get pods -A
+kubectl describe pod <name>
+kubectl logs -f <name> --all-containers
+kubectl top pods   # requires metrics-server
+```
+
+## Key Takeaway
+
+> Design for **reconciliation**, not mutation. Declare what you want in a Deployment and let controllers fix drift for you.
+
+If you're preparing for interviews, focus on understanding the reconciliation loop — it answers 80% of Kubernetes questions.

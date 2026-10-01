@@ -1,0 +1,91 @@
+export const meta = {
+  slug: 'github-actions-cicd',
+  title: 'Building a CI/CD Pipeline with GitHub Actions',
+  date: '2026-08-22',
+  category: 'CI/CD',
+  tags: ['GitHub Actions', 'CI/CD', 'DevOps'],
+  excerpt: 'A production-ready pipeline: lint, test, build, and deploy — with caching, matrix builds, and reusable workflows.',
+  readingTime: 5,
+}
+
+# {meta.title}
+
+GitHub Actions is the fastest way to get CI/CD running — but most example workflows skip the parts that matter in production: **caching, secrets, and gating deploys**.
+
+## The Anatomy of a Pipeline
+
+```yaml
+name: CI/CD
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+```
+
+Key details:
+
+1. **`npm ci`** over `npm install` — reproducible installs from lockfile
+2. **`cache: 'npm'`** — cuts install time by ~60%
+3. **Matrix builds** — catch version-specific breakage early
+
+## Caching Dependencies Properly
+
+```yaml
+- uses: actions/cache@v4
+  with:
+    path: ~/.npm
+    key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+    restore-keys: |
+      ${{ runner.os }}-npm-
+```
+
+## Gating Deploys Behind Tests
+
+```yaml
+  deploy:
+    needs: test          # runs ONLY if test succeeds
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production   # adds required reviewers if configured
+    steps:
+      - run: ./deploy.sh
+        env:
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+```
+
+## Reusable Workflows
+
+Extract repeated logic:
+
+```yaml
+# .github/workflows/reusable-ci.yml
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        required: true
+        type: string
+```
+
+## Takeaway
+
+> A good pipeline is **fast when it can be** (caching, parallelism) and **strict when it must be** (gates, environments).
+
+Start with lint + test, then layer in matrix builds, caching, and protected environments.

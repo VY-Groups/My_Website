@@ -1,39 +1,51 @@
 import React from 'react'
 import { FiArrowRight, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
 import './Hero.css'
+import ParticleBackground from './ParticleBackground'
+import ScrollReveal from './ScrollReveal'
 
 export default function Hero() {
   return (
     <section className="hero" id="hero">
+      <ParticleBackground />
       <div className="container">
         <div className="hero-content">
           <div className="hero-text">
-            <h1 className="hero-title">
-              Hi, I'm <span className="accent-text">Yash Kumar Dubey</span>
-            </h1>
-            <p className="hero-subtitle">
-              DevOps Engineer & Cloud Architect
-            </p>
-            <p className="hero-description">
-              I specialize in designing and implementing scalable cloud infrastructure, automating CI/CD pipelines, and optimizing Linux environments. With 2.5 years of expertise in AWS, Kubernetes, and modern DevOps practices, I help organizations streamline their deployment processes and achieve 99.99% system uptime.
-            </p>
+            <ScrollReveal direction="up" delay={0}>
+              <h1 className="hero-title">
+                Hi, I'm <span className="accent-text">Yash Kumar Dubey</span>
+              </h1>
+            </ScrollReveal>
+            <ScrollReveal direction="up" delay={100}>
+              <p className="hero-subtitle">
+                DevOps Engineer & Cloud Architect
+              </p>
+            </ScrollReveal>
+            <ScrollReveal direction="up" delay={200}>
+              <p className="hero-description">
+                I specialize in designing and implementing scalable cloud infrastructure, automating CI/CD pipelines, and optimizing Linux environments. With 2.5 years of expertise in AWS, Kubernetes, and modern DevOps practices, I help organizations streamline their deployment processes and achieve 99.99% system uptime.
+              </p>
+            </ScrollReveal>
 
-            <div className="hero-stats">
-              <div className="stat-item">
-                <span className="stat-number">2.5</span>
-                <span className="stat-label">Years Experience</span>
+            <ScrollReveal direction="up" delay={300}>
+              <div className="hero-stats">
+                <div className="stat-item">
+                  <span className="stat-number">2.5</span>
+                  <span className="stat-label">Years Experience</span>
+                </div>
+                <div className="stat-item">
+                  <span className="stat-number">10</span>
+                  <span className="stat-label">Projects</span>
+                </div>
+                <div className="stat-item">
+                  <span className="stat-number">99.99%</span>
+                  <span className="stat-label">Uptime</span>
+                </div>
               </div>
-              <div className="stat-item">
-                <span className="stat-number">10</span>
-                <span className="stat-label">Projects</span>
-              </div>
-              <div className="stat-item">
-                <span className="stat-number">99.99%</span>
-                <span className="stat-label">Uptime</span>
-              </div>
-            </div>
+            </ScrollReveal>
             
-            <div className="hero-ctas">
+            <ScrollReveal direction="up" delay={400}>
+              <div className="hero-ctas">
               <button 
                 onClick={() => {
                   window.location.hash = 'projects'
@@ -53,30 +65,33 @@ export default function Hero() {
               >
                 Get in Touch
               </button>
-            </div>
+              </div>
+            </ScrollReveal>
 
-            <div className="hero-social">
-              <a href="https://github.com/yashkumardubey" aria-label="GitHub" className="social-link" target="_blank" rel="noopener noreferrer">
-                <FiGithub size={20} />
-              </a>
-              <a href="https://www.linkedin.com/in/yash-kumar-dubey-4b4926253" aria-label="LinkedIn" className="social-link" target="_blank" rel="noopener noreferrer">
-                <FiLinkedin size={20} />
-              </a>
-              <button 
-                onClick={() => {
-                  window.location.hash = 'contact';
-                  setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100);
-                }}
-                aria-label="Email" 
-                className="social-link"
-                style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-              >
-                <FiMail size={20} />
-              </button>
-            </div>
+            <ScrollReveal direction="up" delay={500}>
+              <div className="hero-social">
+                <a href="https://github.com/yashkumardubey" aria-label="GitHub" className="social-link" target="_blank" rel="noopener noreferrer">
+                  <FiGithub size={20} />
+                </a>
+                <a href="https://www.linkedin.com/in/yash-kumar-dubey-4b4926253" aria-label="LinkedIn" className="social-link" target="_blank" rel="noopener noreferrer">
+                  <FiLinkedin size={20} />
+                </a>
+                <button 
+                  onClick={() => {
+                    window.location.hash = 'contact';
+                    setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100);
+                  }}
+                  aria-label="Email" 
+                  className="social-link"
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                >
+                  <FiMail size={20} />
+                </button>
+              </div>
+            </ScrollReveal>
           </div>
 
-          <div className="hero-image">
+          <ScrollReveal direction="left" delay={300} className="hero-image">
             <img
               src="/pic.jpeg"
               alt="Yash Kumar Dubey"
@@ -87,7 +102,7 @@ export default function Hero() {
               decoding="async"
               fetchpriority="high"
             />
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

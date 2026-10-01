@@ -1,3 +1,9 @@
+:root {
+  --accent: #0071e3;
+  --accent-hover: #0077ed;
+  --accent-2: #00d4ff;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,6 +13,8 @@
 html, body {
   height: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -15,14 +23,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-html, body {
-  height: 100%;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+#root {
+  min-height: 100vh;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .app {
@@ -57,9 +61,6 @@ body {
   --text-primary: #ffffff;
   --text-secondary: #a1a1a6;
   --text-tertiary: #86868b;
-  --accent: #0071e3;
-  --accent-hover: #0077ed;
-  --accent-2: #00d4ff;
   --accent-3: #ff006e;
   --border: #424245;
   --shadow: 0 4px 20px rgba(0, 113, 227, 0.2);
@@ -73,9 +74,6 @@ body {
   --text-primary: #000000;
   --text-secondary: #555555;
   --text-tertiary: #86868b;
-  --accent: #0071e3;
-  --accent-hover: #0077ed;
-  --accent-2: #00d4ff;
   --accent-3: #ff006e;
   --border: #d2d2d7;
   --shadow: 0 4px 20px rgba(0, 113, 227, 0.08);
@@ -123,6 +121,213 @@ main {
   .section {
     padding: 60px 20px;
   }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Skip to main content link (visible on focus) */
+.skip-to-content {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 1000;
+  padding: 12px 24px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 0 0 10px 10px;
+  transition: top 0.2s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.skip-to-content:focus {
+  top: 0;
+  outline: 3px solid #ffffff;
+  outline-offset: -6px;
+}
+
+/* Visible focus indicators for keyboard navigation */
+:focus-visible {
+  outline: 3px solid var(--accent-2);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Remove default outline for mouse users, keep for keyboard */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Ensure interactive elements have adequate touch targets (WCAG 2.5.8 AA: 24px min) */
+button,
+a,
+input,
+select,
+textarea,
+[role="button"] {
+  touch-action: manipulation;
+}
+
+/* Larger targets for primary controls only (avoid breaking compact nav/tags) */
+.btn,
+.filter-btn,
+.download-btn,
+.carousel-btn,
+.social-link,
+.project-link,
+.customizer-toggle,
+.theme-toggle,
+.menu-toggle {
+  min-height: 44px;
+}
+
+/* Links inside text should stay underlined for clarity */
+p a,
+li a {
+  text-decoration: underline;
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Respect user motion preferences - disable all animations/transitions */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* High contrast / forced colors support */
+@media (forced-colors: active) {
+  .btn,
+  .nav-link,
+  .filter-btn,
+  .download-btn {
+    border: 1px solid ButtonText;
+  }
+}
+
+/* ============================================
+   MICRO-INTERACTIONS
+   ============================================ */
+
+/* Press-down feedback for buttons */
+.btn:active,
+.filter-btn:active,
+.download-btn:active,
+.blog-read-btn:active,
+.request-link:active,
+.social-link:active,
+.project-link:active {
+  transform: translateY(1px) scale(0.97);
+}
+
+/* Shine sweep on primary buttons */
+.btn-primary,
+.download-btn,
+.blog-read-btn,
+.btn-submit {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after,
+.download-btn::after,
+.blog-read-btn::after,
+.btn-submit::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+.btn-primary:hover::after,
+.download-btn:hover::after,
+.blog-read-btn:hover::after,
+.btn-submit:hover:not(:disabled)::after {
+  left: 130%;
+}
+
+/* Nav link underline grow */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 4px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+  border-radius: 2px;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+
+/* Contact method slide-in accent */
+.contact-method svg {
+  transition: transform 0.25s ease;
+}
+
+.contact-method:hover svg {
+  transform: translateX(4px) scale(1.1);
+}
+
+/* Smooth theme color transitions */
+.app,
+.navbar,
+.material-card,
+.project-card,
+.skill-category,
+.blog-card {
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Image hover zoom already defined; ensure profile image has smooth transform */
+.profile-image {
+  will-change: transform;
 }
 
 /* Holographic Effects */

@@ -1,0 +1,14 @@
+# Robots.txt for https://yashkumardubey.dev
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://yashkumardubey.dev/sitemap.xml
+
+# Disallow admin/api paths
+Disallow: /api/
+Disallow: /node_modules/
+Disallow: /src/
+Disallow: /*.json$
+Disallow: /*.md$
+Disallow: /.git/

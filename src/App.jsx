@@ -1,7 +1,13 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react'
+import { ThemeProvider, useTheme } from './context/ThemeContext'
+import { useSEO } from './components/SEO'
 import './App.css'
+import './components/ScrollReveal.css'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
+import ThemeCustomizer from './components/ThemeCustomizer'
+import ScrollProgress from './components/ScrollProgress'
+import InstallPrompt from './components/InstallPrompt'
 const Experience = lazy(() => import('./components/Experience'))
 const Skills = lazy(() => import('./components/Skills'))
 const Projects = lazy(() => import('./components/Projects'))
@@ -9,6 +15,7 @@ const StudentResources = lazy(() => import('./components/StudentResources'))
 const SuccessStories = lazy(() => import('./components/SuccessStories'))
 const Collaboration = lazy(() => import('./components/Collaboration'))
 const Contact = lazy(() => import('./components/Contact'))
+const Blog = lazy(() => import('./components/Blog'))
 const Footer = lazy(() => import('./components/Footer'))
 
 const SectionFallback = ({ label }) => (
@@ -17,25 +24,16 @@ const SectionFallback = ({ label }) => (
   </div>
 )
 
-export default function App() {
-  const [isDark, setIsDark] = useState(true)
+function AppInner() {
+  const { isDark, setIsDark } = useTheme()
   const [activeSection, setActiveSection] = useState('hero')
 
-  useEffect(() => {
-    const saved = localStorage.getItem('theme')
-    if (saved) {
-      setIsDark(saved === 'dark')
-    }
-  }, [])
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark-mode', isDark)
-    localStorage.setItem('theme', isDark ? 'dark' : 'light')
-  }, [isDark])
+  // SEO: Update meta tags based on active section
+  useSEO(activeSection)
 
   // Set active section based on scroll using IntersectionObserver
   useEffect(() => {
-    const sections = ['hero', 'experience', 'skills', 'projects', 'resources', 'success-stories', 'collaboration', 'contact']
+    const sections = ['hero', 'experience', 'skills', 'projects', 'blog', 'resources', 'success-stories', 'collaboration', 'contact']
     
     const observerOptions = {
       root: null,
@@ -70,8 +68,11 @@ export default function App() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.slice(1) || 'hero'
-      setActiveSection(hash)
-      
+      // Ignore skip-link target (not a nav section)
+      if (hash !== 'main-content') {
+        setActiveSection(hash)
+      }
+
       // Scroll to section
       setTimeout(() => {
         const element = document.getElementById(hash)
@@ -80,13 +81,15 @@ export default function App() {
         }
       }, 100)
     }
-    
+
     window.addEventListener('hashchange', handleHashChange)
-    
+
     // Initial check
     const hash = window.location.hash.slice(1) || 'hero'
-    setActiveSection(hash)
-    
+    if (hash !== 'main-content') {
+      setActiveSection(hash)
+    }
+
     return () => {
       window.removeEventListener('hashchange', handleHashChange)
     }
@@ -94,40 +97,47 @@ export default function App() {
 
   return (
     <div className={`app ${isDark ? 'dark' : 'light'}`}>
+      <ScrollProgress />
+      <a href="#main-content" className="skip-to-content">Skip to main content</a>
       <Navigation isDark={isDark} setIsDark={setIsDark} activeSection={activeSection} />
-      <main className="full-scroll-view">
-        <section id="hero"><Hero /></section>
-        <section id="experience">
+      <main id="main-content" className="full-scroll-view" tabIndex={-1} aria-label="Main content">
+        <section id="hero" aria-label="About"><Hero /></section>
+        <section id="experience" aria-label="Experience">
           <Suspense fallback={<SectionFallback label="experience" />}>
             <Experience />
           </Suspense>
         </section>
-        <section id="skills">
+        <section id="skills" aria-label="Skills">
           <Suspense fallback={<SectionFallback label="skills" />}>
             <Skills />
           </Suspense>
         </section>
-        <section id="projects">
+        <section id="projects" aria-label="Projects">
           <Suspense fallback={<SectionFallback label="projects" />}>
             <Projects />
           </Suspense>
         </section>
-        <section id="resources">
+        <section id="blog" aria-label="Blog">
+          <Suspense fallback={<SectionFallback label="blog" />}>
+            <Blog />
+          </Suspense>
+        </section>
+        <section id="resources" aria-label="Student Resources">
           <Suspense fallback={<SectionFallback label="resources" />}>
             <StudentResources />
           </Suspense>
         </section>
-        <section id="success-stories">
+        <section id="success-stories" aria-label="Success Stories">
           <Suspense fallback={<SectionFallback label="success stories" />}>
             <SuccessStories />
           </Suspense>
         </section>
-        <section id="collaboration">
+        <section id="collaboration" aria-label="Collaboration">
           <Suspense fallback={<SectionFallback label="collaboration" />}>
             <Collaboration />
           </Suspense>
         </section>
-        <section id="contact">
+        <section id="contact" aria-label="Contact">
           <Suspense fallback={<SectionFallback label="contact" />}>
             <Contact />
           </Suspense>
@@ -136,7 +146,16 @@ export default function App() {
       <Suspense fallback={<SectionFallback label="footer" />}>
         <Footer />
       </Suspense>
+      <ThemeCustomizer />
+      <InstallPrompt />
     </div>
+  )
+}
 
+export default function App() {
+  return (
+    <ThemeProvider>
+      <AppInner />
+    </ThemeProvider>
   )
 }
