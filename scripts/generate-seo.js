@@ -21,7 +21,7 @@ const sectionMeta = {
   },
   experience: {
     title: 'Experience | Yash Kumar Dubey',
-    description: '2.5+ years of professional experience in DevOps, Cloud Architecture, and Infrastructure Automation.',
+    description: '3+ years of professional experience in DevOps, Cloud Architecture, and Infrastructure Automation.',
   },
   skills: {
     title: 'Skills & Expertise | Yash Kumar Dubey',

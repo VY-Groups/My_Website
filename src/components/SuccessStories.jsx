@@ -26,10 +26,11 @@ export default function SuccessStories() {
           <h2 className="section-title">Success Stories</h2>
           <p className="section-subtitle">Meet our students who transformed their careers</p>
           
-          <div className="empty-stories-message">
+          <div className="empty-stories-message" role="status" aria-live="polite">
             <div className="message-content">
-              <h3>Coming Soon</h3>
-              <p>Success stories will be shared here. Stay tuned!</p>
+              <span className="coming-soon-badge">Coming Soon</span>
+              <h3>HRMS PatchOps Tool will be available soon</h3>
+              <p>Success stories will be shared here once the tool launches. Stay tuned!</p>
             </div>
           </div>
         </div>

@@ -62,7 +62,7 @@ export default function Skills() {
             <h3>Professional Summary</h3>
             <div className="summary-grid">
               <div className="summary-card">
-                <div className="summary-number">2.5</div>
+                <div className="summary-number">3</div>
                 <p>Years of Experience</p>
               </div>
               <div className="summary-card">

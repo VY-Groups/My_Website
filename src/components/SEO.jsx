@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 const SITE_URL = 'https://yashkumardubey.dev';
 const DEFAULT_TITLE = 'Yash Kumar Dubey - DevOps Engineer & Cloud Architect';
-const DEFAULT_DESCRIPTION = 'DevOps Engineer & Cloud Architect specializing in AWS, Kubernetes, CI/CD pipelines, Linux automation, and scalable cloud infrastructure. 2.5+ years delivering 99.99% uptime systems.';
+const DEFAULT_DESCRIPTION = 'DevOps Engineer & Cloud Architect specializing in AWS, Kubernetes, CI/CD pipelines, Linux automation, and scalable cloud infrastructure. 3+ years delivering 99.99% uptime systems.';
 const DEFAULT_IMAGE = `${SITE_URL}/pic.jpeg`;
 
 const sectionMeta = {
@@ -12,7 +12,7 @@ const sectionMeta = {
   },
   experience: {
     title: 'Experience | Yash Kumar Dubey',
-    description: '2.5+ years of professional experience in DevOps, Cloud Architecture, and Infrastructure Automation. Work history with scalable systems and 99.99% uptime.',
+    description: '3+ years of professional experience in DevOps, Cloud Architecture, and Infrastructure Automation. Work history with scalable systems and 99.99% uptime.',
   },
   skills: {
     title: 'Skills & Expertise | Yash Kumar Dubey',

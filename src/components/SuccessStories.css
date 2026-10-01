@@ -228,12 +228,27 @@
 
 /* Empty Stories Message */
 .empty-stories-message {
-  background: var(--bg-secondary);
-  border: 2px dashed var(--border);
-  border-radius: 12px;
-  padding: 80px 40px;
+  position: relative;
+  background: linear-gradient(135deg, rgba(0, 113, 227, 0.12), rgba(0, 212, 255, 0.06));
+  border: 2px dashed var(--accent, #0071e3);
+  border-radius: 16px;
+  padding: 72px 40px;
   text-align: center;
   margin: 40px 0;
+  box-shadow: 0 0 40px rgba(0, 113, 227, 0.12) inset;
+}
+
+.coming-soon-badge {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 999px;
+  background: var(--accent, #0071e3);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
 }
 
 .message-content h3 {
