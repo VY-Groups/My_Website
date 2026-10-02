@@ -140,14 +140,16 @@ export default function StudentResources() {
           {filteredMaterials.map((material) => (
             <div key={material.id} className="material-card">
               <div className="material-icon">
-                <FiFile size={32} />
+                <FiFile size={20} />
               </div>
               <h3 className="material-title">{material.title}</h3>
               <p className="material-category">{material.category}</p>
               <p className="material-description">{material.description}</p>
               <div className="material-meta">
                 <span className="file-type">{material.fileType}</span>
-                <span className="file-size">{material.fileSize}</span>
+                {material.fileSize && material.fileSize !== material.fileType && (
+                  <span className="file-size">{material.fileSize}</span>
+                )}
               </div>
               <a
                 href={material.downloadLink}
