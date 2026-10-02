@@ -44,7 +44,7 @@ export default function Certifications() {
       <div className="container">
         <h2 className="section-title">Certifications</h2>
         <p className="cert-subtitle">
-          Verified credentials across cloud, version control and privileged access management.
+          Verified credentials across cloud, Linux, version control and privileged access management.
         </p>
 
         <div className="cert-grid">
@@ -89,6 +89,7 @@ export default function Certifications() {
                 <p className="cert-dates">
                   Issued {cert.issued}
                   {cert.expires ? ` · Valid till ${cert.expires}` : ''}
+                  {cert.detail ? ` · ${cert.detail}` : ''}
                 </p>
                 <div className="cert-actions">
                   <button

@@ -21,7 +21,7 @@ const sectionMeta = {
   },
   certifications: {
     title: pageTitle('Certifications'),
-    description: 'AWS Certified Cloud Practitioner (Sep 2024 - Sep 2027), Iraje PAM Online Masterclass, and Udemy certifications in AWS and Git - verifiable credentials.',
+    description: 'AWS Certified Cloud Practitioner (Sep 2024 - Sep 2027), Red Hat RHCSA Rapid Track RH199, Iraje PAM Online Masterclass, and Udemy certifications in AWS and Git - verifiable credentials.',
   },
   projects: {
     title: pageTitle('Projects'),

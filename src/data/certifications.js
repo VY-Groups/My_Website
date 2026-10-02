@@ -23,7 +23,7 @@ export const certifications = [
     issuer: 'Iraje Software',
     issued: 'Sep 2026',
     status: 'Completed',
-    detail: '10 sessions · 20 hours · fundamentals to advanced',
+    detail: '10 sessions · 20 hrs',
     image: base + 'iraje-pam-masterclass.jpg',
   },
   {
@@ -41,5 +41,14 @@ export const certifications = [
     issued: 'Jul 2024',
     status: 'Completed',
     image: base + 'udemy-aws-clf-c02.jpg',
+  },
+  {
+    id: 'redhat-rh199',
+    title: 'RHCSA Rapid Track (RH199)',
+    issuer: 'Red Hat',
+    issued: 'Dec 2022',
+    status: 'Attended',
+    detail: '40 credit hours',
+    image: base + 'rhcsa-rh199-attendance.jpg',
   },
 ]
