@@ -81,7 +81,14 @@ export default function Experience() {
               <div className="exp-content">
                 <h3>{exp.title}</h3>
                 <p className="company">{exp.company} | {exp.location}</p>
-                <p className="period">{exp.period}</p>
+                <p className="period">
+                  {exp.period}
+                  {exp.period.includes('Present') && (
+                    <span className="current-pill">
+                      <span className="current-dot" aria-hidden="true" />Current
+                    </span>
+                  )}
+                </p>
                 <p className="description">{exp.description}</p>
                 
                 <div className="job-highlights">
