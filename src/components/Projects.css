@@ -158,6 +158,177 @@
   box-shadow: 0 8px 16px rgba(0, 113, 227, 0.3);
 }
 
+/* ---------- KPI strip ---------- */
+.projects-kpis {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 26px 0 24px;
+}
+
+.kpi-item {
+  padding: 16px 18px;
+  background: linear-gradient(135deg, rgba(0, 113, 227, 0.1), rgba(0, 212, 255, 0.05));
+  border: 1px solid rgba(0, 113, 227, 0.22);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.kpi-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 28px rgba(0, 113, 227, 0.18);
+}
+
+.kpi-number {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.2;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.kpi-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-tertiary);
+}
+
+/* ---------- Filter tabs ---------- */
+.projects-filter {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-tab {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 113, 227, 0.3);
+  background: rgba(10, 14, 39, 0.4);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.filter-tab:hover {
+  border-color: var(--accent);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.filter-tab.active {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 8px 20px rgba(0, 113, 227, 0.3);
+}
+
+.filter-count {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Status badges ---------- */
+.project-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.project-status {
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  line-height: 1.4;
+}
+
+.status-production {
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.12);
+  border-color: rgba(52, 211, 153, 0.4);
+}
+
+.status-live {
+  color: var(--accent);
+  background: rgba(0, 113, 227, 0.12);
+  border-color: rgba(0, 113, 227, 0.45);
+}
+
+.status-dev {
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.1);
+  border-color: rgba(251, 191, 36, 0.4);
+}
+
+/* ---------- Filter transition (fill backwards so hover transform keeps working) ---------- */
+.project-card {
+  animation: cardIn 0.35s ease backwards;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card {
+    animation: none;
+  }
+}
+
+/* ---------- Light mode ---------- */
+.app.light .filter-tab {
+  background: rgba(0, 113, 227, 0.06);
+}
+
+.app.light .filter-tab.active {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+}
+
+.app.light .status-production {
+  color: #047857;
+}
+
+.app.light .status-dev {
+  color: #b45309;
+}
+
 @media (max-width: 768px) {
   .projects {
     padding: 60px 20px;
@@ -165,5 +336,30 @@
 
   .projects-grid {
     grid-template-columns: 1fr;
+  }
+
+  .projects-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 20px 0;
+  }
+
+  .kpi-item {
+    padding: 13px 14px;
+  }
+
+  .kpi-number {
+    font-size: 19px;
+  }
+
+  .projects-filter {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .filter-tab {
+    padding: 7px 13px;
+    font-size: 12.5px;
   }
 }

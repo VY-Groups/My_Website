@@ -78,6 +78,38 @@
   letter-spacing: 0.5px;
 }
 
+.hero-principles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: -8px;
+}
+
+.principle-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  background: rgba(0, 113, 227, 0.1);
+  color: var(--text-secondary);
+  font-size: 12.5px;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.principle-chip svg {
+  color: var(--accent-2);
+}
+
+.principle-chip:hover {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, rgba(0, 113, 227, 0.18), rgba(0, 212, 255, 0.1));
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
 .hero-ctas {
   display: flex;
   gap: 16px;
@@ -155,8 +187,10 @@
 .hero-image {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 20px;
 }
 
 .profile-image {
@@ -176,6 +210,127 @@
   box-shadow: 0 30px 80px rgba(0, 113, 227, 0.4),
               inset 0 0 80px rgba(0, 212, 255, 0.2);
   transform: scale(1.02);
+}
+
+/* ---------- Status terminal ---------- */
+.hero-terminal {
+  width: 100%;
+  max-width: 420px;
+  background: #0a0e18;
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  border-radius: 14px;
+  overflow: hidden;
+  font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace;
+  box-shadow: 0 18px 50px rgba(2, 6, 23, 0.55), 0 0 24px rgba(0, 212, 255, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-terminal:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(2, 6, 23, 0.6), 0 0 32px rgba(0, 212, 255, 0.16);
+}
+
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  background: #121826;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.terminal-dots {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-red { background: #ff5f57; }
+.dot-yellow { background: #febc2e; }
+.dot-green { background: #28c840; }
+
+.terminal-title {
+  font-size: 11.5px;
+  color: #8b97ad;
+  letter-spacing: 0.04em;
+}
+
+.terminal-body {
+  padding: 14px 16px 6px;
+  font-size: 13px;
+  line-height: 1.75;
+  color: #b7c3d9;
+}
+
+.terminal-body p {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.t-prompt {
+  color: #00d2ff;
+  margin-right: 8px;
+}
+
+.t-ok {
+  color: #34d399;
+  margin-right: 8px;
+}
+
+.t-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background: #00d2ff;
+  vertical-align: text-bottom;
+  animation: cursorBlink 1s steps(1) infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+.terminal-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #93a2ba;
+  background: rgba(255, 255, 255, 0.03);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.status-led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 8px #34d399;
+  animation: ledPulse 2s ease-in-out infinite;
+}
+
+@keyframes ledPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .t-cursor,
+  .status-led {
+    animation: none;
+  }
 }
 
 @media (max-width: 768px) {

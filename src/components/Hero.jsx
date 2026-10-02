@@ -1,5 +1,5 @@
 import React from 'react'
-import { FiArrowRight, FiGithub, FiLinkedin, FiMail, FiGlobe } from 'react-icons/fi'
+import { FiArrowRight, FiGithub, FiLinkedin, FiMail, FiGlobe, FiCheck } from 'react-icons/fi'
 import './Hero.css'
 import ParticleBackground from './ParticleBackground'
 import ScrollReveal from './ScrollReveal'
@@ -48,6 +48,14 @@ export default function Hero() {
               </div>
             </ScrollReveal>
             
+            <ScrollReveal direction="up" delay={350}>
+              <div className="hero-principles" aria-label="Engineering principles">
+                <span className="principle-chip"><FiCheck size={14} aria-hidden="true" /> GitOps-first</span>
+                <span className="principle-chip"><FiCheck size={14} aria-hidden="true" /> Zero-trust by default</span>
+                <span className="principle-chip"><FiCheck size={14} aria-hidden="true" /> Cost-optimized cloud</span>
+              </div>
+            </ScrollReveal>
+
             <ScrollReveal direction="up" delay={400}>
               <div className="hero-ctas">
               <button 
@@ -109,6 +117,26 @@ export default function Hero() {
               decoding="async"
               fetchpriority="high"
             />
+            <div className="hero-terminal" aria-label="Deployment status terminal">
+              <div className="terminal-bar">
+                <span className="terminal-dots" aria-hidden="true">
+                  <i className="dot dot-red" />
+                  <i className="dot dot-yellow" />
+                  <i className="dot dot-green" />
+                </span>
+                <span className="terminal-title">yash@dubey-devops — bash</span>
+              </div>
+              <div className="terminal-body">
+                <p><span className="t-prompt">$</span> deploy --status</p>
+                <p><span className="t-ok">[OK]</span> patchmaster · production</p>
+                <p><span className="t-ok">[OK]</span> hrms · production</p>
+                <p><span className="t-ok">[OK]</span> portfolio · edge cd · 99.99%</p>
+                <p><span className="t-prompt">$</span> <span className="t-cursor" aria-hidden="true" /></p>
+              </div>
+              <div className="terminal-status">
+                <span className="status-led" aria-hidden="true" /> status: operational
+              </div>
+            </div>
           </ScrollReveal>
         </div>
       </div>
