@@ -11,6 +11,7 @@ import InstallPrompt from './components/InstallPrompt'
 import BackToTop from './components/BackToTop'
 const Experience = lazy(() => import('./components/Experience'))
 const Skills = lazy(() => import('./components/Skills'))
+const Certifications = lazy(() => import('./components/Certifications'))
 const Projects = lazy(() => import('./components/Projects'))
 const StudentResources = lazy(() => import('./components/StudentResources'))
 const SuccessStories = lazy(() => import('./components/SuccessStories'))
@@ -34,7 +35,7 @@ function AppInner() {
 
   // Set active section based on scroll using IntersectionObserver
   useEffect(() => {
-    const sections = ['hero', 'experience', 'skills', 'projects', 'blog', 'resources', 'success-stories', 'collaboration', 'contact']
+    const sections = ['hero', 'experience', 'skills', 'certifications', 'projects', 'blog', 'resources', 'success-stories', 'collaboration', 'contact']
     
     const observerOptions = {
       root: null,
@@ -111,6 +112,11 @@ function AppInner() {
         <section id="skills" aria-label="Skills">
           <Suspense fallback={<SectionFallback label="skills" />}>
             <Skills />
+          </Suspense>
+        </section>
+        <section id="certifications" aria-label="Certifications">
+          <Suspense fallback={<SectionFallback label="certifications" />}>
+            <Certifications />
           </Suspense>
         </section>
         <section id="projects" aria-label="Projects">

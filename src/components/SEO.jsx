@@ -19,6 +19,10 @@ const sectionMeta = {
     title: pageTitle('Skills & Expertise'),
     description: 'Technical skills: AWS, Kubernetes, Docker, CI/CD, Terraform, Linux, Monitoring, GitLab CI, Jenkins, Prometheus, Grafana, Ansible, Python, Bash.',
   },
+  certifications: {
+    title: pageTitle('Certifications'),
+    description: 'AWS Certified Cloud Practitioner (Sep 2024 - Sep 2027), Iraje PAM Online Masterclass, and Udemy certifications in AWS and Git - verifiable credentials.',
+  },
   projects: {
     title: pageTitle('Projects'),
     description: 'Featured DevOps and Cloud projects: CI/CD pipelines, Kubernetes clusters, Infrastructure as Code, Monitoring solutions, Automation scripts.',

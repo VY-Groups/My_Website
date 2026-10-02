@@ -1,0 +1,45 @@
+// Real certifications held by the site owner — images live in /public/certificates/
+// (optimized copies; original scans are kept out of the repo).
+
+const base = '/certificates/'
+
+export const certifications = [
+  {
+    id: 'aws-cloud-practitioner',
+    title: 'AWS Certified Cloud Practitioner',
+    issuer: 'Amazon Web Services',
+    issued: 'Sep 2024',
+    expires: 'Sep 2027',
+    credentialId: '6d23126b1f014bc5bf6e375e502bd04a',
+    verifyUrl: 'https://aws.amazon.com/verification',
+    status: 'Verified',
+    image: base + 'aws-cloud-practitioner.jpg',
+    seal: base + 'aws-cloud-practitioner-badge.webp',
+    featured: true,
+  },
+  {
+    id: 'iraje-pam-masterclass',
+    title: 'PAM Online Masterclass',
+    issuer: 'Iraje Software',
+    issued: 'Sep 2026',
+    status: 'Completed',
+    detail: '10 sessions · 20 hours · fundamentals to advanced',
+    image: base + 'iraje-pam-masterclass.jpg',
+  },
+  {
+    id: 'udemy-git-github',
+    title: 'Hands-On Introduction to Git with GitHub',
+    issuer: 'Udemy',
+    issued: 'Jan 2026',
+    status: 'Completed',
+    image: base + 'udemy-git-github.jpg',
+  },
+  {
+    id: 'udemy-aws-clf-c02',
+    title: 'Ultimate AWS Certified Cloud Practitioner CLF-C02',
+    issuer: 'Udemy',
+    issued: 'Jul 2024',
+    status: 'Completed',
+    image: base + 'udemy-aws-clf-c02.jpg',
+  },
+]
