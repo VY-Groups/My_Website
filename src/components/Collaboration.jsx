@@ -522,7 +522,7 @@ export default function Collaboration() {
                           className="category-header"
                           onClick={() => toggleCategory(key)}
                         >
-                          <span className="category-icon">{category.icon}</span>
+                          <span className="category-icon" aria-hidden="true">{category.icon}</span>
                           <span className="category-title">{category.title}</span>
                           {selectedCount > 0 && (
                             <span className="category-badge">{selectedCount}</span>

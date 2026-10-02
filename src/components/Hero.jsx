@@ -15,23 +15,22 @@ export default function Hero() {
       <div className="container">
         <div className="hero-content">
           <div className="hero-text">
-            <ScrollReveal direction="up" delay={0}>
-              <h1 className="hero-title">
-                Hi, I'm <span className="accent-text">{owner.name}</span>
-              </h1>
-            </ScrollReveal>
-            <ScrollReveal direction="up" delay={100}>
+            {/* Title paints with first paint — no JS-gated reveal (it is LCP) */}
+            <h1 className="hero-title">
+              Hi, I'm <span className="accent-text">{owner.name}</span>
+            </h1>
+            <ScrollReveal direction="up" delay={50}>
               <p className="hero-subtitle">
                 {owner.role}
               </p>
             </ScrollReveal>
-            <ScrollReveal direction="up" delay={200}>
+            <ScrollReveal direction="up" delay={100}>
               <p className="hero-description">
                 I specialize in designing and implementing scalable cloud infrastructure, automating CI/CD pipelines, and optimizing Linux environments. With {experience.label} years of expertise in AWS, Kubernetes, and modern DevOps practices, I help organizations streamline their deployment processes and achieve 99.99% system uptime.
               </p>
             </ScrollReveal>
 
-            <ScrollReveal direction="up" delay={300}>
+            <ScrollReveal direction="up" delay={150}>
               <div className="hero-stats">
                 <div className="stat-item">
                   <span className="stat-number"><CountUp value={experience.label} /></span>
@@ -48,7 +47,7 @@ export default function Hero() {
               </div>
             </ScrollReveal>
             
-            <ScrollReveal direction="up" delay={350}>
+            <ScrollReveal direction="up" delay={175}>
               <div className="hero-principles" aria-label="Engineering principles">
                 <span className="principle-chip"><FiCheck size={14} aria-hidden="true" /> GitOps-first</span>
                 <span className="principle-chip"><FiCheck size={14} aria-hidden="true" /> Zero-trust by default</span>
@@ -56,7 +55,7 @@ export default function Hero() {
               </div>
             </ScrollReveal>
 
-            <ScrollReveal direction="up" delay={400}>
+            <ScrollReveal direction="up" delay={200}>
               <div className="hero-ctas">
               <button 
                 onClick={() => {
@@ -80,7 +79,7 @@ export default function Hero() {
               </div>
             </ScrollReveal>
 
-            <ScrollReveal direction="up" delay={500}>
+            <ScrollReveal direction="up" delay={250}>
               <div className="hero-social">
                 <a href={socials.github} aria-label="GitHub" className="social-link" target="_blank" rel="noopener noreferrer">
                   <FiGithub size={20} />
@@ -106,9 +105,11 @@ export default function Hero() {
             </ScrollReveal>
           </div>
 
-          <ScrollReveal direction="left" delay={300} className="hero-image">
+          <ScrollReveal direction="left" delay={150} className="hero-image">
             <img
               src={owner.photo}
+              srcSet={`${owner.photo} 800w, ${owner.photoSmall} 400w`}
+              sizes="400px"
               alt={owner.name}
               className="profile-image"
               width="400"

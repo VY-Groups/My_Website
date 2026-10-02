@@ -13,8 +13,10 @@
   transform: translate(0, 0);
 }
 
-/* Page/section transition - smooth section enter */
-section {
+/* Page/section transition - smooth section enter.
+   Hero is excluded: it's the landing view and its opacity gate directly
+   delays LCP (title's final paint waited for this animation to finish). */
+section:not(#hero) {
   animation: sectionFade 0.45s ease both;
 }
 
@@ -37,7 +39,7 @@ section {
     transition: none;
   }
 
-  section {
+  section:not(#hero) {
     animation: none;
   }
 }

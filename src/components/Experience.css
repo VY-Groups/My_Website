@@ -61,11 +61,12 @@
   animation: slideIn 0.6s ease forwards;
   opacity: 0;
   padding: 28px;
-  background: linear-gradient(135deg, rgba(0, 113, 227, 0.05), rgba(0, 212, 255, 0.02));
+  background: linear-gradient(135deg, rgba(0, 113, 227, 0.1), rgba(0, 212, 255, 0.05));
   border: 1px solid rgba(0, 113, 227, 0.2);
   border-radius: 16px;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  /* no backdrop-filter here: blur + entrance animation over an animated
+     backdrop was the single largest Style & Layout cost on mobile */
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   position: relative;
 }
 

@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import compression from 'compression';
 import { handleSendEmail } from './api/send-email-handler.js';
 import { handleGetResources } from './api/resources-handler.js';
 
@@ -13,6 +14,8 @@ const app = express();
 
 // Middleware
 app.use(cors());
+// Mirror Vercel's edge compression so local runs match production transfer sizes
+app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

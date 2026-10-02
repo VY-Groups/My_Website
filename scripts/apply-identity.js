@@ -49,8 +49,8 @@ function buildMetaBlock() {
     `    <meta property="og:title" content="${attr(site.title)}" />`,
     `    <meta property="og:description" content="${attr(site.shortDescription)}" />`,
     `    <meta property="og:image" content="${attr(`${site.url}${owner.photo}`)}" />`,
-    '    <meta property="og:image:width" content="400" />',
-    '    <meta property="og:image:height" content="400" />',
+    '    <meta property="og:image:width" content="800" />',
+    '    <meta property="og:image:height" content="800" />',
     `    <meta property="og:image:alt" content="${attr(site.ogImageAlt)}" />`,
     `    <meta property="og:site_name" content="${attr(site.name)}" />`,
     '    <meta property="og:locale" content="en_US" />',
@@ -133,6 +133,11 @@ function buildJsonLdBlock() {
 }
 
 function buildPreloadBlock() {
+  // imagesrcset mirrors the <img> srcset so the preloaded variant always
+  // matches the one the browser selects (no double-fetch)
+  if (owner.photoSmall) {
+    return `    <link rel="preload" as="image" href="${owner.photo}" imagesrcset="${owner.photoSmall} 400w, ${owner.photo} 800w" imagesizes="400px" fetchpriority="high" />`;
+  }
   return `    <link rel="preload" as="image" href="${owner.photo}" />`;
 }
 
@@ -144,6 +149,7 @@ function buildPrecacheBlock() {
     "  '/manifest.webmanifest',",
     "  '/favicon.png',",
     `  '${owner.photo}',`,
+    `  '${owner.photoSmall}',`,
     `  '${owner.resume}',`,
     '];',
   ].join('\n');

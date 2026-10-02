@@ -20,6 +20,12 @@
   gap: 24px;
 }
 
+/* Fast, tight entrance stagger — the hero is the landing view, so its
+   reveals must settle right after first paint (they gate LCP re-rasters) */
+.hero .scroll-reveal {
+  --reveal-duration: 350ms;
+}
+
 .hero-title {
   font-size: 56px;
   font-weight: 700;

@@ -1,5 +1,6 @@
 // Real certifications held by the site owner — images live in /public/certificates/
 // (optimized copies; original scans are kept out of the repo).
+// `thumb` = 800w card preview, `image` = full-size lightbox view.
 
 const base = '/certificates/'
 
@@ -14,6 +15,7 @@ export const certifications = [
     verifyUrl: 'https://aws.amazon.com/verification',
     status: 'Verified',
     image: base + 'aws-cloud-practitioner.jpg',
+    thumb: base + 'aws-cloud-practitioner-thumb.jpg',
     seal: base + 'aws-cloud-practitioner-badge.webp',
     featured: true,
   },
@@ -25,6 +27,7 @@ export const certifications = [
     status: 'Completed',
     detail: '10 sessions · 20 hrs',
     image: base + 'iraje-pam-masterclass.jpg',
+    thumb: base + 'iraje-pam-masterclass-thumb.jpg',
   },
   {
     id: 'udemy-git-github',
@@ -33,6 +36,7 @@ export const certifications = [
     issued: 'Jan 2026',
     status: 'Completed',
     image: base + 'udemy-git-github.jpg',
+    thumb: base + 'udemy-git-github-thumb.jpg',
   },
   {
     id: 'udemy-aws-clf-c02',
@@ -41,6 +45,7 @@ export const certifications = [
     issued: 'Jul 2024',
     status: 'Completed',
     image: base + 'udemy-aws-clf-c02.jpg',
+    thumb: base + 'udemy-aws-clf-c02-thumb.jpg',
   },
   {
     id: 'redhat-rh199',
@@ -50,5 +55,6 @@ export const certifications = [
     status: 'Attended',
     detail: '40 credit hours',
     image: base + 'rhcsa-rh199-attendance.jpg',
+    thumb: base + 'rhcsa-rh199-attendance-thumb.jpg',
   },
 ]

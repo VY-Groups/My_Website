@@ -60,7 +60,7 @@ export default function Certifications() {
                 aria-label={`View ${cert.title} certificate`}
               >
                 <img
-                  src={cert.image}
+                  src={cert.thumb || cert.image}
                   alt={`${cert.title} certificate — ${cert.issuer}`}
                   loading="lazy"
                   decoding="async"

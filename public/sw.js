@@ -15,7 +15,8 @@ const PRECACHE_URLS = [
   '/',
   '/manifest.webmanifest',
   '/favicon.png',
-  '/pic.jpeg',
+  '/pic-800.webp',
+  '/pic-400.webp',
   '/Yash_Kumar_Dubey_Resume.pdf',
 ];
 // identity:precachelist:end
