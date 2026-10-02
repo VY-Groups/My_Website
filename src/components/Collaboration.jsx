@@ -315,56 +315,106 @@ export default function Collaboration() {
           </div>
         </div>
 
-        <div className="collaboration-content">
-          <div className="collab-info">
-            <div className="info-card">
-              <span className="info-index" aria-hidden="true">01</span>
-              <div className="info-icon" aria-hidden="true"><FiBriefcase size={24} /></div>
-              <h3>New Projects</h3>
-              <p>Looking to build or scale your infrastructure? I can help you design and implement scalable solutions.</p>
-            </div>
-
-            <div className="info-card">
-              <span className="info-index" aria-hidden="true">02</span>
-              <div className="info-icon" aria-hidden="true"><FiTool size={24} /></div>
-              <h3>Issue Resolution</h3>
-              <p>Facing DevOps or infrastructure challenges? Share the details and I'll help you find the right solution.</p>
-            </div>
-
-            <div className="info-card">
-              <span className="info-index" aria-hidden="true">03</span>
-              <div className="info-icon" aria-hidden="true"><FiUsers size={24} /></div>
-              <h3>Partnership</h3>
-              <p>Interested in long-term collaboration? Let's discuss how we can work together to achieve your goals.</p>
-            </div>
-
-            <div className="collab-stats" aria-label="Key highlights">
-              <div className="collab-stat">
-                <strong><CountUp value={experience.label} /></strong>
-                <span>Years Experience</span>
-              </div>
-              <div className="collab-stat">
-                <strong><CountUp value="99.99%" /></strong>
-                <span>Uptime Delivered</span>
-              </div>
-              <div className="collab-stat">
-                <strong><CountUp value="10+" /></strong>
-                <span>Projects Shipped</span>
+        <div className="collab-bento">
+          {/* How it works — connected timeline band */}
+          <div className="bento-timeline">
+            <div className="timeline-step">
+              <span className="step-node" aria-hidden="true">01</span>
+              <div className="step-copy">
+                <h3>Share the brief</h3>
+                <p>Tell me about the project, your stack, or the issue you're stuck on.</p>
               </div>
             </div>
+            <div className="timeline-step">
+              <span className="step-node" aria-hidden="true">02</span>
+              <div className="step-copy">
+                <h3>Scope &amp; reply</h3>
+                <p>I respond within 24 hours with questions, an approach, and a rough timeline.</p>
+              </div>
+            </div>
+            <div className="timeline-step">
+              <span className="step-node" aria-hidden="true">03</span>
+              <div className="step-copy">
+                <h3>Kick off &amp; ship</h3>
+                <p>We align on scope and get to work — infrastructure, pipelines, or fixes.</p>
+              </div>
+            </div>
+          </div>
 
-            <div className="collab-quick">
-              <a className="collab-quick-link" href={`mailto:${owner.email}`}>
-                <FiMail size={16} aria-hidden="true" /> Email me
-              </a>
-              <a
-                className="collab-quick-link"
-                href={socials.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FiLinkedin size={16} aria-hidden="true" /> LinkedIn
-              </a>
+          {/* Bento tiles */}
+          <article className="bento-tile bento-featured">
+            <span className="tile-chip">Most requested</span>
+            <div className="tile-icon" aria-hidden="true"><FiBriefcase size={24} /></div>
+            <h3>New Projects</h3>
+            <p>Looking to build or scale your infrastructure? I can help you design and implement scalable solutions.</p>
+            <div className="tile-tags" aria-hidden="true">
+              <span>Kubernetes</span>
+              <span>Terraform</span>
+              <span>AWS</span>
+              <span>CI/CD</span>
+            </div>
+            <span className="tile-watermark" aria-hidden="true"><FiBriefcase size={150} /></span>
+          </article>
+
+          <article className="bento-tile bento-issues">
+            <div className="tile-icon" aria-hidden="true"><FiTool size={24} /></div>
+            <h3>Issue Resolution</h3>
+            <p>Facing DevOps or infrastructure challenges? Share the details and I'll help you find the right solution.</p>
+            <div className="tile-tags" aria-hidden="true">
+              <span>Pipelines</span>
+              <span>Clusters</span>
+              <span>Cloud</span>
+            </div>
+            <span className="tile-watermark" aria-hidden="true"><FiTool size={120} /></span>
+          </article>
+
+          <article className="bento-tile bento-partner">
+            <div className="tile-icon" aria-hidden="true"><FiUsers size={24} /></div>
+            <h3>Partnership</h3>
+            <p>Interested in long-term collaboration? Let's discuss how we can work together to achieve your goals.</p>
+            <div className="tile-tags" aria-hidden="true">
+              <span>Retainers</span>
+              <span>Open source</span>
+              <span>VY-Groups</span>
+            </div>
+            <span className="tile-watermark" aria-hidden="true"><FiUsers size={120} /></span>
+          </article>
+
+          <div className="bento-stats" aria-label="Key highlights">
+            <div className="collab-stat">
+              <strong><CountUp value={experience.label} /></strong>
+              <span>Years Experience</span>
+            </div>
+            <div className="collab-stat">
+              <strong><CountUp value="99.99%" /></strong>
+              <span>Uptime Delivered</span>
+            </div>
+            <div className="collab-stat">
+              <strong><CountUp value="10+" /></strong>
+              <span>Projects Shipped</span>
+            </div>
+          </div>
+
+          <div className="bento-quick">
+            <a className="collab-quick-link" href={`mailto:${owner.email}`}>
+              <FiMail size={16} aria-hidden="true" /> Email me
+            </a>
+            <a
+              className="collab-quick-link"
+              href={socials.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FiLinkedin size={16} aria-hidden="true" /> LinkedIn
+            </a>
+          </div>
+
+          <div className="bento-services" aria-label="Service areas">
+            <h3>What I can help with</h3>
+            <div className="service-tags">
+              {Object.values(serviceCategories).map((category) => (
+                <span key={category.title}>{category.title}</span>
+              ))}
             </div>
           </div>
 
