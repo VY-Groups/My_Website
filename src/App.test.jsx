@@ -2,6 +2,7 @@ import { describe, it, expect, vi } from 'vitest'
 import { render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import App from './App'
+import { owner } from './config/site'
 
 describe('Portfolio Website - Complete Test Suite', () => {
   
@@ -32,7 +33,7 @@ describe('Portfolio Website - Complete Test Suite', () => {
   describe('Hero Section', () => {
     it('should display hero content', () => {
       render(<App />)
-      const nameElements = screen.getAllByText(/Yash Kumar Dubey/i)
+      const nameElements = screen.getAllByText(owner.name)
       expect(nameElements.length).toBeGreaterThan(0)
     })
 
@@ -47,19 +48,19 @@ describe('Portfolio Website - Complete Test Suite', () => {
   describe('Contact Section', () => {
     it('should display email address', async () => {
       render(<App />)
-      expect(await screen.findByText(/ydubey020@gmail.com/i)).toBeInTheDocument()
+      expect(await screen.findByText(owner.email)).toBeInTheDocument()
     })
 
     it('should display location', async () => {
       render(<App />)
-      const locations = await screen.findAllByText(/New Delhi, India/i)
+      const locations = await screen.findAllByText(owner.location)
       expect(locations.length).toBeGreaterThan(0)
     })
 
     it('should have mailto link for email', async () => {
       render(<App />)
-      const emailLink = await screen.findByRole('link', { name: /ydubey020@gmail.com/i })
-      expect(emailLink).toHaveAttribute('href', 'mailto:ydubey020@gmail.com')
+      const emailLink = await screen.findByRole('link', { name: owner.email })
+      expect(emailLink).toHaveAttribute('href', `mailto:${owner.email}`)
     })
 
     it('should render contact form', async () => {

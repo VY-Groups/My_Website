@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FiGithub, FiExternalLink } from 'react-icons/fi'
 import TechInfo from './TechInfo'
+import { site } from '../config/site'
 import './Projects.css'
 
 export default function Projects() {
@@ -25,8 +26,8 @@ export default function Projects() {
       title: 'Portfolio & Student Platform',
       description: 'Full-stack portfolio with SEO, analytics, MDX blog, PWA, accessibility audit and a CMS-backed student resources platform — served by Express with a secure form backend.',
       tech: ['React', 'Vite', 'Node.js', 'PWA', 'Vercel'],
-      github: 'https://github.com/yashkumardubey/My_Website',
-      link: 'https://yashkumardubey.dev/'
+      github: site.repo,
+      link: site.url
     },
     {
       title: 'PatchOps Tool',

@@ -1,45 +1,46 @@
 import React, { useEffect } from 'react';
+import { site, owner, socials, org, absUrl, pageTitle } from '../config/site';
 
-const SITE_URL = 'https://yashkumardubey.dev';
-const DEFAULT_TITLE = 'Yash Kumar Dubey - DevOps Engineer & Cloud Architect';
-const DEFAULT_DESCRIPTION = 'DevOps Engineer & Cloud Architect specializing in AWS, Kubernetes, CI/CD pipelines, Linux automation, and scalable cloud infrastructure. 3+ years delivering 99.99% uptime systems.';
-const DEFAULT_IMAGE = `${SITE_URL}/pic.jpeg`;
+const SITE_URL = site.url;
+const DEFAULT_TITLE = site.title;
+const DEFAULT_DESCRIPTION = site.description;
+const DEFAULT_IMAGE = absUrl(owner.photo);
 
 const sectionMeta = {
   hero: {
-    title: 'Yash Kumar Dubey - DevOps Engineer & Cloud Architect',
-    description: 'DevOps Engineer & Cloud Architect specializing in AWS, Kubernetes, CI/CD pipelines, Linux automation, and scalable cloud infrastructure.',
+    title: site.title,
+    description: site.shortDescription,
   },
   experience: {
-    title: 'Experience | Yash Kumar Dubey',
+    title: pageTitle('Experience'),
     description: '3+ years of professional experience in DevOps, Cloud Architecture, and Infrastructure Automation. Work history with scalable systems and 99.99% uptime.',
   },
   skills: {
-    title: 'Skills & Expertise | Yash Kumar Dubey',
+    title: pageTitle('Skills & Expertise'),
     description: 'Technical skills: AWS, Kubernetes, Docker, CI/CD, Terraform, Linux, Monitoring, GitLab CI, Jenkins, Prometheus, Grafana, Ansible, Python, Bash.',
   },
   projects: {
-    title: 'Projects | Yash Kumar Dubey',
+    title: pageTitle('Projects'),
     description: 'Featured DevOps and Cloud projects: CI/CD pipelines, Kubernetes clusters, Infrastructure as Code, Monitoring solutions, Automation scripts.',
   },
   blog: {
-    title: 'Blog | Yash Kumar Dubey',
+    title: pageTitle('Blog'),
     description: 'Practical DevOps, Cloud, and Linux articles: Kubernetes, GitHub Actions CI/CD pipelines, server security hardening, and real-world automation tips.',
   },
   resources: {
-    title: 'Student Resources | Yash Kumar Dubey',
+    title: pageTitle('Student Resources'),
     description: 'Free downloadable learning materials for DevOps, Linux, Docker, Azure, Ansible, Networking, and DSA. Curated resources for students and professionals.',
   },
   'success-stories': {
-    title: 'Success Stories | Yash Kumar Dubey',
+    title: pageTitle('Success Stories'),
     description: 'Success stories and testimonials from students and professionals who benefited from the learning resources and mentorship.',
   },
   collaboration: {
-    title: 'Collaborate | Yash Kumar Dubey',
+    title: pageTitle('Collaborate'),
     description: 'Open for collaboration, consulting, freelance projects, and partnerships. DevOps, Cloud Architecture, and Infrastructure Automation services.',
   },
   contact: {
-    title: 'Contact | Yash Kumar Dubey',
+    title: pageTitle('Contact'),
     description: 'Get in touch for DevOps consulting, freelance projects, or just to say hello. Available for remote work and collaborations.',
   },
 };
@@ -77,41 +78,25 @@ function updateStructuredData(section) {
   const baseData = {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: 'Yash Kumar Dubey',
+    name: owner.name,
     url: SITE_URL,
     image: DEFAULT_IMAGE,
     sameAs: [
-      'https://github.com/yashkumardubey',
-      'https://github.com/VY-Groups',
-      'https://www.linkedin.com/in/yash-kumar-dubey-4b4926253',
+      socials.github,
+      org.github,
+      socials.linkedin,
     ],
-    jobTitle: 'DevOps Engineer & Cloud Architect',
+    jobTitle: owner.role,
     founder: {
       '@type': 'Organization',
-      name: 'VY-Groups',
-      url: 'https://vygroups.co.in/',
+      name: org.name,
+      url: org.url,
     },
     worksFor: {
       '@type': 'Organization',
-      name: 'Freelance / Consulting',
+      name: owner.worksFor,
     },
-    knowsAbout: [
-      'Amazon Web Services (AWS)',
-      'Kubernetes',
-      'Docker',
-      'CI/CD',
-      'Linux Administration',
-      'Infrastructure as Code',
-      'Terraform',
-      'Monitoring & Observability',
-      'GitLab CI',
-      'Jenkins',
-      'Prometheus',
-      'Grafana',
-      'Ansible',
-      'Python',
-      'Bash Scripting',
-    ],
+    knowsAbout: owner.knowsAbout,
     description: DEFAULT_DESCRIPTION,
   };
 
@@ -172,7 +157,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: ${baseUrl}/sitemap.xml
+Sitemap: ${SITE_URL}/sitemap.xml
 
 # Disallow admin/api paths
 Disallow: /api/

@@ -1,14 +1,18 @@
 /**
  * Email Templates (HTML)
  * Consistent, branded email templates for contact and collaboration forms
+ * Branding identity comes from site.config.js (single source of truth).
  */
 
+import config from '../site.config.js';
+
 const BRANDING = {
-  name: 'Yash Kumar Dubey',
-  role: 'DevOps Engineer & Cloud Architect',
-  site: 'https://yashkumardubey.dev',
-  color: '#0071e3',
-  accent: '#00d4ff',
+  name: config.owner.name,
+  role: config.owner.role,
+  site: config.site.url,
+  resume: config.owner.resume,
+  color: config.colors.brand,
+  accent: config.colors.accent,
 };
 
 function layout({ title, content }) {
@@ -124,7 +128,7 @@ export function autoReplyTemplate(data) {
       In the meantime, feel free to check out my
       <a href="${BRANDING.site}/#projects" style="color:${BRANDING.color};text-decoration:none;">projects</a>
       or download my
-      <a href="${BRANDING.site}/Yash_Kumar_Dubey_Resume.pdf" style="color:${BRANDING.color};text-decoration:none;">resume</a>.
+      <a href="${BRANDING.site}${BRANDING.resume}" style="color:${BRANDING.color};text-decoration:none;">resume</a>.
     </p>
     <hr style="border:none;border-top:1px solid #e6ebff;margin:24px 0;" />
     <p style="margin:0;color:#475569;font-size:14px;line-height:1.7;"><strong>Your message:</strong></p>

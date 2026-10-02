@@ -3,6 +3,7 @@ import { FiDownload, FiFile, FiFolder, FiAlertCircle, FiSearch, FiX, FiSend } fr
 import './StudentResources.css'
 import { useResources } from '../hooks/useResources'
 import { trackEvent } from './Analytics'
+import { owner } from '../config/site'
 
 export default function StudentResources() {
   const [selectedCategory, setSelectedCategory] = useState('all')
@@ -74,7 +75,7 @@ export default function StudentResources() {
     trackEvent('resource_request', { request: requestText.slice(0, 100) })
 
     // Open contact form with prefilled message
-    const message = `Hi Yash,\n\nI'd like to request a learning resource:\n\n"${requestText}"\n\nThanks!`
+    const message = `Hi ${owner.firstName},\n\nI'd like to request a learning resource:\n\n"${requestText}"\n\nThanks!`
     window.location.hash = 'contact'
     setTimeout(() => {
       window.dispatchEvent(new CustomEvent('prefill-contact-message', { detail: message }))

@@ -15,7 +15,10 @@
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
     "test:build": "npm test && npm run build",
-    "seo:generate": "node scripts/generate-seo.js"
+    "seo:generate": "node scripts/generate-seo.js",
+    "identity": "node scripts/apply-identity.js",
+    "identity:check": "node scripts/apply-identity.js --check",
+    "identity:audit": "node scripts/check-identity.js"
   },
   "dependencies": {
     "@mdx-js/rollup": "^3.1.1",

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi'
 import './Contact.css'
 import HCaptcha from './HCaptcha'
+import { owner } from '../config/site'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -78,13 +79,13 @@ export default function Contact() {
             <p>I'm always interested in hearing about new projects and opportunities. Feel free to reach out!</p>
             
             <div className="contact-methods">
-              <a href="mailto:ydubey020@gmail.com" className="contact-method">
+              <a href={`mailto:${owner.email}`} className="contact-method">
                 <FiMail size={20} />
-                <span>ydubey020@gmail.com</span>
+                <span>{owner.email}</span>
               </a>
               <div className="contact-method">
                 <FiMapPin size={20} />
-                <span>New Delhi, India</span>
+                <span>{owner.location}</span>
               </div>
             </div>
           </div>

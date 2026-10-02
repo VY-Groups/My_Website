@@ -5,6 +5,7 @@ import ParticleBackground from './ParticleBackground'
 import ScrollReveal from './ScrollReveal'
 import CountUp from './CountUp'
 import { getExperience } from '../utils/experience'
+import { owner, socials, org } from '../config/site'
 
 export default function Hero() {
   const experience = getExperience()
@@ -16,12 +17,12 @@ export default function Hero() {
           <div className="hero-text">
             <ScrollReveal direction="up" delay={0}>
               <h1 className="hero-title">
-                Hi, I'm <span className="accent-text">Yash Kumar Dubey</span>
+                Hi, I'm <span className="accent-text">{owner.name}</span>
               </h1>
             </ScrollReveal>
             <ScrollReveal direction="up" delay={100}>
               <p className="hero-subtitle">
-                DevOps Engineer & Cloud Architect
+                {owner.role}
               </p>
             </ScrollReveal>
             <ScrollReveal direction="up" delay={200}>
@@ -73,13 +74,13 @@ export default function Hero() {
 
             <ScrollReveal direction="up" delay={500}>
               <div className="hero-social">
-                <a href="https://github.com/yashkumardubey" aria-label="GitHub" className="social-link" target="_blank" rel="noopener noreferrer">
+                <a href={socials.github} aria-label="GitHub" className="social-link" target="_blank" rel="noopener noreferrer">
                   <FiGithub size={20} />
                 </a>
-                <a href="https://www.linkedin.com/in/yash-kumar-dubey-4b4926253" aria-label="LinkedIn" className="social-link" target="_blank" rel="noopener noreferrer">
+                <a href={socials.linkedin} aria-label="LinkedIn" className="social-link" target="_blank" rel="noopener noreferrer">
                   <FiLinkedin size={20} />
                 </a>
-                <a href="https://github.com/VY-Groups" aria-label="VY-Groups GitHub organization" className="social-link" target="_blank" rel="noopener noreferrer">
+                <a href={org.github} aria-label={`${org.name} GitHub organization`} className="social-link" target="_blank" rel="noopener noreferrer">
                   <FiGlobe size={20} />
                 </a>
                 <button 
@@ -99,8 +100,8 @@ export default function Hero() {
 
           <ScrollReveal direction="left" delay={300} className="hero-image">
             <img
-              src="/pic.jpeg"
-              alt="Yash Kumar Dubey"
+              src={owner.photo}
+              alt={owner.name}
               className="profile-image"
               width="400"
               height="400"

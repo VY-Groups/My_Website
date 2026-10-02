@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { FiClock } from 'react-icons/fi'
+import { owner, org } from '../config/site'
 import './Footer.css'
 
 const formatTime = () =>
@@ -25,22 +26,22 @@ export default function Footer() {
       <div className="container">
         <div className="footer-content">
           <div className="footer-left">
-            <h3 className="footer-name">Yash Kumar Dubey</h3>
-            <p className="footer-location">New Delhi, India</p>
+            <h3 className="footer-name">{owner.name}</h3>
+            <p className="footer-location">{owner.location}</p>
             <p className="footer-time" aria-hidden="true">
               <FiClock size={13} />
               {time} IST
             </p>
             <div className="footer-links">
-              <a href="https://github.com/VY-Groups" target="_blank" rel="noopener noreferrer">
-                Founder of VY-Groups
+              <a href={org.github} target="_blank" rel="noopener noreferrer">
+                Founder of {org.name}
               </a>
-              <a href="https://vygroups.co.in/" target="_blank" rel="noopener noreferrer">
-                vygroups.co.in
+              <a href={org.url} target="_blank" rel="noopener noreferrer">
+                {org.url.replace(/^https?:\/\//, '').replace(/\/$/, '')}
               </a>
             </div>
           </div>
-          <p className="footer-copyright">&copy; {currentYear} Yash Kumar Dubey. All rights reserved.</p>
+          <p className="footer-copyright">&copy; {currentYear} {owner.name}. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -10,6 +10,7 @@ const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const RUNTIME_CACHE = `${CACHE_VERSION}-runtime`;
 const OFFLINE_URL = '/';
 
+// identity:precachelist:start
 const PRECACHE_URLS = [
   '/',
   '/manifest.webmanifest',
@@ -17,6 +18,7 @@ const PRECACHE_URLS = [
   '/pic.jpeg',
   '/Yash_Kumar_Dubey_Resume.pdf',
 ];
+// identity:precachelist:end
 
 // Install: precache core assets
 self.addEventListener('install', (event) => {

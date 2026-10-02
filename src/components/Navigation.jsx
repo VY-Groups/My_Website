@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi'
+import { owner } from '../config/site'
 import './Navigation.css'
 
 export default function Navigation({ isDark, setIsDark, activeSection }) {
@@ -9,7 +10,7 @@ export default function Navigation({ isDark, setIsDark, activeSection }) {
 
   const handleNameClick = () => {
     const link = document.createElement('a')
-    link.href = '/Yash_Kumar_Dubey_Resume.pdf'
+    link.href = owner.resume
     link.download = true
     link.click()
   }
@@ -44,10 +45,10 @@ export default function Navigation({ isDark, setIsDark, activeSection }) {
     <nav className="navbar" aria-label="Main navigation">
       <div className="nav-container">
         <div className="nav-brand">
-          <a href="#" className="logo" aria-label="Go to top - Yash Kumar Dubey" onClick={(e) => { e.preventDefault(); handleNavClick('hero'); }}>
+          <a href="#" className="logo" aria-label={`Go to top - ${owner.name}`} onClick={(e) => { e.preventDefault(); handleNavClick('hero'); }}>
             <img
               src="/pic.jpeg"
-              alt="Yash Kumar Dubey profile photo"
+              alt={`${owner.name} profile photo`}
               className="logo-image"
               width="40"
               height="40"
@@ -55,7 +56,7 @@ export default function Navigation({ isDark, setIsDark, activeSection }) {
               decoding="async"
             />
           </a>
-          <span className="brand-text" onClick={handleNameClick} style={{ cursor: 'pointer' }} title="Download Resume">Yash Kumar Dubey</span>
+          <span className="brand-text" onClick={handleNameClick} style={{ cursor: 'pointer' }} title="Download Resume">{owner.name}</span>
         </div>
 
         <div className={`nav-menu ${isOpen ? 'active' : ''}`} id="nav-menu">

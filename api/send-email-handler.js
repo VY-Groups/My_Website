@@ -8,6 +8,7 @@ import { validateFormData } from './validation.js';
 import { verifyHCaptcha } from './captcha.js';
 import { notifyFormSubmission } from './notify.js';
 import { contactTemplate, collaborationTemplate, autoReplyTemplate } from './templates.js';
+import config from '../site.config.js';
 
 // In-memory rate limiter (per IP)
 const rateLimitMap = new Map();
@@ -118,7 +119,7 @@ export async function handleSendEmail(req, res) {
       transporter.sendMail({
         from: process.env.GMAIL_USER,
         to: data.email,
-        subject: 'Thanks for reaching out — Yash Kumar Dubey',
+        subject: `Thanks for reaching out — ${config.owner.name}`,
         html: autoReplyTemplate(data),
       }).catch((err) => console.warn('Auto-reply failed:', err.message));
     }

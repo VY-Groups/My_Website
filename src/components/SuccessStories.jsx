@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { FiChevronLeft, FiChevronRight, FiStar, FiGithub, FiExternalLink, FiUsers, FiServer, FiMapPin } from 'react-icons/fi'
 import CountUp from './CountUp'
+import { owner, org } from '../config/site'
 import './SuccessStories.css'
 
-// VY-Groups company + product showcase (founded & led by Yash Kumar Dubey)
+// VY-Groups company + product showcase
 const vyCompany = {
-  name: 'VY-Groups',
-  tagline: 'Technology company founded & led by Yash Kumar Dubey',
+  name: org.name,
+  tagline: `Technology company founded & led by ${owner.name}`,
   description:
     'VY-Groups builds scalable software, cloud, automation and AI-driven solutions — along with tools that simplify business and IT operations. From enterprise HR platforms to infrastructure patch management, every product is designed, deployed and maintained end-to-end.',
   areas: [
@@ -19,8 +20,8 @@ const vyCompany = {
     'IT Operations',
     'Business Management Tools',
   ],
-  github: 'https://github.com/VY-Groups',
-  website: 'https://vygroups.co.in/',
+  github: org.github,
+  website: org.url,
 }
 
 const products = [

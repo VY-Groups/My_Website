@@ -3,6 +3,7 @@ import { FiSend, FiCheckCircle, FiCpu, FiServer, FiCode, FiSmartphone, FiBookOpe
 import { SiPython } from 'react-icons/si'
 import CountUp from './CountUp'
 import { getExperience } from '../utils/experience'
+import { owner, socials, org } from '../config/site'
 import './Collaboration.css'
 
 export default function Collaboration() {
@@ -221,7 +222,7 @@ export default function Collaboration() {
       formData.briefDetail
     ].join('\n')
 
-    return `mailto:ydubey020@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    return `mailto:${owner.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
   }
 
   const handleSubmit = async (e) => {
@@ -308,8 +309,8 @@ export default function Collaboration() {
           <div className="notice-text">
             <strong>Available for new projects</strong> — expanded services coming soon,
             powered by{' '}
-            <a href="https://www.vygroups.co.in/" target="_blank" rel="noopener noreferrer">
-              VY-Groups
+            <a href={org.url} target="_blank" rel="noopener noreferrer">
+              {org.name}
             </a>
           </div>
         </div>
@@ -350,12 +351,12 @@ export default function Collaboration() {
             </div>
 
             <div className="collab-quick">
-              <a className="collab-quick-link" href="mailto:ydubey020@gmail.com">
+              <a className="collab-quick-link" href={`mailto:${owner.email}`}>
                 <FiMail size={16} aria-hidden="true" /> Email me
               </a>
               <a
                 className="collab-quick-link"
-                href="https://www.linkedin.com/in/yash-kumar-dubey-4b4926253"
+                href={socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
               >

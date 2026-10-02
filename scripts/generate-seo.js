@@ -6,45 +6,47 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import config from '../site.config.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, '..');
 const distDir = path.join(projectRoot, 'dist');
 const publicDir = path.join(projectRoot, 'public');
 
-const SITE_URL = 'https://yashkumardubey.dev';
+const SITE_URL = config.site.url;
+const pageTitle = (page) => `${page} | ${config.owner.name}`;
 
 const sectionMeta = {
   hero: {
-    title: 'Yash Kumar Dubey - DevOps Engineer & Cloud Architect',
+    title: config.site.title,
     description: 'DevOps Engineer & Cloud Architect specializing in AWS, Kubernetes, CI/CD pipelines, Linux automation, and scalable cloud infrastructure.',
   },
   experience: {
-    title: 'Experience | Yash Kumar Dubey',
+    title: pageTitle('Experience'),
     description: '3+ years of professional experience in DevOps, Cloud Architecture, and Infrastructure Automation.',
   },
   skills: {
-    title: 'Skills & Expertise | Yash Kumar Dubey',
+    title: pageTitle('Skills & Expertise'),
     description: 'Technical skills: AWS, Kubernetes, Docker, CI/CD, Terraform, Linux, Monitoring, GitLab CI, Jenkins, Prometheus, Grafana, Ansible, Python, Bash.',
   },
   projects: {
-    title: 'Projects | Yash Kumar Dubey',
+    title: pageTitle('Projects'),
     description: 'Featured DevOps and Cloud projects: CI/CD pipelines, Kubernetes clusters, Infrastructure as Code, Monitoring solutions.',
   },
   resources: {
-    title: 'Student Resources | Yash Kumar Dubey',
+    title: pageTitle('Student Resources'),
     description: 'Free downloadable learning materials for DevOps, Linux, Docker, Azure, Ansible, Networking, and DSA.',
   },
   'success-stories': {
-    title: 'Success Stories | Yash Kumar Dubey',
+    title: pageTitle('Success Stories'),
     description: 'Success stories and testimonials from students and professionals.',
   },
   collaboration: {
-    title: 'Collaborate | Yash Kumar Dubey',
+    title: pageTitle('Collaborate'),
     description: 'Open for collaboration, consulting, freelance projects, and partnerships.',
   },
   contact: {
-    title: 'Contact | Yash Kumar Dubey',
+    title: pageTitle('Contact'),
     description: 'Get in touch for DevOps consulting, freelance projects, or just to say hello.',
   },
 };
