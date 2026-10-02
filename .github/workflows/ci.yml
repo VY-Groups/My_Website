@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # site.config.js is the single source of truth — verify index.html,
+      # manifest, service worker and SEO files are in sync with it.
+      - name: Identity sync check
+        run: npm run identity:check
+
+      # `npm test` also runs `npm audit`, which can fail on registry noise;
+      # audit is run separately with continue-on-error so it informs
+      # without blocking the build.
+      - name: Unit & accessibility tests
+        run: npx vitest run
+
+      - name: Audit dependencies
+        run: npm audit --audit-level=high
+        continue-on-error: true
+
+      - name: Build
+        run: npm run build
+
+      - name: Serve dist
+        run: nohup node prod-server.js > server.log 2>&1 &
+
+      - name: Wait for server
+        run: timeout 30 bash -c 'until curl -sf http://localhost:8080/ > /dev/null; do sleep 1; done'
+
+      # Horizontal-overflow + collapsed-nav gate at 375px (uses the
+      # runner's preinstalled Chrome).
+      - name: Mobile layout check (375px)
+        run: node scripts/check-mobile.js
