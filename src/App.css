@@ -16,6 +16,9 @@ html {
   /* Horizontal overflow (white-strip bug) is clipped here. overflow-x: hidden
      makes the root element the document scroller, so window.scrollY works. */
   overflow-x: hidden;
+  /* Anchor jumps / scrollIntoView land below the fixed navbar, so section
+     badges and titles are never hidden underneath it. */
+  scroll-padding-top: 86px;
 }
 
 body {
@@ -501,3 +504,33 @@ li a {
   font-variant-numeric: tabular-nums;
 }
 
+
+
+/* ---------- Button shine sweep (used by primary submit buttons) ---------- */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -90%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-18deg);
+  transition: left 0.65s ease;
+  pointer-events: none;
+}
+
+.btn-shine:hover::after {
+  left: 130%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-shine::after {
+    display: none;
+  }
+}

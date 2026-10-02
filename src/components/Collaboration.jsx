@@ -318,18 +318,21 @@ export default function Collaboration() {
         <div className="collaboration-content">
           <div className="collab-info">
             <div className="info-card">
+              <span className="info-index" aria-hidden="true">01</span>
               <div className="info-icon" aria-hidden="true"><FiBriefcase size={24} /></div>
               <h3>New Projects</h3>
               <p>Looking to build or scale your infrastructure? I can help you design and implement scalable solutions.</p>
             </div>
 
             <div className="info-card">
+              <span className="info-index" aria-hidden="true">02</span>
               <div className="info-icon" aria-hidden="true"><FiTool size={24} /></div>
               <h3>Issue Resolution</h3>
               <p>Facing DevOps or infrastructure challenges? Share the details and I'll help you find the right solution.</p>
             </div>
 
             <div className="info-card">
+              <span className="info-index" aria-hidden="true">03</span>
               <div className="info-icon" aria-hidden="true"><FiUsers size={24} /></div>
               <h3>Partnership</h3>
               <p>Interested in long-term collaboration? Let's discuss how we can work together to achieve your goals.</p>
@@ -367,8 +370,11 @@ export default function Collaboration() {
 
           <form className="collaboration-form" onSubmit={handleSubmit}>
             <div className="form-top">
-              <h3>Tell me about your project</h3>
-              <p>All fields required unless marked optional</p>
+              <span className="form-top-icon" aria-hidden="true"><FiSend size={18} /></span>
+              <div className="form-top-text">
+                <h3>Tell me about your project</h3>
+                <p>All fields required unless marked optional</p>
+              </div>
             </div>
             <div className="form-row">
               <div className="form-group full">
@@ -557,7 +563,7 @@ export default function Collaboration() {
               </div>
             </div>
 
-            <button type="submit" className="btn btn-submit" disabled={loading}>
+            <button type="submit" className="btn btn-submit btn-shine" disabled={loading}>
               {loading ? (
                 'Sending...'
               ) : submitted ? (

@@ -59,7 +59,7 @@ describe('Portfolio Website - Complete Test Suite', () => {
 
     it('should have mailto link for email', async () => {
       render(<App />)
-      const emailLink = await screen.findByRole('link', { name: owner.email })
+      const emailLink = await screen.findByRole('link', { name: new RegExp(owner.email, 'i') })
       expect(emailLink).toHaveAttribute('href', `mailto:${owner.email}`)
     })
 

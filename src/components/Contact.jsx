@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi'
+import { FiMail, FiMapPin, FiGithub, FiLinkedin, FiSend, FiUser, FiMessageSquare, FiClock, FiArrowRight, FiArrowUpRight } from 'react-icons/fi'
 import './Contact.css'
 import HCaptcha from './HCaptcha'
-import { owner } from '../config/site'
+import { owner, socials } from '../config/site'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -71,28 +71,77 @@ export default function Contact() {
   return (
     <section className="contact" id="contact">
       <div className="container">
+        <span className="contact-badge">Say Hello</span>
         <h2 className="section-title">Get In Touch</h2>
-        
+        <p className="section-subtitle contact-subtitle">
+          Have a question or want to work together? Drop a message — I usually reply within 24 hours.
+        </p>
+
         <div className="contact-content">
           <div className="contact-info">
-            <h3>Let's connect</h3>
-            <p>I'm always interested in hearing about new projects and opportunities. Feel free to reach out!</p>
-            
+            <div className="contact-intro">
+              <h3>Let's connect</h3>
+              <p>I'm always interested in hearing about new projects and opportunities. Feel free to reach out!</p>
+            </div>
+
             <div className="contact-methods">
               <a href={`mailto:${owner.email}`} className="contact-method">
-                <FiMail size={20} />
-                <span>{owner.email}</span>
+                <span className="method-icon"><FiMail size={18} aria-hidden="true" /></span>
+                <span className="method-body">
+                  <span className="method-label">Email</span>
+                  <span className="method-value">{owner.email}</span>
+                </span>
+                <FiArrowUpRight className="method-arrow" size={15} aria-hidden="true" />
               </a>
               <div className="contact-method">
-                <FiMapPin size={20} />
-                <span>{owner.location}</span>
+                <span className="method-icon"><FiMapPin size={18} aria-hidden="true" /></span>
+                <span className="method-body">
+                  <span className="method-label">Location</span>
+                  <span className="method-value">{owner.location}</span>
+                </span>
               </div>
+              <a href={socials.github} className="contact-method" target="_blank" rel="noopener noreferrer">
+                <span className="method-icon"><FiGithub size={18} aria-hidden="true" /></span>
+                <span className="method-body">
+                  <span className="method-label">GitHub</span>
+                  <span className="method-value">{socials.github.replace('https://github.com/', '')}</span>
+                </span>
+                <FiArrowUpRight className="method-arrow" size={15} aria-hidden="true" />
+              </a>
+              <a href={socials.linkedin} className="contact-method" target="_blank" rel="noopener noreferrer">
+                <span className="method-icon"><FiLinkedin size={18} aria-hidden="true" /></span>
+                <span className="method-body">
+                  <span className="method-label">LinkedIn</span>
+                  <span className="method-value">{socials.linkedin.replace('https://www.linkedin.com/', '')}</span>
+                </span>
+                <FiArrowUpRight className="method-arrow" size={15} aria-hidden="true" />
+              </a>
+            </div>
+
+            <div className="contact-chips">
+              <span className="contact-chip">
+                <span className="chip-dot" aria-hidden="true" />
+                Open for opportunities
+              </span>
+              <span className="contact-chip">
+                <FiClock size={13} aria-hidden="true" />
+                Replies within 24h
+              </span>
             </div>
           </div>
 
           <form className="contact-form" onSubmit={handleSubmit} aria-label="Contact form">
-            <div className="form-group">
+            <div className="form-panel-head">
+              <span className="form-panel-icon"><FiSend size={18} aria-hidden="true" /></span>
+              <div className="form-panel-text">
+                <h3>Send a message</h3>
+                <p>Fill in the details below — I'll get back to you soon.</p>
+              </div>
+            </div>
+
+            <div className="form-group with-icon">
               <label htmlFor="contact-name" className="sr-only">Your Name</label>
+              <FiUser className="field-icon" size={16} aria-hidden="true" />
               <input
                 id="contact-name"
                 type="text"
@@ -104,8 +153,9 @@ export default function Contact() {
                 required
               />
             </div>
-            <div className="form-group">
+            <div className="form-group with-icon">
               <label htmlFor="contact-email" className="sr-only">Your Email</label>
+              <FiMail className="field-icon" size={16} aria-hidden="true" />
               <input
                 id="contact-email"
                 type="email"
@@ -117,8 +167,9 @@ export default function Contact() {
                 required
               />
             </div>
-            <div className="form-group">
+            <div className="form-group with-icon icon-top">
               <label htmlFor="contact-message" className="sr-only">Your Message</label>
+              <FiMessageSquare className="field-icon" size={16} aria-hidden="true" />
               <textarea
                 id="contact-message"
                 name="message"
@@ -130,8 +181,9 @@ export default function Contact() {
               ></textarea>
             </div>
             <HCaptcha onChange={setCaptchaToken} />
-            <button type="submit" className="btn btn-primary" disabled={loading}>
+            <button type="submit" className="btn btn-primary btn-shine" disabled={loading}>
               {loading ? 'Sending...' : submitted ? '✓ Message Sent!' : 'Send Message'}
+              {!loading && !submitted && <FiArrowRight size={16} aria-hidden="true" />}
             </button>
             {submitted && <p role="status" className="sr-only">Message sent successfully</p>}
           </form>
