@@ -7,7 +7,7 @@ const DEFAULT_DESCRIPTION = site.description;
 const DEFAULT_IMAGE = absUrl(owner.photo);
 
 const sectionMeta = {
-  hero: {
+  about: {
     title: site.title,
     description: site.shortDescription,
   },
@@ -58,7 +58,7 @@ function updateMetaTags(meta) {
   updateMeta('name', 'description', meta.description);
   updateMeta('property', 'og:title', meta.title);
   updateMeta('property', 'og:description', meta.description);
-  updateMeta('property', 'og:url', `${SITE_URL}/#${Object.keys(sectionMeta).find(k => sectionMeta[k] === meta) || 'hero'}`);
+  updateMeta('property', 'og:url', `${SITE_URL}/#${Object.keys(sectionMeta).find(k => sectionMeta[k] === meta) || 'about'}`);
   updateMeta('name', 'twitter:title', meta.title);
   updateMeta('name', 'twitter:description', meta.description);
 }
@@ -117,16 +117,16 @@ function updateStructuredData(section) {
   script.textContent = JSON.stringify(baseData, null, 2);
 }
 
-export function useSEO(section = 'hero') {
+export function useSEO(section = 'about') {
   useEffect(() => {
-    const meta = sectionMeta[section] || sectionMeta.hero;
+    const meta = sectionMeta[section] || sectionMeta.about;
     updateMetaTags(meta);
     updateStructuredData(section);
   }, [section]);
 }
 
 // Component for rendering SEO in React tree (for SSR compatibility)
-export default function SEO({ section = 'hero' }) {
+export default function SEO({ section = 'about' }) {
   useSEO(section);
   return null;
 }
@@ -150,7 +150,7 @@ export function generateSitemap() {
     <loc>${baseUrl}/#${section}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>${section === 'hero' ? '1.0' : '0.8'}</priority>
+    <priority>${section === 'about' ? '1.0' : '0.8'}</priority>
   </url>`).join('')}
 </urlset>`;
 }

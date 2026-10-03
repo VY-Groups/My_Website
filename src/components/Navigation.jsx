@@ -33,7 +33,7 @@ export default function Navigation({ isDark, setIsDark, activeSection }) {
   }
 
   const navItems = [
-    { id: 'hero', label: 'About' },
+    { id: 'about', label: 'About' },
     { id: 'experience', label: 'Experience' },
     { id: 'skills', label: 'Skills' },
     { id: 'certifications', label: 'Certifications' },
@@ -49,7 +49,7 @@ export default function Navigation({ isDark, setIsDark, activeSection }) {
     <nav className="navbar" aria-label="Main navigation">
       <div className="nav-container">
         <div className="nav-brand">
-          <a href="#" className="logo" aria-label={`Go to top - ${owner.name}`} onClick={(e) => { e.preventDefault(); handleNavClick('hero'); }}>
+          <a href="#" className="logo" aria-label={`Go to top - ${owner.name}`} onClick={(e) => { e.preventDefault(); handleNavClick('about'); }}>
             <img
               src="/pic-400.webp"
               alt={`${owner.name} profile photo`}

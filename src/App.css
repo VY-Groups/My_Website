@@ -147,7 +147,7 @@ main {
    pages. `auto <size>` remembers each section's real height after first
    render so anchor jumps stay stable. Hero and Experience stay eager:
    hero is LCP, experience peeks into the first viewport (Speed Index). */
-main > section:not(#hero):not(#experience) {
+main > section:not(#about):not(#experience) {
   content-visibility: auto;
   contain-intrinsic-size: auto 720px;
 }

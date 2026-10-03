@@ -29,14 +29,14 @@ const SectionFallback = ({ label }) => (
 
 function AppInner() {
   const { isDark, setIsDark } = useTheme()
-  const [activeSection, setActiveSection] = useState('hero')
+  const [activeSection, setActiveSection] = useState('about')
 
   // SEO: Update meta tags based on active section
   useSEO(activeSection)
 
   // Set active section based on scroll using IntersectionObserver
   useEffect(() => {
-    const sections = ['hero', 'experience', 'skills', 'certifications', 'projects', 'blog', 'resources', 'success-stories', 'collaboration', 'contact']
+    const sections = ['about', 'experience', 'skills', 'certifications', 'projects', 'blog', 'resources', 'success-stories', 'collaboration', 'contact']
     
     const observerOptions = {
       root: null,
@@ -69,8 +69,18 @@ function AppInner() {
 
   // Set active section based on hash
   useEffect(() => {
+    // Legacy #hero links now live at #about — map them and normalize the URL
+    const resolveHash = () => {
+      const raw = window.location.hash.slice(1) || 'about'
+      if (raw === 'hero') {
+        history.replaceState(null, '', '#about')
+        return 'about'
+      }
+      return raw
+    }
+
     const handleHashChange = () => {
-      const hash = window.location.hash.slice(1) || 'hero'
+      const hash = resolveHash()
       // Ignore skip-link target (not a nav section)
       if (hash !== 'main-content') {
         setActiveSection(hash)
@@ -88,9 +98,9 @@ function AppInner() {
     window.addEventListener('hashchange', handleHashChange)
 
     // Initial check
-    const hash = window.location.hash.slice(1) || 'hero'
-    if (hash !== 'main-content') {
-      setActiveSection(hash)
+    const initial = resolveHash()
+    if (initial !== 'main-content') {
+      setActiveSection(initial)
     }
 
     return () => {
@@ -104,7 +114,7 @@ function AppInner() {
       <a href="#main-content" className="skip-to-content">Skip to main content</a>
       <Navigation isDark={isDark} setIsDark={setIsDark} activeSection={activeSection} />
       <main id="main-content" className="full-scroll-view" tabIndex={-1} aria-label="Main content">
-        <section id="hero" aria-label="About"><Hero /></section>
+        <section id="about" aria-label="About"><Hero /></section>
         <section id="experience" aria-label="Experience">
           <Suspense fallback={<SectionFallback label="experience" />}>
             <Experience />

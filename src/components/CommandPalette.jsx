@@ -26,7 +26,7 @@ import './CommandPalette.css'
 export const OPEN_COMMAND = 'cmd-palette:open'
 
 const SECTION_ITEMS = [
-  { id: 'hero', label: 'About', kw: 'home intro profile', icon: FiHome },
+  { id: 'about', label: 'About', kw: 'home intro profile', icon: FiHome },
   { id: 'experience', label: 'Experience', kw: 'work jobs timeline vy-groups', icon: FiTrendingUp },
   { id: 'skills', label: 'Skills', kw: 'tech stack aws kubernetes docker terraform', icon: FiStar },
   { id: 'certifications', label: 'Certifications', kw: 'certificates aws redhat udemy', icon: FiAward },

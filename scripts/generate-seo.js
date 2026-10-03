@@ -17,7 +17,7 @@ const SITE_URL = config.site.url;
 const pageTitle = (page) => `${page} | ${config.owner.name}`;
 
 const sectionMeta = {
-  hero: {
+  about: {
     title: config.site.title,
     description: 'DevOps Engineer & Cloud Architect specializing in AWS, Kubernetes, CI/CD pipelines, Linux automation, and scalable cloud infrastructure.',
   },
@@ -70,7 +70,7 @@ function generateSitemap() {
     <loc>${baseUrl}/#${section}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>${section === 'hero' ? '1.0' : '0.8'}</priority>
+    <priority>${section === 'about' ? '1.0' : '0.8'}</priority>
   </url>`).join('')}
 </urlset>`;
 }
