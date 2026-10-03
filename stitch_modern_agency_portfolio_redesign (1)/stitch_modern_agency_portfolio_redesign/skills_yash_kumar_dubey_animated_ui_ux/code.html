@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "outline": "#849495",
+          "surface-variant": "#313440",
+          "tertiary-fixed-dim": "#dcb8ff",
+          "tertiary-container": "#ebd2ff",
+          "error-container": "#93000a",
+          "surface-container-highest": "#313440",
+          "on-error-container": "#ffdad6",
+          "secondary-container": "#3196e6",
+          "inverse-primary": "#00696f",
+          "on-tertiary-container": "#774ca3",
+          "on-primary": "#00373a",
+          "on-primary-fixed-variant": "#004f53",
+          "primary-fixed": "#6ff6ff",
+          "surface-container-lowest": "#0a0e18",
+          "error": "#ffb4ab",
+          "on-secondary-fixed-variant": "#004a7a",
+          "on-surface-variant": "#b9cacb",
+          "surface": "#10131d",
+          "outline-variant": "#3a494b",
+          "on-primary-fixed": "#002022",
+          "surface-bright": "#363944",
+          "secondary": "#9bcbff",
+          "surface-container-high": "#262a35",
+          "on-secondary-container": "#002c4b",
+          "surface-tint": "#00dce6",
+          "primary-fixed-dim": "#00dce6",
+          "tertiary-fixed": "#f0dbff",
+          "on-secondary": "#003256",
+          "on-primary-container": "#006a70",
+          "inverse-surface": "#e0e2f1",
+          "surface-dim": "#10131d",
+          "tertiary": "#fef5ff",
+          "on-surface": "#e0e2f1",
+          "background": "#10131d",
+          "surface-container": "#1c1f2a",
+          "on-error": "#690005",
+          "on-secondary-fixed": "#001d34",
+          "secondary-fixed": "#d0e4ff",
+          "on-tertiary": "#44176f",
+          "inverse-on-surface": "#2d303b",
+          "primary-container": "#00f2fe",
+          "on-tertiary-fixed": "#2c0051",
+          "secondary-fixed-dim": "#9bcbff",
+          "primary": "#e0fdff",
+          "on-background": "#e0e2f1",
+          "on-tertiary-fixed-variant": "#5c3187",
+          "surface-container-low": "#181b26"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "space-lg": "2rem",
+          "space-sm": "0.5rem",
+          "space-xs": "0.25rem",
+          "gutter": "2rem",
+          "margin": "3rem",
+          "space-md": "1rem",
+          "space-xl": "4rem"
+        },
+        "fontFamily": {
+          "label-lg": ["Plus Jakarta Sans"],
+          "body-lg": ["Plus Jakarta Sans"],
+          "headline-sm": ["Plus Jakarta Sans"],
+          "headline-xl": ["Plus Jakarta Sans"],
+          "headline-xl-mobile": ["Plus Jakarta Sans"],
+          "body-sm": ["Plus Jakarta Sans"],
+          "label-md": ["Plus Jakarta Sans"],
+          "label-sm": ["Plus Jakarta Sans"],
+          "headline-lg": ["Plus Jakarta Sans"],
+          "display-hero": ["Plus Jakarta Sans"],
+          "body-md": ["Plus Jakarta Sans"],
+          "display-hero-mobile": ["Plus Jakarta Sans"],
+          "headline-md": ["Plus Jakarta Sans"]
+        },
+        "fontSize": {
+          "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.04em", "fontWeight": "600"}],
+          "body-lg": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+          "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+          "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "headline-xl-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+          "body-sm": ["12px", {"lineHeight": "18px", "fontWeight": "400"}],
+          "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+          "label-sm": ["10px", {"lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "600"}],
+          "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+          "display-hero": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "800"}],
+          "body-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+          "display-hero-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+          "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"]
+        }
+      }
+    }
+  }</script><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/></head><body class="bg-surface font-body-md text-on-surface"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-gutter flex items-center justify-between"><a class="flex items-center gap-space-sm group" data-path="home" href="#"><div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary-container to-secondary-container flex items-center justify-center shadow-[0_0_15px_rgba(0,242,254,0.4)]"><span class="material-symbols-outlined text-on-primary-container text-[24px]">bolt</span></div><div class="flex flex-col"><span class="text-headline-sm font-headline-sm text-primary tracking-tight">VY-GROUPS</span><span class="text-label-sm text-on-surface-variant tracking-wider uppercase">Yash Kumar Dubey</span></div></a><nav class="hidden xl:flex items-center gap-space-md" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-lg"><a class="px-space-sm py-space-xs text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="about" href="#">About</a><a class="px-space-sm py-space-xs text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="experience" href="#">Experience</a><a class="px-space-sm py-space-xs text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="skills" href="#">Skills</a><a class="px-space-sm py-space-xs text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="projects" href="#">Projects</a><a class="px-space-sm py-space-xs text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="blog" href="#">Blog</a><a class="px-space-sm py-space-xs text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="resources" href="#">Resources</a><a class="px-space-sm py-space-xs text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="success-stories" href="#">Success Stories</a><a class="px-space-sm py-space-xs text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="collaborate" href="#">Collaborate</a><a class="px-space-sm py-space-xs text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="contact" href="#">Contact</a></nav><div class="flex items-center gap-space-md"><button aria-label="Toggle Theme" class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-all"><span class="material-symbols-outlined text-[20px]">dark_mode</span></button><div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center shadow-[0_0_10px_rgba(224,253,255,0.3)]"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[819px]"><div class="flex flex-col w-full">
+<!-- Hero / Header Section -->
+<section class="relative w-full overflow-hidden bg-surface py-space-xl">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-secondary/5 pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-gutter relative z-10 flex flex-col gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="px-space-sm py-space-xs rounded-full bg-surface-container-high text-label-md text-primary tracking-widest uppercase">Expertise Matrix</span>
+<span class="w-12 h-[1px] bg-outline-variant/40"></span>
+<span class="text-label-sm text-on-surface-variant tracking-widest uppercase">Cloud &amp; DevOps Mastery</span>
+</div>
+<h1 class="text-headline-xl md:text-display-hero font-display-hero text-on-surface tracking-tight max-w-4xl">
+        Architectural Competency &amp; <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-container to-secondary-container">Technical Arsenal</span>
+</h1>
+<p class="text-body-lg text-on-surface-variant max-w-2xl">
+        Comprehensive breakdown of infrastructure engineering capabilities, cloud-native tooling, automation frameworks, and zero-trust security protocols honed through high-scale enterprise deployments.
+      </p>
+</div>
+</section>
+<!-- Filter Navigation Bar -->
+<section class="w-full bg-surface-container-lowest py-space-md sticky top-20 z-40 backdrop-blur-xl bg-surface/90 border-b border-outline-variant/10">
+<div class="max-w-7xl mx-auto px-gutter flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm overflow-x-auto pb-2 md:pb-0">
+<button class="skill-filter-btn px-space-md py-space-sm rounded-xl text-label-lg bg-primary-container text-on-primary-container transition-all shadow-[0_0_15px_rgba(0,242,254,0.3)]" onclick="filterSkills('all')">All Stacks</button>
+<button class="skill-filter-btn px-space-md py-space-sm rounded-xl text-label-lg bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" onclick="filterSkills('cloud')">Cloud Infrastructure</button>
+<button class="skill-filter-btn px-space-md py-space-sm rounded-xl text-label-lg bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" onclick="filterSkills('orchestration')">Orchestration</button>
+<button class="skill-filter-btn px-space-md py-space-sm rounded-xl text-label-lg bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" onclick="filterSkills('cicd')">CI/CD &amp; GitOps</button>
+<button class="skill-filter-btn px-space-md py-space-sm rounded-xl text-label-lg bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" onclick="filterSkills('security')">Security &amp; Compliance</button>
+</div>
+<div class="relative w-full md:w-72">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full bg-surface-container text-on-surface placeholder-on-surface-variant text-body-md pl-10 pr-space-md py-space-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-container transition-all" id="skill-search" oninput="searchSkills(this.value)" placeholder="Search technologies..." type="text"/>
+</div>
+</div>
+</section>
+<!-- Skills Bento Grid -->
+<section class="max-w-7xl mx-auto px-gutter py-space-xl w-full">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg" id="skills-grid">
+<!-- Card 1: Cloud & Infrastructure -->
+<div class="skill-card group relative bg-surface-container rounded-xl p-space-lg flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(0,242,254,0.15)] overflow-hidden" data-category="cloud">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+<div class="flex flex-col gap-space-md relative z-10">
+<div class="flex items-center justify-between">
+<div class="w-12 h-12 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary-container group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">cloud</span>
+</div>
+<span class="px-space-sm py-space-xs rounded-full bg-primary-container/20 text-primary text-label-sm uppercase tracking-wider">Advanced</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface">AWS &amp; Multi-Cloud Architecture</h3>
+<p class="text-body-md text-on-surface-variant">Designing resilient, highly available multi-region cloud environments utilizing AWS core services, GCP, and Azure landing zones.</p>
+<div class="flex flex-wrap gap-2 pt-2">
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">AWS EC2/EKS</span>
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">Terraform</span>
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">AWS VPC</span>
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">CloudFront</span>
+</div>
+</div>
+<div class="mt-space-lg pt-space-md border-t border-outline-variant/20 relative z-10 flex flex-col gap-space-xs">
+<div class="flex justify-between text-body-sm">
+<span class="text-on-surface-variant">Proficiency Level</span>
+<span class="text-primary font-bold">98%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary-container to-secondary-container rounded-full transition-all duration-1000 ease-out" style="width: 98%;"></div>
+</div>
+</div>
+</div>
+<!-- Card 2: Orchestration -->
+<div class="skill-card group relative bg-surface-container rounded-xl p-space-lg flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(0,242,254,0.15)] overflow-hidden" data-category="orchestration">
+<div class="absolute inset-0 bg-gradient-to-br from-secondary-container/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+<div class="flex flex-col gap-space-md relative z-10">
+<div class="flex items-center justify-between">
+<div class="w-12 h-12 rounded-xl bg-secondary-container/10 flex items-center justify-center text-secondary-container group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">hub</span>
+</div>
+<span class="px-space-sm py-space-xs rounded-full bg-secondary-container/20 text-secondary text-label-sm uppercase tracking-wider">Expert</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface">Kubernetes &amp; Container Orchestration</h3>
+<p class="text-body-md text-on-surface-variant">Deploying, scaling, and maintaining enterprise-grade Kubernetes clusters with Istio service mesh and automated cluster lifecycle management.</p>
+<div class="flex flex-wrap gap-2 pt-2">
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">Kubernetes</span>
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">Helm Charts</span>
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">Istio</span>
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">Docker</span>
+</div>
+</div>
+<div class="mt-space-lg pt-space-md border-t border-outline-variant/20 relative z-10 flex flex-col gap-space-xs">
+<div class="flex justify-between text-body-sm">
+<span class="text-on-surface-variant">Proficiency Level</span>
+<span class="text-secondary font-bold">95%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary-container to-primary-container rounded-full transition-all duration-1000 ease-out" style="width: 95%;"></div>
+</div>
+</div>
+</div>
+<!-- Card 3: CI/CD & GitOps -->
+<div class="skill-card group relative bg-surface-container rounded-xl p-space-lg flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(0,242,254,0.15)] overflow-hidden" data-category="cicd">
+<div class="absolute inset-0 bg-gradient-to-br from-tertiary-fixed-dim/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+<div class="flex flex-col gap-space-md relative z-10">
+<div class="flex items-center justify-between">
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed-dim/10 flex items-center justify-center text-tertiary-fixed-dim group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">sync</span>
+</div>
+<span class="px-space-sm py-space-xs rounded-full bg-tertiary-fixed-dim/20 text-tertiary-fixed-dim text-label-sm uppercase tracking-wider">Advanced</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface">CI/CD &amp; GitOps Automation</h3>
+<p class="text-body-md text-on-surface-variant">Building lightning-fast continuous integration pipelines and automated GitOps continuous deployment workflows with ArgoCD.</p>
+<div class="flex flex-wrap gap-2 pt-2">
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">ArgoCD</span>
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">GitHub Actions</span>
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">GitLab CI</span>
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">Tekton</span>
+</div>
+</div>
+<div class="mt-space-lg pt-space-md border-t border-outline-variant/20 relative z-10 flex flex-col gap-space-xs">
+<div class="flex justify-between text-body-sm">
+<span class="text-on-surface-variant">Proficiency Level</span>
+<span class="text-tertiary-fixed-dim font-bold">96%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-gradient-to-r from-tertiary-fixed-dim to-primary-container rounded-full transition-all duration-1000 ease-out" style="width: 96%;"></div>
+</div>
+</div>
+</div>
+<!-- Card 4: Security & Compliance -->
+<div class="skill-card group relative bg-surface-container rounded-xl p-space-lg flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(0,242,254,0.15)] overflow-hidden" data-category="security">
+<div class="absolute inset-0 bg-gradient-to-br from-error/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+<div class="flex flex-col gap-space-md relative z-10">
+<div class="flex items-center justify-between">
+<div class="w-12 h-12 rounded-xl bg-error/10 flex items-center justify-center text-error group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<span class="px-space-sm py-space-xs rounded-full bg-error/20 text-error text-label-sm uppercase tracking-wider">Expert</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface">Zero-Trust Security &amp; Compliance</h3>
+<p class="text-body-md text-on-surface-variant">Implementing rigorous vulnerability scanning, secret management, policy-as-code guardrails, and automated compliance auditing.</p>
+<div class="flex flex-wrap gap-2 pt-2">
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">HashiCorp Vault</span>
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">Trivy</span>
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">Falco</span>
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">OPA Gatekeeper</span>
+</div>
+</div>
+<div class="mt-space-lg pt-space-md border-t border-outline-variant/20 relative z-10 flex flex-col gap-space-xs">
+<div class="flex justify-between text-body-sm">
+<span class="text-on-surface-variant">Proficiency Level</span>
+<span class="text-error font-bold">92%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-gradient-to-r from-error to-primary-container rounded-full transition-all duration-1000 ease-out" style="width: 92%;"></div>
+</div>
+</div>
+</div>
+<!-- Card 5: Observability -->
+<div class="skill-card group relative bg-surface-container rounded-xl p-space-lg flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(0,242,254,0.15)] overflow-hidden" data-category="cloud">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+<div class="flex flex-col gap-space-md relative z-10">
+<div class="flex items-center justify-between">
+<div class="w-12 h-12 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary-container group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+</div>
+<span class="px-space-sm py-space-xs rounded-full bg-primary-container/20 text-primary text-label-sm uppercase tracking-wider">Advanced</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface">Observability &amp; APM</h3>
+<p class="text-body-md text-on-surface-variant">Setting up comprehensive telemetry pipelines, distributed tracing, metrics dashboards, and automated anomaly alerting.</p>
+<div class="flex flex-wrap gap-2 pt-2">
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">Prometheus</span>
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">Grafana</span>
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">Datadog</span>
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">OpenTelemetry</span>
+</div>
+</div>
+<div class="mt-space-lg pt-space-md border-t border-outline-variant/20 relative z-10 flex flex-col gap-space-xs">
+<div class="flex justify-between text-body-sm">
+<span class="text-on-surface-variant">Proficiency Level</span>
+<span class="text-primary font-bold">94%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary-container to-secondary-container rounded-full transition-all duration-1000 ease-out" style="width: 94%;"></div>
+</div>
+</div>
+</div>
+<!-- Card 6: Infrastructure as Code -->
+<div class="skill-card group relative bg-surface-container rounded-xl p-space-lg flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(0,242,254,0.15)] overflow-hidden" data-category="cloud">
+<div class="absolute inset-0 bg-gradient-to-br from-secondary-container/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+<div class="flex flex-col gap-space-md relative z-10">
+<div class="flex items-center justify-between">
+<div class="w-12 h-12 rounded-xl bg-secondary-container/10 flex items-center justify-center text-secondary-container group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">code</span>
+</div>
+<span class="px-space-sm py-space-xs rounded-full bg-secondary-container/20 text-secondary text-label-sm uppercase tracking-wider">Expert</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface">Infrastructure as Code (IaC)</h3>
+<p class="text-body-md text-on-surface-variant">Writing modular, reusable, and thoroughly tested provisioning code for complete immutable infrastructure environments.</p>
+<div class="flex flex-wrap gap-2 pt-2">
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">Terraform</span>
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">Ansible</span>
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">Pulumi</span>
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface-variant text-body-sm">CloudFormation</span>
+</div>
+</div>
+<div class="mt-space-lg pt-space-md border-t border-outline-variant/20 relative z-10 flex flex-col gap-space-xs">
+<div class="flex justify-between text-body-sm">
+<span class="text-on-surface-variant">Proficiency Level</span>
+<span class="text-secondary font-bold">99%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary-container to-primary-container rounded-full transition-all duration-1000 ease-out" style="width: 99%;"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Certifications / Proof Banner -->
+<section class="max-w-7xl mx-auto px-gutter py-space-xl w-full">
+<div class="bg-surface-container rounded-2xl p-space-xl flex flex-col md:flex-row items-center justify-between gap-space-lg relative overflow-hidden">
+<div class="absolute -right-20 -bottom-20 w-96 h-96 bg-primary-container/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex flex-col gap-space-sm max-w-xl relative z-10">
+<span class="text-label-md text-primary uppercase tracking-wider">Verified Credentials</span>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Certified Cloud Solutions Architect &amp; DevOps Professional</h2>
+<p class="text-body-md text-on-surface-variant">Validated technical expertise backed by industry-leading certifications from Amazon Web Services, Kubernetes Consortium, and HashiCorp.</p>
+</div>
+<div class="flex flex-wrap gap-space-md relative z-10">
+<div class="flex items-center gap-space-sm bg-surface-container-high px-space-md py-space-sm rounded-xl border border-primary-container/20 shadow-[0_0_15px_rgba(0,242,254,0.1)]">
+<span class="material-symbols-outlined text-primary-container text-[24px]">verified</span>
+<div class="flex flex-col">
+<span class="text-headline-sm font-headline-sm text-on-surface">AWS Certified</span>
+<span class="text-body-sm text-on-surface-variant">Solutions Architect Pro</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm bg-surface-container-high px-space-md py-space-sm rounded-xl border border-secondary-container/20 shadow-[0_0_15px_rgba(49,150,230,0.1)]">
+<span class="material-symbols-outlined text-secondary-container text-[24px]">verified</span>
+<div class="flex flex-col">
+<span class="text-headline-sm font-headline-sm text-on-surface">CNCF Certified</span>
+<span class="text-body-sm text-on-surface-variant">CKA &amp; CKS Specialist</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive JavaScript -->
+<script>
+    function filterSkills(category) {
+      const buttons = document.querySelectorAll('.skill-filter-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-[0_0_15px_rgba(0,242,254,0.3)]');
+        btn.classList.add('bg-surface-container', 'text-on-surface-variant');
+      });
+      event.currentTarget.classList.remove('bg-surface-container', 'text-on-surface-variant');
+      event.currentTarget.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-[0_0_15px_rgba(0,242,254,0.3)]');
+
+      const cards = document.querySelectorAll('.skill-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+          card.style.opacity = '0';
+          setTimeout(() => { card.style.opacity = '1'; }, 50);
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function searchSkills(query) {
+      const q = query.toLowerCase();
+      const cards = document.querySelectorAll('.skill-card');
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        if (text.includes(q)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest py-space-xl"><div class="max-w-7xl mx-auto px-gutter grid grid-cols-1 md:grid-cols-4 gap-space-lg mb-space-xl"><div class="flex flex-col gap-space-md"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-primary-container to-secondary-container flex items-center justify-center"><span class="material-symbols-outlined text-on-primary-container text-[18px]">bolt</span></div><span class="text-headline-sm font-headline-sm text-on-surface">VY-GROUPS</span></div><p class="text-body-sm text-on-surface-variant">Elite DevOps &amp; Cloud Architecture consulting, driving infrastructure automation, infinite scalability, and cloud-native excellence.</p></div><div class="flex flex-col gap-space-sm"><span class="text-label-lg text-primary uppercase">Architecture</span><a class="text-body-sm text-on-surface-variant hover:text-on-surface" data-path="projects" href="#">Kubernetes Clusters</a><a class="text-body-sm text-on-surface-variant hover:text-on-surface" data-path="projects" href="#">Terraform Modules</a><a class="text-body-sm text-on-surface-variant hover:text-on-surface" data-path="projects" href="#">CI/CD Pipelines</a><a class="text-body-sm text-on-surface-variant hover:text-on-surface" data-path="projects" href="#">Zero-Trust Security</a></div><div class="flex flex-col gap-space-sm"><span class="text-label-lg text-primary uppercase">Knowledge</span><a class="text-body-sm text-on-surface-variant hover:text-on-surface" data-path="blog" href="#">Engineering Blog</a><a class="text-body-sm text-on-surface-variant hover:text-on-surface" data-path="resources" href="#">Cloud Blueprints</a><a class="text-body-sm text-on-surface-variant hover:text-on-surface" data-path="success-stories" href="#">Case Studies</a><a class="text-body-sm text-on-surface-variant hover:text-on-surface" data-path="collaborate" href="#">Enterprise Advisory</a></div><div class="flex flex-col gap-space-sm"><span class="text-label-lg text-primary uppercase">Connect</span><a class="text-body-sm text-on-surface-variant hover:text-on-surface" data-path="contact" href="#">Direct Consultation</a><a class="text-body-sm text-on-surface-variant hover:text-on-surface" data-path="contact" href="#">LinkedIn Profile</a><a class="text-body-sm text-on-surface-variant hover:text-on-surface" data-path="contact" href="#">GitHub Repositories</a><a class="text-body-sm text-on-surface-variant hover:text-on-surface" data-path="contact" href="#">Secure Keybase</a></div></div><div class="max-w-7xl mx-auto px-gutter pt-space-md border-t border-outline-variant/30 flex flex-col md:flex-row items-center justify-between text-body-sm text-on-surface-variant gap-space-md"><span>© 2024 Yash Kumar Dubey (VY-Groups). All rights reserved.</span><div class="flex gap-space-md"><a class="hover:text-on-surface" href="#">Privacy Policy</a><a class="hover:text-on-surface" href="#">Terms of Service</a><a class="hover:text-on-surface" href="#">System Status</a></div></div></footer></body></html>

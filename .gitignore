@@ -27,7 +27,3 @@ dist-ssr
 .env
 .env.local
 .env.*.local
-
-# Local reference material (optimized site assets live in public/certificates/)
-certifications/
-stitch_modern_agency_portfolio_redesign (1)/
