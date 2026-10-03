@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Yash Kumar Dubey - DevOps Engineer &amp; Cloud Architect</title>
+  <link>https://yashkumardubey.dev/</link>
+  <description>DevOps Engineer &amp; Cloud Architect specializing in AWS, Kubernetes, CI/CD pipelines, Linux automation, and scalable cloud infrastructure.</description>
+  <language>en</language>
+  <lastBuildDate>Tue, 15 Sep 2026 00:00:00 GMT</lastBuildDate>
+  <atom:link href="https://yashkumardubey.dev/rss.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Kubernetes Fundamentals Every DevOps Engineer Should Know</title>
+    <link>https://yashkumardubey.dev/#blog-kubernetes-fundamentals</link>
+    <guid isPermaLink="true">https://yashkumardubey.dev/#blog-kubernetes-fundamentals</guid>
+    <pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
+    <description>A practical walkthrough of Pods, Deployments, Services, and the control plane — the concepts you actually use day-to-day.</description>
+    <category>Kubernetes</category>
+    <category>DevOps</category>
+    <category>Containers</category>
+  </item>
+  <item>
+    <title>Building a CI/CD Pipeline with GitHub Actions</title>
+    <link>https://yashkumardubey.dev/#blog-github-actions-cicd</link>
+    <guid isPermaLink="true">https://yashkumardubey.dev/#blog-github-actions-cicd</guid>
+    <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
+    <description>A production-ready pipeline: lint, test, build, and deploy — with caching, matrix builds, and reusable workflows.</description>
+    <category>GitHub Actions</category>
+    <category>CI/CD</category>
+    <category>DevOps</category>
+  </item>
+  <item>
+    <title>Linux Server Security Hardening Checklist</title>
+    <link>https://yashkumardubey.dev/#blog-linux-security-hardening</link>
+    <guid isPermaLink="true">https://yashkumardubey.dev/#blog-linux-security-hardening</guid>
+    <pubDate>Fri, 10 Jul 2026 00:00:00 GMT</pubDate>
+    <description>The 12-step checklist I run on every new Linux server: SSH, firewall, updates, users, and auditing.</description>
+    <category>Linux</category>
+    <category>Security</category>
+    <category>DevOps</category>
+  </item>
+</channel>
+</rss>

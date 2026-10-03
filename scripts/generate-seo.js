@@ -93,6 +93,77 @@ Disallow: /.git/
 `;
 }
 
+const xmlEsc = (s = '') =>
+  String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+
+/** Parse `export const meta = { ... }` frontmatter from every blog MDX post. */
+function loadBlogPosts() {
+  const blogDir = path.join(projectRoot, 'src', 'blog');
+  if (!fs.existsSync(blogDir)) return [];
+  return fs
+    .readdirSync(blogDir)
+    .filter((file) => file.endsWith('.mdx'))
+    .map((file) => {
+      const src = fs.readFileSync(path.join(blogDir, file), 'utf8');
+      const m = src.match(/export const meta = \{([\s\S]*?)\n\}/);
+      if (!m) {
+        console.warn(`! no meta block in ${file}, skipping from RSS`);
+        return null;
+      }
+      try {
+        // Own source files only — object literal evaluated as-is
+        return new Function(`return {${m[1]}}`)();
+      } catch (err) {
+        console.warn(`! could not parse meta from ${file}: ${err.message}`);
+        return null;
+      }
+    })
+    .filter((meta) => meta && meta.slug && meta.title)
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+}
+
+function generateRss() {
+  const posts = loadBlogPosts();
+  const items = posts
+    .map((p) => {
+      const link = `${SITE_URL}/#blog-${p.slug}`;
+      const parsed = new Date(p.date);
+      const pubDate = Number.isNaN(parsed.getTime()) ? new Date().toUTCString() : parsed.toUTCString();
+      const tags = p.tags && p.tags.length ? p.tags : p.category ? [p.category] : [];
+      const categories = tags.map((t) => `    <category>${xmlEsc(t)}</category>`).join('\n');
+      return `  <item>
+    <title>${xmlEsc(p.title)}</title>
+    <link>${link}</link>
+    <guid isPermaLink="true">${link}</guid>
+    <pubDate>${pubDate}</pubDate>
+    <description>${xmlEsc(p.excerpt || '')}</description>
+${categories}
+  </item>`;
+    })
+    .join('\n');
+
+  const newest = posts.length ? new Date(posts[0].date) : new Date();
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>${xmlEsc(config.site.title)}</title>
+  <link>${SITE_URL}/</link>
+  <description>${xmlEsc(config.site.shortDescription || '')}</description>
+  <language>en</language>
+  <lastBuildDate>${newest.toUTCString()}</lastBuildDate>
+  <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml"/>
+${items}
+</channel>
+</rss>
+`;
+}
+
 function main() {
   // Ensure dist directory exists
   if (!fs.existsSync(distDir)) {
@@ -111,9 +182,16 @@ function main() {
   fs.writeFileSync(path.join(publicDir, 'robots.txt'), robots);
   console.log('✓ Generated robots.txt');
 
+  // Generate RSS feed from blog frontmatter
+  const rss = generateRss();
+  fs.writeFileSync(path.join(distDir, 'rss.xml'), rss);
+  fs.writeFileSync(path.join(publicDir, 'rss.xml'), rss);
+  console.log(`✓ Generated rss.xml (${loadBlogPosts().length} posts)`);
+
   console.log('\nSEO files generated successfully!');
   console.log(`  - ${distDir}/sitemap.xml`);
   console.log(`  - ${distDir}/robots.txt`);
+  console.log(`  - ${distDir}/rss.xml`);
 }
 
 main();
