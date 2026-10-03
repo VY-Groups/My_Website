@@ -36,6 +36,7 @@ export default function Navigation({ isDark, setIsDark, activeSection }) {
     { id: 'hero', label: 'About' },
     { id: 'experience', label: 'Experience' },
     { id: 'skills', label: 'Skills' },
+    { id: 'certifications', label: 'Certifications' },
     { id: 'projects', label: 'Projects' },
     { id: 'blog', label: 'Blog' },
     { id: 'resources', label: 'Resources' },
