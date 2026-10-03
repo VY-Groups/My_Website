@@ -9,6 +9,7 @@ import ThemeCustomizer from './components/ThemeCustomizer'
 import ScrollProgress from './components/ScrollProgress'
 import InstallPrompt from './components/InstallPrompt'
 import BackToTop from './components/BackToTop'
+import CommandPalette from './components/CommandPalette'
 const Experience = lazy(() => import('./components/Experience'))
 const Skills = lazy(() => import('./components/Skills'))
 const Certifications = lazy(() => import('./components/Certifications'))
@@ -156,6 +157,7 @@ function AppInner() {
       <ThemeCustomizer />
       <BackToTop />
       <InstallPrompt />
+      <CommandPalette />
     </div>
   )
 }

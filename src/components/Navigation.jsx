@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
-import { FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi'
+import { FiMenu, FiX, FiSun, FiMoon, FiCommand } from 'react-icons/fi'
 import { owner } from '../config/site'
+import { OPEN_COMMAND } from './CommandPalette'
 import './Navigation.css'
+
+const IS_MAC = typeof navigator !== 'undefined' && /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent)
 
 export default function Navigation({ isDark, setIsDark, activeSection }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -47,7 +50,7 @@ export default function Navigation({ isDark, setIsDark, activeSection }) {
         <div className="nav-brand">
           <a href="#" className="logo" aria-label={`Go to top - ${owner.name}`} onClick={(e) => { e.preventDefault(); handleNavClick('hero'); }}>
             <img
-              src="/pic.jpeg"
+              src="/pic-400.webp"
               alt={`${owner.name} profile photo`}
               className="logo-image"
               width="40"
@@ -78,6 +81,17 @@ export default function Navigation({ isDark, setIsDark, activeSection }) {
             <span className="nav-status-dot" aria-hidden="true"></span>
             <span>Open for opportunities</span>
           </span>
+          <button
+            className="cmd-trigger"
+            onClick={() => window.dispatchEvent(new CustomEvent(OPEN_COMMAND))}
+            aria-label="Open command palette"
+            title={`Command palette (${IS_MAC ? '⌘' : 'Ctrl'}+K)`}
+          >
+            <FiCommand size={15} aria-hidden="true" />
+            <span className="cmd-trigger-key" aria-hidden="true">
+              {IS_MAC ? '⌘K' : 'Ctrl K'}
+            </span>
+          </button>
           <button 
             className="theme-toggle"
             onClick={() => setIsDark(!isDark)}

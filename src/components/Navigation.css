@@ -137,7 +137,57 @@
   display: none;
 }
 
-@media (max-width: 768px) {
+/* Command palette trigger (Ctrl/⌘ + K) */
+.cmd-trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.cmd-trigger:hover {
+  color: var(--text-primary);
+  border-color: var(--accent, #0071e3);
+  background: rgba(0, 113, 227, 0.12);
+}
+
+.cmd-trigger-key {
+  font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
+  font-size: 11px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Keep the full nav row (incl. theme toggle) inside the 1200px container */
+@media (max-width: 1440px) {
+  .nav-menu {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .cmd-trigger-key {
+    display: none;
+  }
+
+  .cmd-trigger {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .cmd-trigger {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
   .nav-container {
     padding: 0 16px;
   }
