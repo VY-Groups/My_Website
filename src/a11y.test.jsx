@@ -59,12 +59,27 @@ describe('Accessibility Audit (axe-core)', () => {
     expect(screen.getByText(/skip to main content/i)).toBeInTheDocument()
   })
 
-  it('all images should have alt text', () => {
+  it('all images should have alt text', async () => {
     const { container } = render(<App />)
+
+    // Let lazy sections commit so cert thumbnails/seals are covered too
+    await waitFor(() => {
+      expect(container.querySelector('#certifications img')).toBeTruthy()
+    }, { timeout: 5000 })
+
     const images = container.querySelectorAll('img')
     expect(images.length).toBeGreaterThan(0)
     images.forEach((img) => {
-      expect(img.getAttribute('alt')).toBeTruthy()
+      const alt = img.getAttribute('alt')
+      if (alt === '') {
+        // Decorative images must be empty-alt AND hidden from assistive tech
+        expect(
+          img.getAttribute('aria-hidden'),
+          `decorative img ${img.getAttribute('src')} needs aria-hidden="true"`
+        ).toBe('true')
+      } else {
+        expect(alt, `img ${img.getAttribute('src')} missing alt text`).toBeTruthy()
+      }
     })
   })
 })
