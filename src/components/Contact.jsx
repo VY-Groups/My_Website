@@ -58,7 +58,8 @@ export default function Contact() {
         setTimeout(() => setSubmitted(false), 3000)
       } else {
         const data = await response.json().catch(() => ({}))
-        throw new Error(data.error || 'Failed to send')
+        const details = Array.isArray(data.details) ? data.details : []
+        throw new Error([data.error || 'Failed to send', ...details].join('\n'))
       }
     } catch (error) {
       console.error('Error sending email:', error)
@@ -150,6 +151,7 @@ export default function Contact() {
                 value={formData.name}
                 onChange={handleChange}
                 autoComplete="name"
+                maxLength={100}
                 required
               />
             </div>
@@ -173,10 +175,12 @@ export default function Contact() {
               <textarea
                 id="contact-message"
                 name="message"
-                placeholder="Your Message"
+                placeholder="Your Message (at least 10 characters)"
                 rows="5"
                 value={formData.message}
                 onChange={handleChange}
+                minLength={10}
+                maxLength={5000}
                 required
               ></textarea>
             </div>

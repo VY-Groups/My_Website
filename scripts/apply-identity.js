@@ -148,6 +148,9 @@ function buildPrecacheBlock() {
     "  '/',",
     "  '/manifest.webmanifest',",
     "  '/favicon.png',",
+    "  '/favicon-192.png',",
+    "  '/favicon-512.png',",
+    "  '/favicon-512-maskable.png',",
     `  '${owner.photo}',`,
     `  '${owner.photoSmall}',`,
     `  '${owner.resume}',`,
@@ -201,19 +204,19 @@ function buildManifest() {
   "categories": ["portfolio", "technology", "business"],
   "icons": [
     {
-      "src": "/favicon.png",
+      "src": "/favicon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/favicon.png",
+      "src": "/favicon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/favicon.png",
+      "src": "/favicon-512-maskable.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

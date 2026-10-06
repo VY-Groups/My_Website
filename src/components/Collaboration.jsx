@@ -281,7 +281,8 @@ export default function Collaboration() {
         })
         setTimeout(() => setSubmitted(false), 3000)
       } else {
-        const errorMsg = responseData?.error || responseData?.details || 'Failed to send collaboration request';
+        const details = Array.isArray(responseData?.details) ? responseData.details : [];
+        const errorMsg = [responseData?.error || 'Failed to send collaboration request', ...details].join('\n');
         throw new Error(errorMsg);
       }
     } catch (error) {
