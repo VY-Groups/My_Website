@@ -20,6 +20,17 @@ export const certifications = [
     featured: true,
   },
   {
+    id: 'tws-github-actions-deploy',
+    title: 'Three Tier-Application Deployment With GitHub Actions',
+    issuer: 'Train With Shubham',
+    issued: 'Oct 2026',
+    status: 'Completed',
+    detail: 'Hands-on course',
+    credentialId: 'PA0ZIAK2',
+    image: base + 'tws-github-actions-deploy.jpg',
+    thumb: base + 'tws-github-actions-deploy-thumb.jpg',
+  },
+  {
     id: 'iraje-pam-masterclass',
     title: 'PAM Online Masterclass',
     issuer: 'Iraje Software',
