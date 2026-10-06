@@ -148,7 +148,7 @@ export default function CommandPalette() {
         group: 'Actions',
         hint: 'PDF',
         icon: FiFileText,
-        label: 'Download résumé',
+        label: 'Download resume',
         kw: 'cv resume pdf download',
         run: downloadResume,
       },
