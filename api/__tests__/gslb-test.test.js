@@ -28,15 +28,16 @@ describe('GatewayCore EC2 to Vercel fallback endpoint', () => {
     vi.restoreAllMocks()
   })
 
-  it('returns the EC2 origin response when the gateway is healthy', async () => {
-    fetch.mockResolvedValue(new Response('Mumbai backend', { status: 200 }))
+  it('reports EC2 health without exposing the upstream response body', async () => {
+    fetch.mockResolvedValue(new Response('backend ip-172-31-13-12.ap-south-1.compute.internal', { status: 200 }))
     const { request, response } = createResponseRecorder()
 
     await handler(request, response)
 
     expect(fetch).toHaveBeenCalledWith('http://15.252.99.51/', expect.objectContaining({ redirect: 'error' }))
     expect(response.statusCode).toBe(200)
-    expect(response.body).toMatchObject({ source: 'ec2', body: 'Mumbai backend' })
+    expect(response.body).toEqual({ source: 'ec2', healthy: true })
+    expect(JSON.stringify(response.body)).not.toContain('ip-172-31')
   })
 
   it('serves a Vercel response when the EC2 gateway is unavailable', async () => {
